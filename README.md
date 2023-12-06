@@ -1,6 +1,6 @@
 # Compose Preference
 
-[![Android CI status](https://github.com/zhanghai/ComposePreference/workflows/Android%20CI/badge.svg)](https://github.com/zhanghai/ComposePreference/actions)
+[![Android CI status](https://github.com/zhanghai/ComposePreference/workflows/Android%20CI/badge.svg)](https://github.com/zhanghai/ComposePreference/actions) [![GitHub release](https://img.shields.io/github/v/release/zhanghai/ComposePreference)](https://github.com/zhanghai/ComposePreference/releases) [![License](https://img.shields.io/github/license/zhanghai/ComposePreference?color=blue)](LICENSE)
 
 [Preference](https://developer.android.com/develop/ui/views/components/settings) implementation for [Jetpack Compose](https://developer.android.com/jetpack/compose) [Material 3](https://developer.android.com/jetpack/compose/designsystems/material3).
 
