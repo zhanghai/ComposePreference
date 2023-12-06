@@ -32,7 +32,7 @@ There is no official and complete Material 3 UX specification for preference yet
 
 This library is designed with both extensibility and ease-of-use in mind.
 
-Basic usage of this library involves invoking the `ProvidePreferenceLocals` composable, and then calling the `*Preference` helper functions in a `LazyColumn` composable: 
+Basic usage of this library involves invoking the `ProvidePreferenceLocals` composable, and then calling the `*Preference` helper functions in a `LazyColumn` composable:
 
 ```kotlin
 AppTheme {
@@ -43,6 +43,7 @@ AppTheme {
                 key = "switch_preference",
                 defaultValue = false,
                 title = { Text(text = "Switch preference") },
+                icon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
                 summary = { Text(text = if (it) "On" else "Off") }
             )
         }
@@ -85,7 +86,7 @@ The data source of the preferences can be customized by providing a custom `Muta
 
 The [`Preferences`](library/src/main/java/me/zhanghai/compose/preference/Preferences.kt) interface defined in this library is similar to the AndroidX DataStore [`Preferences`](https://developer.android.com/reference/kotlin/androidx/datastore/preferences/core/Preferences) class, but:
 
-- It can be implemented by other mechanisms like [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences), thanks to being a public interface instead of an abstract class with only an internal constructor. 
+- It can be implemented by other mechanisms like [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences), thanks to being a public interface instead of an abstract class with only an internal constructor.
 - It doesn't have to be produced and updated via a [`DataStore`](https://developer.android.com/reference/kotlin/androidx/datastore/core/DataStore).
 - It doesn't mandate a fixed set of types that an implementation has to support, so that implementations have the flexibility to support much more or less types. The implementations within this library will always support the types supported by `SharedPreferences` (the same as AndroidX DataStore).
 
