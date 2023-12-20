@@ -51,7 +51,7 @@ AppTheme {
 }
 ```
 
-### Prefences
+### Preferences
 
 Built-in types of preferences include:
 
