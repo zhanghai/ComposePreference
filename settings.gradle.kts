@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 pluginManagement {
     repositories {
         google()
@@ -30,4 +32,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ComposePreference"
-include(":library", ":sample")
+include(":library")
+include(":sample")
