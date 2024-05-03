@@ -21,22 +21,26 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AlertDialogDefaults
+import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalMinimumInteractiveComponentEnforcement
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.Placeable
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.util.fastForEach
+import androidx.compose.ui.util.fastForEachIndexed
 import kotlin.math.max
 
 @Composable
@@ -48,7 +52,7 @@ internal fun PreferenceAlertDialog(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit
 ) {
-    AlertDialog(onDismissRequest = onDismissRequest, modifier = modifier) {
+    BasicAlertDialog(onDismissRequest = onDismissRequest, modifier = modifier) {
         Surface(
             modifier = Modifier.fillMaxWidth(),
             shape = AlertDialogDefaults.shape,
@@ -56,29 +60,35 @@ internal fun PreferenceAlertDialog(
             tonalElevation = AlertDialogDefaults.TonalElevation,
         ) {
             Column(modifier = Modifier.fillMaxWidth()) {
-                Box(
-                    modifier =
-                        Modifier.fillMaxWidth()
-                            .padding(start = 24.dp, top = 24.dp, end = 24.dp, bottom = 16.dp)
+                ProvideContentColorTextStyle(
+                    contentColor = AlertDialogDefaults.titleContentColor,
+                    textStyle = MaterialTheme.typography.headlineSmall
                 ) {
-                    CompositionLocalProvider(
-                        LocalContentColor provides AlertDialogDefaults.titleContentColor
+                    Box(
+                        modifier =
+                            Modifier.fillMaxWidth()
+                                .padding(start = 24.dp, top = 24.dp, end = 24.dp, bottom = 16.dp)
                     ) {
-                        ProvideTextStyle(MaterialTheme.typography.headlineSmall, title)
+                        title()
                     }
                 }
                 Box(modifier = Modifier.fillMaxWidth().weight(1f, fill = false)) { content() }
-                Box(
-                    modifier =
-                        Modifier.fillMaxWidth()
-                            .padding(start = 24.dp, top = 16.dp, end = 24.dp, bottom = 24.dp),
-                    contentAlignment = Alignment.CenterEnd
+                ProvideContentColorTextStyle(
+                    contentColor = MaterialTheme.colorScheme.primary,
+                    textStyle = MaterialTheme.typography.labelLarge
                 ) {
-                    AlertDialogFlowRow(mainAxisSpacing = 8.dp, crossAxisSpacing = 12.dp) {
-                        CompositionLocalProvider(
-                            LocalMinimumInteractiveComponentEnforcement provides false,
-                            content = buttons
-                        )
+                    Box(
+                        modifier =
+                            Modifier.fillMaxWidth()
+                                .padding(start = 24.dp, top = 16.dp, end = 24.dp, bottom = 24.dp),
+                        contentAlignment = Alignment.CenterEnd
+                    ) {
+                        AlertDialogFlowRow(mainAxisSpacing = 8.dp, crossAxisSpacing = 12.dp) {
+                            CompositionLocalProvider(
+                                LocalMinimumInteractiveComponentEnforcement provides false,
+                                content = buttons
+                            )
+                        }
                     }
                 }
             }
@@ -86,9 +96,24 @@ internal fun PreferenceAlertDialog(
     }
 }
 
+// Copied from androidx.compose.material3.ProvideContentColorTextStyle .
+@Composable
+private fun ProvideContentColorTextStyle(
+    contentColor: Color,
+    textStyle: TextStyle,
+    content: @Composable () -> Unit
+) {
+    val mergedStyle = LocalTextStyle.current.merge(textStyle)
+    CompositionLocalProvider(
+        LocalContentColor provides contentColor,
+        LocalTextStyle provides mergedStyle,
+        content = content
+    )
+}
+
 // Copied from androidx.compose.material3.AlertDialogFlowRow .
 @Composable
-internal fun AlertDialogFlowRow(
+private fun AlertDialogFlowRow(
     mainAxisSpacing: Dp,
     crossAxisSpacing: Dp,
     content: @Composable () -> Unit
@@ -116,7 +141,8 @@ internal fun AlertDialogFlowRow(
             if (sequences.isNotEmpty()) {
                 crossAxisSpace += crossAxisSpacing.roundToPx()
             }
-            sequences += currentSequence.toList()
+            // Ensures that confirming actions appear above dismissive actions.
+            @Suppress("ListIterator") sequences.add(0, currentSequence.toList())
             crossAxisSizes += currentCrossAxisSize
             crossAxisPositions += crossAxisSpace
 
@@ -128,7 +154,7 @@ internal fun AlertDialogFlowRow(
             currentCrossAxisSize = 0
         }
 
-        for (measurable in measurables) {
+        measurables.fastForEach { measurable ->
             // Ask the child for its preferred size.
             val placeable = measurable.measure(constraints)
 
@@ -155,7 +181,7 @@ internal fun AlertDialogFlowRow(
         val layoutHeight = crossAxisLayoutSize
 
         layout(layoutWidth, layoutHeight) {
-            sequences.forEachIndexed { i, placeables ->
+            sequences.fastForEachIndexed { i, placeables ->
                 val childrenMainAxisSizes =
                     IntArray(placeables.size) { j ->
                         placeables[j].width +
@@ -171,7 +197,7 @@ internal fun AlertDialogFlowRow(
                         mainAxisPositions
                     )
                 }
-                placeables.forEachIndexed { j, placeable ->
+                placeables.fastForEachIndexed { j, placeable ->
                     placeable.place(x = mainAxisPositions[j], y = crossAxisPositions[i])
                 }
             }
