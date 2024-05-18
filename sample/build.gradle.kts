@@ -24,7 +24,7 @@ android {
     buildToolsVersion = "34.0.0"
     compileSdk = 34
     defaultConfig {
-        applicationId = "me.zhanghai.android.librarytemplate.sample"
+        applicationId = "me.zhanghai.compose.preference.sample"
         minSdk = 21
         targetSdk = 34
         versionCode = (extra["VERSION_CODE"] as String).toInt()
