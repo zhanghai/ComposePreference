@@ -19,6 +19,8 @@ plugins {
     val androidGradlePluginVersion = "8.4.1"
     id("com.android.application") version androidGradlePluginVersion apply false
     id("com.android.library") version androidGradlePluginVersion apply false
-    kotlin("android") version "1.9.22" apply false
+    val kotlinVersion = "2.0.0"
+    kotlin("android") version kotlinVersion apply false
+    kotlin("plugin.compose") version kotlinVersion apply false
     id("com.vanniktech.maven.publish") version "0.25.3" apply false
 }

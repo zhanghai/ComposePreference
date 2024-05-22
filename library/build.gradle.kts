@@ -17,6 +17,7 @@
 plugins {
     id("com.android.library")
     kotlin("android")
+    kotlin("plugin.compose")
     id("com.vanniktech.maven.publish")
 }
 
