@@ -25,15 +25,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.LocalMinimumInteractiveComponentEnforcement
-import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
@@ -44,8 +39,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 
 inline fun LazyListScope.sliderPreference(
     key: String,
@@ -117,7 +110,6 @@ fun SliderPreference(
 }
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 fun SliderPreference(
     value: Float,
     onValueChange: (Float) -> Unit,
@@ -139,101 +131,46 @@ fun SliderPreference(
             lastValue = value
         }
     }
-    BasicPreference(
-        textContainer = {
+    Preference(
+        title = title,
+        modifier = modifier,
+        enabled = enabled,
+        icon = icon,
+        summary = {
             Column {
-                val theme = LocalPreferenceTheme.current
-                Column(
-                    modifier =
-                        Modifier.padding(
-                            theme.padding.copy(
-                                start = if (icon != null) 8.dp else Dp.Unspecified,
-                                bottom = 0.dp
-                            )
-                        )
-                ) {
-                    PreferenceDefaults.TitleContainer(title = title, enabled = enabled)
-                    PreferenceDefaults.SummaryContainer(summary = summary, enabled = enabled)
-                }
+                summary?.invoke()
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    CompositionLocalProvider(
-                        LocalMinimumInteractiveComponentEnforcement provides false
-                    ) {
-                        // onValueChangeFinished() may be invoked before a recomposition has
-                        // happened for onValueChange(), for example in the clicking case, so make
-                        // onValueChange() share the latest value to onValueChangeFinished().
-                        var latestSliderValue = sliderValue
-                        Slider(
-                            value = sliderValue,
-                            onValueChange = {
-                                onSliderValueChange(it)
-                                latestSliderValue = it
-                            },
-                            modifier =
-                                Modifier.weight(1f)
-                                    .padding(
-                                        theme.padding
-                                            .copy(
-                                                start =
-                                                    if (icon != null) {
-                                                        8.dp
-                                                    } else {
-                                                        Dp.Unspecified
-                                                    },
-                                                top = theme.verticalSpacing,
-                                                end =
-                                                    if (valueText != null) {
-                                                        theme.horizontalSpacing
-                                                    } else {
-                                                        Dp.Unspecified
-                                                    }
-                                            )
-                                            .offset((-8).dp)
-                                    ),
-                            enabled = enabled,
-                            valueRange = valueRange,
-                            steps = valueSteps,
-                            onValueChangeFinished = { onValueChange(latestSliderValue) }
-                        )
-                    }
+                    // onValueChangeFinished() may be invoked before a recomposition has
+                    // happened for onValueChange(), for example in the clicking case, so make
+                    // onValueChange() share the latest value to onValueChangeFinished().
+                    var latestSliderValue = sliderValue
+                    Slider(
+                        value = sliderValue,
+                        onValueChange = {
+                            onSliderValueChange(it)
+                            latestSliderValue = it
+                        },
+                        modifier = Modifier.weight(1f),
+                        enabled = enabled,
+                        valueRange = valueRange,
+                        steps = valueSteps,
+                        onValueChangeFinished = { onValueChange(latestSliderValue) }
+                    )
                     if (valueText != null) {
-                        Box(
-                            modifier =
-                                Modifier.padding(
-                                    theme.padding.copy(start = 0.dp, top = 0.dp, bottom = 0.dp)
-                                )
-                        ) {
-                            CompositionLocalProvider(
-                                LocalContentColor provides
-                                    theme.summaryColor.let {
-                                        if (enabled) it else it.copy(alpha = theme.disabledOpacity)
-                                    }
-                            ) {
-                                ProvideTextStyle(
-                                    value = theme.summaryTextStyle,
-                                    content = valueText
-                                )
-                            }
+                        val theme = LocalPreferenceTheme.current
+                        Box(modifier = Modifier.padding(start = theme.horizontalSpacing)) {
+                            valueText()
                         }
                     }
                 }
             }
-        },
-        modifier = modifier,
-        enabled = enabled,
-        iconContainer = {
-            PreferenceDefaults.IconContainer(
-                icon = icon,
-                enabled = enabled,
-                excludedEndPadding = 8.dp
-            )
         }
     )
 }
 
 @Composable
 @Preview(showBackground = true)
-@SuppressLint("AutoboxingStateCreation")
+@SuppressLint("AutoboxingStateCreation", "DefaultLocale")
 private fun SliderPreferencePreview() {
     ProvidePreferenceTheme {
         val state = remember { mutableStateOf(3.5f) }

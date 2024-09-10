@@ -95,16 +95,12 @@ fun Preference(
 
 internal object PreferenceDefaults {
     @Composable
-    fun IconContainer(
-        icon: @Composable (() -> Unit)?,
-        enabled: Boolean,
-        excludedEndPadding: Dp = 0.dp
-    ) {
+    fun IconContainer(icon: @Composable (() -> Unit)?, enabled: Boolean) {
         if (icon != null) {
             val theme = LocalPreferenceTheme.current
             Box(
                 modifier =
-                    Modifier.widthIn(min = theme.iconContainerMinWidth - excludedEndPadding)
+                    Modifier.widthIn(min = theme.iconContainerMinWidth)
                         .padding(theme.padding.copy(end = 0.dp)),
                 contentAlignment = Alignment.CenterStart
             ) {
