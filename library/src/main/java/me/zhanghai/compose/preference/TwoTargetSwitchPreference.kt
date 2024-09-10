@@ -21,7 +21,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -91,7 +90,6 @@ fun TwoTargetSwitchPreference(
 }
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 fun TwoTargetSwitchPreference(
     value: Boolean,
     onValueChange: (Boolean) -> Unit,

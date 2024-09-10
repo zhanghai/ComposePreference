@@ -21,7 +21,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
@@ -59,7 +58,6 @@ fun LazyListScope.twoTargetIconButtonPreference(
 }
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 fun TwoTargetIconButtonPreference(
     title: @Composable () -> Unit,
     iconButtonIcon: @Composable () -> Unit,
