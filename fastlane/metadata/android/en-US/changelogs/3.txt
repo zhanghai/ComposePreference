@@ -1,0 +1,1 @@
+- Removed widgetContainer support for SliderPreference which shouldn't have been added.
