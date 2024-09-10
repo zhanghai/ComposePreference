@@ -42,7 +42,7 @@ val LocalPreferenceFlow =
 @Composable
 fun ProvidePreferenceFlow(
     flow: MutableStateFlow<Preferences> = defaultPreferenceFlow(),
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     CompositionLocalProvider(LocalPreferenceFlow provides flow, content = content)
 }

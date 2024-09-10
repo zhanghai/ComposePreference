@@ -50,7 +50,7 @@ internal fun PreferenceAlertDialog(
     title: @Composable () -> Unit,
     buttons: @Composable () -> Unit,
     modifier: Modifier = Modifier,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     BasicAlertDialog(onDismissRequest = onDismissRequest, modifier = modifier) {
         Surface(
@@ -62,7 +62,7 @@ internal fun PreferenceAlertDialog(
             Column(modifier = Modifier.fillMaxWidth()) {
                 ProvideContentColorTextStyle(
                     contentColor = AlertDialogDefaults.titleContentColor,
-                    textStyle = MaterialTheme.typography.headlineSmall
+                    textStyle = MaterialTheme.typography.headlineSmall,
                 ) {
                     Box(
                         modifier =
@@ -75,18 +75,18 @@ internal fun PreferenceAlertDialog(
                 Box(modifier = Modifier.fillMaxWidth().weight(1f, fill = false)) { content() }
                 ProvideContentColorTextStyle(
                     contentColor = MaterialTheme.colorScheme.primary,
-                    textStyle = MaterialTheme.typography.labelLarge
+                    textStyle = MaterialTheme.typography.labelLarge,
                 ) {
                     Box(
                         modifier =
                             Modifier.fillMaxWidth()
                                 .padding(start = 24.dp, top = 16.dp, end = 24.dp, bottom = 24.dp),
-                        contentAlignment = Alignment.CenterEnd
+                        contentAlignment = Alignment.CenterEnd,
                     ) {
                         AlertDialogFlowRow(mainAxisSpacing = 8.dp, crossAxisSpacing = 12.dp) {
                             CompositionLocalProvider(
                                 LocalMinimumInteractiveComponentEnforcement provides false,
-                                content = buttons
+                                content = buttons,
                             )
                         }
                     }
@@ -101,13 +101,13 @@ internal fun PreferenceAlertDialog(
 private fun ProvideContentColorTextStyle(
     contentColor: Color,
     textStyle: TextStyle,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val mergedStyle = LocalTextStyle.current.merge(textStyle)
     CompositionLocalProvider(
         LocalContentColor provides contentColor,
         LocalTextStyle provides mergedStyle,
-        content = content
+        content = content,
     )
 }
 
@@ -116,7 +116,7 @@ private fun ProvideContentColorTextStyle(
 private fun AlertDialogFlowRow(
     mainAxisSpacing: Dp,
     crossAxisSpacing: Dp,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     Layout(content) { measurables, constraints ->
         val sequences = mutableListOf<List<Placeable>>()
@@ -194,7 +194,7 @@ private fun AlertDialogFlowRow(
                         mainAxisLayoutSize,
                         childrenMainAxisSizes,
                         layoutDirection,
-                        mainAxisPositions
+                        mainAxisPositions,
                     )
                 }
                 placeables.fastForEachIndexed { j, placeable ->

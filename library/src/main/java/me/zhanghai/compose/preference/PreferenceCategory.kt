@@ -32,7 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun LazyListScope.preferenceCategory(
     key: String,
     title: @Composable () -> Unit,
-    modifier: Modifier = Modifier.fillMaxWidth()
+    modifier: Modifier = Modifier.fillMaxWidth(),
 ) {
     item(key = key, contentType = "PreferenceCategory") {
         PreferenceCategory(title = title, modifier = modifier)
@@ -46,14 +46,14 @@ fun PreferenceCategory(title: @Composable () -> Unit, modifier: Modifier = Modif
             val theme = LocalPreferenceTheme.current
             Box(
                 modifier = Modifier.padding(theme.categoryPadding),
-                contentAlignment = Alignment.CenterStart
+                contentAlignment = Alignment.CenterStart,
             ) {
                 CompositionLocalProvider(LocalContentColor provides theme.categoryColor) {
                     ProvideTextStyle(value = theme.categoryTextStyle, content = title)
                 }
             }
         },
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
@@ -63,7 +63,7 @@ private fun PreferenceCategoryPreview() {
     ProvidePreferenceTheme {
         PreferenceCategory(
             title = { Text(text = "Preference category") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         )
     }
 }

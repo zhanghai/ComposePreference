@@ -41,7 +41,7 @@ fun LazyListScope.twoTargetIconButtonPreference(
     summary: @Composable (() -> Unit)? = null,
     onClick: (() -> Unit)? = null,
     iconButtonEnabled: Boolean = enabled,
-    onIconButtonClick: () -> Unit
+    onIconButtonClick: () -> Unit,
 ) {
     item(key = key, contentType = "TwoTargetIconButtonPreference") {
         TwoTargetIconButtonPreference(
@@ -53,7 +53,7 @@ fun LazyListScope.twoTargetIconButtonPreference(
             summary = summary,
             onClick = onClick,
             iconButtonEnabled = iconButtonEnabled,
-            onIconButtonClick = onIconButtonClick
+            onIconButtonClick = onIconButtonClick,
         )
     }
 }
@@ -69,7 +69,7 @@ fun TwoTargetIconButtonPreference(
     summary: @Composable (() -> Unit)? = null,
     onClick: (() -> Unit)? = null,
     iconButtonEnabled: Boolean = enabled,
-    onIconButtonClick: () -> Unit
+    onIconButtonClick: () -> Unit,
 ) {
     TwoTargetPreference(
         title = title,
@@ -85,16 +85,16 @@ fun TwoTargetIconButtonPreference(
                 colors =
                     IconButtonDefaults.iconButtonColors(
                         contentColor = theme.iconColor,
-                        disabledContentColor = theme.iconColor.copy(alpha = theme.disabledOpacity)
+                        disabledContentColor = theme.iconColor.copy(alpha = theme.disabledOpacity),
                     ),
-                content = iconButtonIcon
+                content = iconButtonIcon,
             )
         },
         modifier = modifier,
         enabled = enabled,
         icon = icon,
         summary = summary,
-        onClick = onClick
+        onClick = onClick,
     )
 }
 
@@ -106,7 +106,7 @@ private fun TwoTargetIconButtonPreferencePreview() {
             title = { Text(text = "Two target icon button preference") },
             iconButtonIcon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
             modifier = Modifier.fillMaxWidth(),
-            summary = { Text(text = "Summary") }
+            summary = { Text(text = "Summary") },
         ) {}
     }
 }

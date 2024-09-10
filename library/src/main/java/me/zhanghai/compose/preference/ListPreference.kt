@@ -57,7 +57,7 @@ import androidx.compose.ui.unit.dp
 
 enum class ListPreferenceType {
     ALERT_DIALOG,
-    DROPDOWN_MENU
+    DROPDOWN_MENU,
 }
 
 inline fun <T> LazyListScope.listPreference(
@@ -75,7 +75,7 @@ inline fun <T> LazyListScope.listPreference(
     type: ListPreferenceType = ListPreferenceType.ALERT_DIALOG,
     noinline valueToText: (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
     noinline item: @Composable (value: T, currentValue: T, onClick: () -> Unit) -> Unit =
-        ListPreferenceDefaults.item(type, valueToText)
+        ListPreferenceDefaults.item(type, valueToText),
 ) {
     item(key = key, contentType = "ListPreference") {
         val state = rememberState()
@@ -90,7 +90,7 @@ inline fun <T> LazyListScope.listPreference(
             summary = summary?.let { { it(value) } },
             type = type,
             valueToText = valueToText,
-            item = item
+            item = item,
         )
     }
 }
@@ -107,7 +107,7 @@ fun <T> ListPreference(
     type: ListPreferenceType = ListPreferenceType.ALERT_DIALOG,
     valueToText: (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
     item: @Composable (value: T, currentValue: T, onClick: () -> Unit) -> Unit =
-        ListPreferenceDefaults.item(type, valueToText)
+        ListPreferenceDefaults.item(type, valueToText),
 ) {
     var value by state
     ListPreference(
@@ -121,7 +121,7 @@ fun <T> ListPreference(
         summary = summary,
         type = type,
         valueToText = valueToText,
-        item = item
+        item = item,
     )
 }
 
@@ -138,7 +138,7 @@ fun <T> ListPreference(
     type: ListPreferenceType = ListPreferenceType.ALERT_DIALOG,
     valueToText: (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
     item: @Composable (value: T, currentValue: T, onClick: () -> Unit) -> Unit =
-        ListPreferenceDefaults.item(type, valueToText)
+        ListPreferenceDefaults.item(type, valueToText),
 ) {
     var openSelector by rememberSaveable { mutableStateOf(false) }
     // Put DropdownMenu before Preference so that it can anchor to the right position.
@@ -152,12 +152,12 @@ fun <T> ListPreference(
                         TextButton(onClick = { openSelector = false }) {
                             Text(text = stringResource(android.R.string.cancel))
                         }
-                    }
+                    },
                 ) {
                     val lazyListState = rememberLazyListState()
                     LazyColumn(
                         modifier = Modifier.fillMaxWidth().verticalScrollIndicators(lazyListState),
-                        state = lazyListState
+                        state = lazyListState,
                     ) {
                         items(values) { itemValue ->
                             item(itemValue, value) {
@@ -175,7 +175,7 @@ fun <T> ListPreference(
                 ) {
                     DropdownMenu(
                         expanded = openSelector,
-                        onDismissRequest = { openSelector = false }
+                        onDismissRequest = { openSelector = false },
                     ) {
                         for (itemValue in values) {
                             item(itemValue, value) {
@@ -193,7 +193,7 @@ fun <T> ListPreference(
         modifier = modifier,
         enabled = enabled,
         icon = icon,
-        summary = summary
+        summary = summary,
     ) {
         openSelector = true
     }
@@ -203,7 +203,7 @@ fun <T> ListPreference(
 internal object ListPreferenceDefaults {
     fun <T> item(
         type: ListPreferenceType,
-        valueToText: (T) -> AnnotatedString
+        valueToText: (T) -> AnnotatedString,
     ): @Composable (value: T, currentValue: T, onClick: () -> Unit) -> Unit =
         when (type) {
             ListPreferenceType.ALERT_DIALOG -> {
@@ -223,7 +223,7 @@ internal object ListPreferenceDefaults {
         value: T,
         currentValue: T,
         valueToText: (T) -> AnnotatedString,
-        onClick: () -> Unit
+        onClick: () -> Unit,
     ) {
         val selected = value == currentValue
         Row(
@@ -232,14 +232,14 @@ internal object ListPreferenceDefaults {
                     .heightIn(min = 48.dp)
                     .selectable(selected, true, Role.RadioButton, onClick)
                     .padding(horizontal = 24.dp, vertical = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             RadioButton(selected = selected, onClick = null)
             Spacer(modifier = Modifier.width(24.dp))
             Text(
                 text = valueToText(value),
                 color = MaterialTheme.colorScheme.onSurface,
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
             )
         }
     }
@@ -249,7 +249,7 @@ internal object ListPreferenceDefaults {
         value: T,
         currentValue: T,
         valueToText: (T) -> AnnotatedString,
-        onClick: () -> Unit
+        onClick: () -> Unit,
     ) {
         DropdownMenuItem(
             text = { Text(text = valueToText(value)) },
@@ -259,7 +259,7 @@ internal object ListPreferenceDefaults {
                     if (value == currentValue) MaterialTheme.colorScheme.secondaryContainer
                     else Color.Transparent
                 ),
-            colors = MenuDefaults.itemColors()
+            colors = MenuDefaults.itemColors(),
         )
     }
 }
@@ -275,7 +275,7 @@ private fun ListPreferencePreview() {
             title = { Text(text = "List preference") },
             modifier = Modifier.fillMaxWidth(),
             icon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
-            summary = { Text(text = state.value) }
+            summary = { Text(text = state.value) },
         )
     }
 }

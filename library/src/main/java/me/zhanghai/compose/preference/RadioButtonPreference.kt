@@ -34,7 +34,7 @@ fun LazyListScope.radioButtonPreference(
     enabled: Boolean = true,
     summary: @Composable (() -> Unit)? = null,
     widgetContainer: @Composable (() -> Unit)? = null,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
     item(key = key, contentType = "RadioButtonPreference") {
         RadioButtonPreference(
@@ -44,7 +44,7 @@ fun LazyListScope.radioButtonPreference(
             enabled = enabled,
             summary = summary,
             widgetContainer = widgetContainer,
-            onClick = onClick
+            onClick = onClick,
         )
     }
 }
@@ -57,7 +57,7 @@ fun RadioButtonPreference(
     enabled: Boolean = true,
     summary: @Composable (() -> Unit)? = null,
     widgetContainer: @Composable (() -> Unit)? = null,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
     Preference(
         title = title,
@@ -65,7 +65,7 @@ fun RadioButtonPreference(
         enabled = enabled,
         icon = { RadioButton(selected = selected, onClick = null, enabled = enabled) },
         summary = summary,
-        widgetContainer = widgetContainer
+        widgetContainer = widgetContainer,
     )
 }
 
@@ -77,7 +77,7 @@ private fun RadioButtonPreferencePreview() {
             selected = true,
             title = { Text(text = "Radio button preference") },
             modifier = Modifier.fillMaxWidth(),
-            summary = { Text(text = "Summary") }
+            summary = { Text(text = "Summary") },
         ) {}
     }
 }

@@ -34,7 +34,7 @@ fun LazyListScope.footerPreference(
     key: String,
     summary: @Composable () -> Unit,
     modifier: Modifier = Modifier.fillMaxWidth(),
-    icon: @Composable () -> Unit = FooterPreferenceDefaults.Icon
+    icon: @Composable () -> Unit = FooterPreferenceDefaults.Icon,
 ) {
     item(key = key, contentType = "FooterPreference") {
         FooterPreference(summary = summary, modifier = modifier, icon = icon)
@@ -45,7 +45,7 @@ fun LazyListScope.footerPreference(
 fun FooterPreference(
     summary: @Composable () -> Unit,
     modifier: Modifier = Modifier,
-    icon: @Composable () -> Unit = FooterPreferenceDefaults.Icon
+    icon: @Composable () -> Unit = FooterPreferenceDefaults.Icon,
 ) {
     Preference(
         title = {
@@ -71,7 +71,7 @@ private fun FooterPreferencePreview() {
     ProvidePreferenceTheme {
         FooterPreference(
             modifier = Modifier.fillMaxWidth(),
-            summary = { Text(text = "Footer preference summary") }
+            summary = { Text(text = "Footer preference summary") },
         )
     }
 }

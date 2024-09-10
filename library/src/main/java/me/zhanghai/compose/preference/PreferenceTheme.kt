@@ -42,7 +42,7 @@ class PreferenceTheme(
     val titleTextStyle: TextStyle,
     val summaryColor: Color,
     val summaryTextStyle: TextStyle,
-    val dividerHeight: Dp
+    val dividerHeight: Dp,
 )
 
 @Composable
@@ -61,7 +61,7 @@ fun preferenceTheme(
     titleTextStyle: TextStyle = MaterialTheme.typography.bodyLarge,
     summaryColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
     summaryTextStyle: TextStyle = MaterialTheme.typography.bodyMedium,
-    dividerHeight: Dp = 32.dp
+    dividerHeight: Dp = 32.dp,
 ) =
     PreferenceTheme(
         categoryPadding = categoryPadding,
@@ -77,7 +77,7 @@ fun preferenceTheme(
         titleTextStyle = titleTextStyle,
         summaryColor = summaryColor,
         summaryTextStyle = summaryTextStyle,
-        dividerHeight = dividerHeight
+        dividerHeight = dividerHeight,
     )
 
 val LocalPreferenceTheme =
@@ -86,7 +86,7 @@ val LocalPreferenceTheme =
 @Composable
 fun ProvidePreferenceTheme(
     theme: PreferenceTheme = preferenceTheme(),
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     CompositionLocalProvider(LocalPreferenceTheme provides theme, content = content)
 }

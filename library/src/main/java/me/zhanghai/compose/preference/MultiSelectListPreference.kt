@@ -65,7 +65,7 @@ inline fun <T> LazyListScope.multiSelectListPreference(
     noinline item:
         @Composable
         (value: T, currentValues: Set<T>, onToggle: (Boolean) -> Unit) -> Unit =
-        MultiSelectListPreferenceDefaults.item(valueToText)
+        MultiSelectListPreferenceDefaults.item(valueToText),
 ) {
     item(key = key, contentType = "MultiSelectListPreference") {
         val state = rememberState()
@@ -79,7 +79,7 @@ inline fun <T> LazyListScope.multiSelectListPreference(
             icon = icon?.let { { it(value) } },
             summary = summary?.let { { it(value) } },
             valueToText = valueToText,
-            item = item
+            item = item,
         )
     }
 }
@@ -95,7 +95,7 @@ fun <T> MultiSelectListPreference(
     summary: @Composable (() -> Unit)? = null,
     valueToText: (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
     item: @Composable (value: T, currentValues: Set<T>, onToggle: (Boolean) -> Unit) -> Unit =
-        MultiSelectListPreferenceDefaults.item(valueToText)
+        MultiSelectListPreferenceDefaults.item(valueToText),
 ) {
     var value by state
     MultiSelectListPreference(
@@ -108,7 +108,7 @@ fun <T> MultiSelectListPreference(
         icon = icon,
         summary = summary,
         valueToText = valueToText,
-        item = item
+        item = item,
     )
 }
 
@@ -124,7 +124,7 @@ fun <T> MultiSelectListPreference(
     summary: @Composable (() -> Unit)? = null,
     valueToText: (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
     item: @Composable (value: T, currentValues: Set<T>, onToggle: (Boolean) -> Unit) -> Unit =
-        MultiSelectListPreferenceDefaults.item(valueToText)
+        MultiSelectListPreferenceDefaults.item(valueToText),
 ) {
     var openDialog by rememberSaveable { mutableStateOf(false) }
     Preference(
@@ -132,7 +132,7 @@ fun <T> MultiSelectListPreference(
         modifier = modifier,
         enabled = enabled,
         icon = icon,
-        summary = summary
+        summary = summary,
     ) {
         openDialog = true
     }
@@ -153,12 +153,12 @@ fun <T> MultiSelectListPreference(
                 ) {
                     Text(text = stringResource(android.R.string.ok))
                 }
-            }
+            },
         ) {
             val lazyListState = rememberLazyListState()
             LazyColumn(
                 modifier = Modifier.fillMaxWidth().verticalScrollIndicators(lazyListState),
-                state = lazyListState
+                state = lazyListState,
             ) {
                 items(values) { itemValue ->
                     item(itemValue, dialogValue) {
@@ -184,7 +184,7 @@ internal object MultiSelectListPreferenceDefaults {
         value: T,
         currentValues: Set<T>,
         valueToText: (T) -> AnnotatedString,
-        onToggle: (Boolean) -> Unit
+        onToggle: (Boolean) -> Unit,
     ) {
         val checked = value in currentValues
         Row(
@@ -193,14 +193,14 @@ internal object MultiSelectListPreferenceDefaults {
                     .heightIn(min = 48.dp)
                     .toggleable(checked, true, Role.Checkbox, onToggle)
                     .padding(horizontal = 24.dp, vertical = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Checkbox(checked = checked, onCheckedChange = null)
             Spacer(modifier = Modifier.width(24.dp))
             Text(
                 text = valueToText(value),
                 color = MaterialTheme.colorScheme.onSurface,
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
             )
         }
     }
@@ -217,7 +217,7 @@ private fun MultiSelectListPreferencePreview() {
             title = { Text(text = "Multi-select list preference") },
             modifier = Modifier.fillMaxWidth(),
             icon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
-            summary = { Text(text = state.value.joinToString(", ")) }
+            summary = { Text(text = state.value.joinToString(", ")) },
         )
     }
 }

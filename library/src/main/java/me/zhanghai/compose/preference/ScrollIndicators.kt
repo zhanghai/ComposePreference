@@ -35,28 +35,28 @@ internal fun Modifier.verticalScrollIndicators(
     scrollableState: ScrollableState,
     reverseScrolling: Boolean = false,
     drawTopIndicator: Boolean = true,
-    drawBottomIndicator: Boolean = true
+    drawBottomIndicator: Boolean = true,
 ): Modifier =
     scrollIndicators(
         scrollableState,
         Orientation.Vertical,
         reverseScrolling,
         drawTopIndicator,
-        drawBottomIndicator
+        drawBottomIndicator,
     )
 
 internal fun Modifier.horizontalScrollIndicators(
     scrollableState: ScrollableState,
     reverseScrolling: Boolean = false,
     drawStartIndicator: Boolean = true,
-    drawEndIndicator: Boolean = true
+    drawEndIndicator: Boolean = true,
 ): Modifier =
     scrollIndicators(
         scrollableState,
         Orientation.Horizontal,
         reverseScrolling,
         drawStartIndicator,
-        drawEndIndicator
+        drawEndIndicator,
     )
 
 private fun Modifier.scrollIndicators(
@@ -64,7 +64,7 @@ private fun Modifier.scrollIndicators(
     orientation: Orientation,
     reverseScrolling: Boolean = false,
     drawTopStartIndicator: Boolean = true,
-    drawBottomEndIndicator: Boolean = true
+    drawBottomEndIndicator: Boolean = true,
 ): Modifier =
     composed(
         debugInspectorInfo {

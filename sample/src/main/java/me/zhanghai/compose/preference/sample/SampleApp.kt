@@ -79,36 +79,36 @@ fun SampleScreen() {
                 modifier = Modifier.fillMaxWidth(),
                 windowInsets =
                     windowInsets.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top),
-                scrollBehavior = scrollBehavior
+                scrollBehavior = scrollBehavior,
             )
         },
         containerColor = Color.Transparent,
         contentColor = contentColorFor(MaterialTheme.colorScheme.background),
-        contentWindowInsets = windowInsets
+        contentWindowInsets = windowInsets,
     ) { contentPadding ->
         LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = contentPadding) {
             preference(
                 key = "preference",
                 title = { Text(text = "Preference") },
-                summary = { Text(text = "Summary") }
+                summary = { Text(text = "Summary") },
             ) {}
             checkboxPreference(
                 key = "checkbox_preference",
                 defaultValue = false,
                 title = { Text(text = "Checkbox preference") },
-                summary = { Text(text = if (it) "On" else "Off") }
+                summary = { Text(text = if (it) "On" else "Off") },
             )
             switchPreference(
                 key = "switch_preference",
                 defaultValue = false,
                 title = { Text(text = "Switch preference") },
-                summary = { Text(text = if (it) "On" else "Off") }
+                summary = { Text(text = if (it) "On" else "Off") },
             )
             twoTargetSwitchPreference(
                 key = "two_target_switch_preference",
                 defaultValue = false,
                 title = { Text(text = "Two target switch preference") },
-                summary = { Text(text = if (it) "On" else "Off") }
+                summary = { Text(text = if (it) "On" else "Off") },
             ) {}
             twoTargetIconButtonPreference(
                 key = "two_target_icon_button_preference",
@@ -117,7 +117,7 @@ fun SampleScreen() {
                 onClick = {},
                 iconButtonIcon = {
                     Icon(imageVector = Icons.Outlined.Settings, contentDescription = "Settings")
-                }
+                },
             ) {}
             sliderPreference(
                 key = "slider_preference",
@@ -126,14 +126,14 @@ fun SampleScreen() {
                 valueRange = 0f..5f,
                 valueSteps = 9,
                 summary = { Text(text = "Summary") },
-                valueText = { Text(text = "%.1f".format(it)) }
+                valueText = { Text(text = "%.1f".format(it)) },
             )
             listPreference(
                 key = "list_alert_dialog_preference",
                 defaultValue = "Alpha",
                 values = listOf("Alpha", "Beta", "Canary"),
                 title = { Text(text = "List preference (alert dialog)") },
-                summary = { Text(text = it) }
+                summary = { Text(text = it) },
             )
             listPreference(
                 key = "list_dropdown_menu_preference",
@@ -141,31 +141,31 @@ fun SampleScreen() {
                 values = listOf("Alpha", "Beta", "Canary"),
                 title = { Text(text = "List preference (dropdown menu)") },
                 summary = { Text(text = it) },
-                type = ListPreferenceType.DROPDOWN_MENU
+                type = ListPreferenceType.DROPDOWN_MENU,
             )
             multiSelectListPreference(
                 key = "multi_select_list_preference",
                 defaultValue = setOf("Alpha", "Beta"),
                 values = listOf("Alpha", "Beta", "Canary"),
                 title = { Text(text = "Multi-select list preference") },
-                summary = { Text(text = it.sorted().joinToString(", ")) }
+                summary = { Text(text = it.sorted().joinToString(", ")) },
             )
             textFieldPreference(
                 key = "text_field_preference",
                 defaultValue = "Value",
                 title = { Text(text = "Text field preference") },
                 textToValue = { it },
-                summary = { Text(text = it) }
+                summary = { Text(text = it) },
             )
             radioButtonPreference(
                 key = "radio_button_preference",
                 selected = true,
                 title = { Text(text = "Radio button preference") },
-                summary = { Text(text = "Summary") }
+                summary = { Text(text = "Summary") },
             ) {}
             footerPreference(
                 key = "footer_preference",
-                summary = { Text(text = "Footer preference summary") }
+                summary = { Text(text = "Footer preference summary") },
             )
         }
     }

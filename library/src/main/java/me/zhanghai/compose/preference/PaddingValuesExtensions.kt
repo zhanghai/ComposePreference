@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 internal fun PaddingValues.copy(
     horizontal: Dp = Dp.Unspecified,
-    vertical: Dp = Dp.Unspecified
+    vertical: Dp = Dp.Unspecified,
 ): PaddingValues = copy(start = horizontal, top = vertical, end = horizontal, bottom = vertical)
 
 @Composable
@@ -34,7 +34,7 @@ internal fun PaddingValues.copy(
     start: Dp = Dp.Unspecified,
     top: Dp = Dp.Unspecified,
     end: Dp = Dp.Unspecified,
-    bottom: Dp = Dp.Unspecified
+    bottom: Dp = Dp.Unspecified,
 ): PaddingValues = CopiedPaddingValues(start, top, end, bottom, this)
 
 @Stable
@@ -43,7 +43,7 @@ private class CopiedPaddingValues(
     private val top: Dp,
     private val end: Dp,
     private val bottom: Dp,
-    private val paddingValues: PaddingValues
+    private val paddingValues: PaddingValues,
 ) : PaddingValues {
     override fun calculateLeftPadding(layoutDirection: LayoutDirection): Dp =
         (if (layoutDirection == LayoutDirection.Ltr) start else end).takeIf { it != Dp.Unspecified }
@@ -99,7 +99,7 @@ internal fun PaddingValues.offset(
     start: Dp = 0.dp,
     top: Dp = 0.dp,
     end: Dp = 0.dp,
-    bottom: Dp = 0.dp
+    bottom: Dp = 0.dp,
 ): PaddingValues = OffsetPaddingValues(start, top, end, bottom, this)
 
 @Stable
@@ -108,7 +108,7 @@ private class OffsetPaddingValues(
     private val top: Dp,
     private val end: Dp,
     private val bottom: Dp,
-    private val paddingValues: PaddingValues
+    private val paddingValues: PaddingValues,
 ) : PaddingValues {
     override fun calculateLeftPadding(layoutDirection: LayoutDirection): Dp =
         paddingValues.calculateLeftPadding(layoutDirection) +

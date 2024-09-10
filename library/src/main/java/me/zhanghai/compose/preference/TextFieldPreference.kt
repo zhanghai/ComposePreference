@@ -61,7 +61,7 @@ inline fun <T> LazyListScope.textFieldPreference(
     noinline textField:
         @Composable
         (value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit, onOk: () -> Unit) -> Unit =
-        TextFieldPreferenceDefaults.TextField
+        TextFieldPreferenceDefaults.TextField,
 ) {
     item(key = key, contentType = "TextFieldPreference") {
         val state = rememberState()
@@ -75,7 +75,7 @@ inline fun <T> LazyListScope.textFieldPreference(
             icon = icon?.let { { it(value) } },
             summary = summary?.let { { it(value) } },
             valueToText = valueToText,
-            textField = textField
+            textField = textField,
         )
     }
 }
@@ -93,7 +93,7 @@ fun <T> TextFieldPreference(
     textField:
         @Composable
         (value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit, onOk: () -> Unit) -> Unit =
-        TextFieldPreferenceDefaults.TextField
+        TextFieldPreferenceDefaults.TextField,
 ) {
     var value by state
     TextFieldPreference(
@@ -106,7 +106,7 @@ fun <T> TextFieldPreference(
         icon = icon,
         summary = summary,
         valueToText = valueToText,
-        textField = textField
+        textField = textField,
     )
 }
 
@@ -124,7 +124,7 @@ fun <T> TextFieldPreference(
     textField:
         @Composable
         (value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit, onOk: () -> Unit) -> Unit =
-        TextFieldPreferenceDefaults.TextField
+        TextFieldPreferenceDefaults.TextField,
 ) {
     var openDialog by rememberSaveable { mutableStateOf(false) }
     Preference(
@@ -132,7 +132,7 @@ fun <T> TextFieldPreference(
         modifier = modifier,
         enabled = enabled,
         icon = icon,
-        summary = summary
+        summary = summary,
     ) {
         openDialog = true
     }
@@ -157,7 +157,7 @@ fun <T> TextFieldPreference(
                     Text(text = stringResource(android.R.string.cancel))
                 }
                 TextButton(onClick = onOk) { Text(text = stringResource(android.R.string.ok)) }
-            }
+            },
         ) {
             val focusRequester = remember { FocusRequester() }
             Box(
@@ -185,7 +185,7 @@ internal object TextFieldPreferenceDefaults {
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions(autoCorrect = false),
                 keyboardActions = KeyboardActions { onOk() },
-                singleLine = true
+                singleLine = true,
             )
         }
 }
@@ -201,7 +201,7 @@ private fun TextFieldPreferencePreview() {
             textToValue = { it },
             modifier = Modifier.fillMaxWidth(),
             icon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
-            summary = { Text(text = state.value) }
+            summary = { Text(text = state.value) },
         )
     }
 }

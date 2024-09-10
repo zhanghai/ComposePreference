@@ -47,7 +47,7 @@ inline fun LazyListScope.twoTargetSwitchPreference(
     noinline icon: @Composable ((Boolean) -> Unit)? = null,
     noinline summary: @Composable ((Boolean) -> Unit)? = null,
     noinline switchEnabled: (Boolean) -> Boolean = enabled,
-    noinline onClick: ((Boolean) -> Unit)? = null
+    noinline onClick: ((Boolean) -> Unit)? = null,
 ) {
     item(key = key, contentType = "TwoTargetSwitchPreference") {
         val state = rememberState()
@@ -60,7 +60,7 @@ inline fun LazyListScope.twoTargetSwitchPreference(
             icon = icon?.let { { it(value) } },
             summary = summary?.let { { it(value) } },
             switchEnabled = switchEnabled(value),
-            onClick = onClick?.let { { it(value) } }
+            onClick = onClick?.let { { it(value) } },
         )
     }
 }
@@ -74,7 +74,7 @@ fun TwoTargetSwitchPreference(
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
     switchEnabled: Boolean = enabled,
-    onClick: (() -> Unit)? = null
+    onClick: (() -> Unit)? = null,
 ) {
     var value by state
     TwoTargetSwitchPreference(
@@ -86,7 +86,7 @@ fun TwoTargetSwitchPreference(
         icon = icon,
         summary = summary,
         switchEnabled = switchEnabled,
-        onClick = onClick
+        onClick = onClick,
     )
 }
 
@@ -101,7 +101,7 @@ fun TwoTargetSwitchPreference(
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
     switchEnabled: Boolean = enabled,
-    onClick: (() -> Unit)? = null
+    onClick: (() -> Unit)? = null,
 ) {
     TwoTargetPreference(
         title = title,
@@ -116,14 +116,14 @@ fun TwoTargetSwitchPreference(
                             .copy(start = theme.horizontalSpacing)
                             .offset(vertical = (-8).dp)
                     ),
-                enabled = switchEnabled
+                enabled = switchEnabled,
             )
         },
         modifier = modifier,
         enabled = enabled,
         icon = icon,
         summary = summary,
-        onClick = onClick
+        onClick = onClick,
     )
 }
 
@@ -136,7 +136,7 @@ private fun TwoTargetSwitchPreferencePreview() {
             title = { Text(text = "Two target switch preference") },
             modifier = Modifier.fillMaxWidth(),
             icon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
-            summary = { Text(text = "Summary") }
+            summary = { Text(text = "Summary") },
         )
     }
 }

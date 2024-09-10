@@ -32,7 +32,7 @@ fun LazyListScope.basicPreference(
     enabled: Boolean = true,
     iconContainer: @Composable () -> Unit = {},
     widgetContainer: @Composable () -> Unit = {},
-    onClick: (() -> Unit)? = null
+    onClick: (() -> Unit)? = null,
 ) {
     item(key = key, contentType = "BasicPreference") {
         BasicPreference(
@@ -41,7 +41,7 @@ fun LazyListScope.basicPreference(
             enabled = enabled,
             iconContainer = iconContainer,
             widgetContainer = widgetContainer,
-            onClick = onClick
+            onClick = onClick,
         )
     }
 }
@@ -53,7 +53,7 @@ fun BasicPreference(
     enabled: Boolean = true,
     iconContainer: @Composable () -> Unit = {},
     widgetContainer: @Composable () -> Unit = {},
-    onClick: (() -> Unit)? = null
+    onClick: (() -> Unit)? = null,
 ) {
     Row(
         modifier =
@@ -64,7 +64,7 @@ fun BasicPreference(
                     Modifier
                 }
             ),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         iconContainer()
         Box(modifier = Modifier.weight(1f)) { textContainer() }

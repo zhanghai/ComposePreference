@@ -45,7 +45,7 @@ inline fun LazyListScope.checkboxPreference(
     },
     crossinline enabled: (Boolean) -> Boolean = { true },
     noinline icon: @Composable ((Boolean) -> Unit)? = null,
-    noinline summary: @Composable ((Boolean) -> Unit)? = null
+    noinline summary: @Composable ((Boolean) -> Unit)? = null,
 ) {
     item(key = key, contentType = "CheckboxPreference") {
         val state = rememberState()
@@ -56,7 +56,7 @@ inline fun LazyListScope.checkboxPreference(
             modifier = modifier,
             enabled = enabled(value),
             icon = icon?.let { { it(value) } },
-            summary = summary?.let { { it(value) } }
+            summary = summary?.let { { it(value) } },
         )
     }
 }
@@ -68,7 +68,7 @@ fun CheckboxPreference(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     icon: @Composable (() -> Unit)? = null,
-    summary: @Composable (() -> Unit)? = null
+    summary: @Composable (() -> Unit)? = null,
 ) {
     var value by state
     CheckboxPreference(
@@ -78,7 +78,7 @@ fun CheckboxPreference(
         modifier = modifier,
         enabled = enabled,
         icon = icon,
-        summary = summary
+        summary = summary,
     )
 }
 
@@ -90,7 +90,7 @@ fun CheckboxPreference(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     icon: @Composable (() -> Unit)? = null,
-    summary: @Composable (() -> Unit)? = null
+    summary: @Composable (() -> Unit)? = null,
 ) {
     Preference(
         title = title,
@@ -104,9 +104,9 @@ fun CheckboxPreference(
                 checked = value,
                 onCheckedChange = null,
                 modifier = Modifier.padding(theme.padding.copy(start = theme.horizontalSpacing)),
-                enabled = enabled
+                enabled = enabled,
             )
-        }
+        },
     )
 }
 
@@ -119,7 +119,7 @@ private fun CheckboxPreferencePreview() {
             title = { Text(text = "Checkbox preference") },
             modifier = Modifier.fillMaxWidth(),
             icon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
-            summary = { Text(text = "Summary") }
+            summary = { Text(text = "Summary") },
         )
     }
 }

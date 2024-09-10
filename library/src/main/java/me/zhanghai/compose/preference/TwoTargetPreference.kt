@@ -36,7 +36,7 @@ fun LazyListScope.twoTargetPreference(
     enabled: Boolean = true,
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
-    onClick: (() -> Unit)? = null
+    onClick: (() -> Unit)? = null,
 ) {
     item(key = key, contentType = "TwoTargetPreference") {
         TwoTargetPreference(
@@ -46,7 +46,7 @@ fun LazyListScope.twoTargetPreference(
             enabled = enabled,
             icon = icon,
             summary = summary,
-            onClick = onClick
+            onClick = onClick,
         )
     }
 }
@@ -59,7 +59,7 @@ fun TwoTargetPreference(
     enabled: Boolean = true,
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
-    onClick: (() -> Unit)? = null
+    onClick: (() -> Unit)? = null,
 ) {
     Preference(
         title = title,
@@ -71,7 +71,7 @@ fun TwoTargetPreference(
             val theme = LocalPreferenceTheme.current
             Row(
                 modifier = Modifier.padding(start = theme.horizontalSpacing),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Box(
                     modifier =
@@ -85,6 +85,6 @@ fun TwoTargetPreference(
                 secondTarget()
             }
         },
-        onClick = onClick
+        onClick = onClick,
     )
 }

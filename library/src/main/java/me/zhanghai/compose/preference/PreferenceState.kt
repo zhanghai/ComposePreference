@@ -29,7 +29,7 @@ import kotlinx.coroutines.flow.map
 fun <T> rememberPreferenceState(
     key: String,
     defaultValue: T,
-    flow: MutableStateFlow<Preferences> = LocalPreferenceFlow.current
+    flow: MutableStateFlow<Preferences> = LocalPreferenceFlow.current,
 ): MutableState<T> {
     val valueFlow = remember(key, defaultValue, flow) { flow.map { it[key] ?: defaultValue } }
     return valueFlow.collectAsStateWithLifecycle(flow.value[key] ?: defaultValue).asMutable { value

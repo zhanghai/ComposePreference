@@ -44,7 +44,7 @@ fun LazyListScope.preference(
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
     widgetContainer: @Composable (() -> Unit)? = null,
-    onClick: (() -> Unit)? = null
+    onClick: (() -> Unit)? = null,
 ) {
     item(key = key, contentType = "Preference") {
         Preference(
@@ -54,7 +54,7 @@ fun LazyListScope.preference(
             icon = icon,
             summary = summary,
             widgetContainer = widgetContainer,
-            onClick = onClick
+            onClick = onClick,
         )
     }
 }
@@ -67,7 +67,7 @@ fun Preference(
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
     widgetContainer: @Composable (() -> Unit)? = null,
-    onClick: (() -> Unit)? = null
+    onClick: (() -> Unit)? = null,
 ) {
     BasicPreference(
         textContainer = {
@@ -89,7 +89,7 @@ fun Preference(
         enabled = enabled,
         iconContainer = { PreferenceDefaults.IconContainer(icon = icon, enabled = enabled) },
         widgetContainer = { widgetContainer?.invoke() },
-        onClick = onClick
+        onClick = onClick,
     )
 }
 
@@ -102,14 +102,14 @@ internal object PreferenceDefaults {
                 modifier =
                     Modifier.widthIn(min = theme.iconContainerMinWidth)
                         .padding(theme.padding.copy(end = 0.dp)),
-                contentAlignment = Alignment.CenterStart
+                contentAlignment = Alignment.CenterStart,
             ) {
                 CompositionLocalProvider(
                     LocalContentColor provides
                         theme.iconColor.let {
                             if (enabled) it else it.copy(alpha = theme.disabledOpacity)
                         },
-                    content = icon
+                    content = icon,
                 )
             }
         }
@@ -150,7 +150,7 @@ private fun PreferencePreview() {
             title = { Text(text = "Preference") },
             modifier = Modifier.fillMaxWidth(),
             icon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
-            summary = { Text(text = "Summary") }
+            summary = { Text(text = "Summary") },
         )
     }
 }
