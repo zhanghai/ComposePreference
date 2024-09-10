@@ -56,7 +56,8 @@ inline fun LazyListScope.sliderPreference(
     crossinline enabled: (Float) -> Boolean = { true },
     noinline icon: @Composable ((Float) -> Unit)? = null,
     noinline summary: @Composable ((Float) -> Unit)? = null,
-    noinline valueText: @Composable ((Float) -> Unit)? = null
+    noinline valueText: @Composable ((Float) -> Unit)? = null,
+    noinline widgetContainer: @Composable ((Float) -> Unit)? = null
 ) {
     item(key = key, contentType = "SliderPreference") {
         val state = rememberState()
@@ -73,7 +74,8 @@ inline fun LazyListScope.sliderPreference(
             enabled = enabled(value),
             icon = icon?.let { { it(sliderValue) } },
             summary = summary?.let { { it(sliderValue) } },
-            valueText = valueText?.let { { it(sliderValue) } }
+            valueText = valueText?.let { { it(sliderValue) } },
+            widgetContainer = widgetContainer?.let { { it(sliderValue) } }
         )
     }
 }
@@ -89,7 +91,8 @@ fun SliderPreference(
     enabled: Boolean = true,
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
-    valueText: @Composable (() -> Unit)? = null
+    valueText: @Composable (() -> Unit)? = null,
+    widgetContainer: @Composable (() -> Unit)? = null
 ) {
     var value by state
     var sliderValue by sliderState
@@ -105,7 +108,8 @@ fun SliderPreference(
         enabled = enabled,
         icon = icon,
         summary = summary,
-        valueText = valueText
+        valueText = valueText,
+        widgetContainer = widgetContainer
     )
 }
 
@@ -122,7 +126,8 @@ fun SliderPreference(
     enabled: Boolean = true,
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
-    valueText: @Composable (() -> Unit)? = null
+    valueText: @Composable (() -> Unit)? = null,
+    widgetContainer: @Composable (() -> Unit)? = null
 ) {
     var lastValue by remember { mutableFloatStateOf(value) }
     SideEffect {
@@ -164,7 +169,8 @@ fun SliderPreference(
                     }
                 }
             }
-        }
+        },
+        widgetContainer = widgetContainer
     )
 }
 
