@@ -183,7 +183,6 @@ internal object TextFieldPreferenceDefaults {
                 value = value,
                 onValueChange = onValueChange,
                 modifier = Modifier.fillMaxWidth(),
-                keyboardOptions = KeyboardOptions(autoCorrect = false),
                 keyboardActions = KeyboardActions { onOk() },
                 singleLine = true,
             )
