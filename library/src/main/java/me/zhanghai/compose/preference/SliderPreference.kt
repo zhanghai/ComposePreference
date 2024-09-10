@@ -57,7 +57,6 @@ inline fun LazyListScope.sliderPreference(
     noinline icon: @Composable ((Float) -> Unit)? = null,
     noinline summary: @Composable ((Float) -> Unit)? = null,
     noinline valueText: @Composable ((Float) -> Unit)? = null,
-    noinline widgetContainer: @Composable ((Float) -> Unit)? = null,
 ) {
     item(key = key, contentType = "SliderPreference") {
         val state = rememberState()
@@ -75,7 +74,6 @@ inline fun LazyListScope.sliderPreference(
             icon = icon?.let { { it(sliderValue) } },
             summary = summary?.let { { it(sliderValue) } },
             valueText = valueText?.let { { it(sliderValue) } },
-            widgetContainer = widgetContainer?.let { { it(sliderValue) } },
         )
     }
 }
@@ -92,7 +90,6 @@ fun SliderPreference(
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
     valueText: @Composable (() -> Unit)? = null,
-    widgetContainer: @Composable (() -> Unit)? = null,
 ) {
     var value by state
     var sliderValue by sliderState
@@ -109,7 +106,6 @@ fun SliderPreference(
         icon = icon,
         summary = summary,
         valueText = valueText,
-        widgetContainer = widgetContainer,
     )
 }
 
@@ -127,7 +123,6 @@ fun SliderPreference(
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
     valueText: @Composable (() -> Unit)? = null,
-    widgetContainer: @Composable (() -> Unit)? = null,
 ) {
     var lastValue by remember { mutableFloatStateOf(value) }
     SideEffect {
@@ -170,7 +165,6 @@ fun SliderPreference(
                 }
             }
         },
-        widgetContainer = widgetContainer,
     )
 }
 
