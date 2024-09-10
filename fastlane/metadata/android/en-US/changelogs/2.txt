@@ -1,0 +1,3 @@
+- Upgraded to Material3 1.3.0 with new Slider design.
+- Added widgetContainer support for SliderPreference.
+- TextFieldPreference no longer disables auto correction by default.
