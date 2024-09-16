@@ -98,6 +98,10 @@ fun SampleScreen() {
                 title = { Text(text = "Checkbox preference") },
                 summary = { Text(text = if (it) "On" else "Off") },
             )
+            preferenceCategory(
+                key = "category",
+                title = { Text(text = "Switch type preferences") }
+            )
             switchPreference(
                 key = "switch_preference",
                 defaultValue = false,
@@ -110,6 +114,10 @@ fun SampleScreen() {
                 title = { Text(text = "Two target switch preference") },
                 summary = { Text(text = if (it) "On" else "Off") },
             ) {}
+            preferenceCategory(
+                key = "category2",
+                title = { Text(text = "More preferences") }
+            )
             twoTargetIconButtonPreference(
                 key = "two_target_icon_button_preference",
                 title = { Text(text = "Two target icon button preference") },
