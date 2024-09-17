@@ -81,65 +81,50 @@ fun Preference(
                         )
                     )
             ) {
-                PreferenceDefaults.TitleContainer(title = title, enabled = enabled)
-                PreferenceDefaults.SummaryContainer(summary = summary, enabled = enabled)
+                CompositionLocalProvider(
+                    LocalContentColor provides
+                        theme.titleColor.let {
+                            if (enabled) it else it.copy(alpha = theme.disabledOpacity)
+                        }
+                ) {
+                    ProvideTextStyle(value = theme.titleTextStyle, content = title)
+                }
+                if (summary != null) {
+                    CompositionLocalProvider(
+                        LocalContentColor provides
+                            theme.summaryColor.let {
+                                if (enabled) it else it.copy(alpha = theme.disabledOpacity)
+                            }
+                    ) {
+                        ProvideTextStyle(value = theme.summaryTextStyle, content = summary)
+                    }
+                }
             }
         },
         modifier = modifier,
         enabled = enabled,
-        iconContainer = { PreferenceDefaults.IconContainer(icon = icon, enabled = enabled) },
+        iconContainer = {
+            if (icon != null) {
+                val theme = LocalPreferenceTheme.current
+                Box(
+                    modifier =
+                        Modifier.widthIn(min = theme.iconContainerMinWidth)
+                            .padding(theme.padding.copy(end = 0.dp)),
+                    contentAlignment = Alignment.CenterStart,
+                ) {
+                    CompositionLocalProvider(
+                        LocalContentColor provides
+                            theme.iconColor.let {
+                                if (enabled) it else it.copy(alpha = theme.disabledOpacity)
+                            },
+                        content = icon,
+                    )
+                }
+            }
+        },
         widgetContainer = { widgetContainer?.invoke() },
         onClick = onClick,
     )
-}
-
-internal object PreferenceDefaults {
-    @Composable
-    fun IconContainer(icon: @Composable (() -> Unit)?, enabled: Boolean) {
-        if (icon != null) {
-            val theme = LocalPreferenceTheme.current
-            Box(
-                modifier =
-                    Modifier.widthIn(min = theme.iconContainerMinWidth)
-                        .padding(theme.padding.copy(end = 0.dp)),
-                contentAlignment = Alignment.CenterStart,
-            ) {
-                CompositionLocalProvider(
-                    LocalContentColor provides
-                        theme.iconColor.let {
-                            if (enabled) it else it.copy(alpha = theme.disabledOpacity)
-                        },
-                    content = icon,
-                )
-            }
-        }
-    }
-
-    @Composable
-    fun TitleContainer(title: @Composable () -> Unit, enabled: Boolean) {
-        val theme = LocalPreferenceTheme.current
-        CompositionLocalProvider(
-            LocalContentColor provides
-                theme.titleColor.let { if (enabled) it else it.copy(alpha = theme.disabledOpacity) }
-        ) {
-            ProvideTextStyle(value = theme.titleTextStyle, content = title)
-        }
-    }
-
-    @Composable
-    fun SummaryContainer(summary: (@Composable () -> Unit)?, enabled: Boolean) {
-        if (summary != null) {
-            val theme = LocalPreferenceTheme.current
-            CompositionLocalProvider(
-                LocalContentColor provides
-                    theme.summaryColor.let {
-                        if (enabled) it else it.copy(alpha = theme.disabledOpacity)
-                    }
-            ) {
-                ProvideTextStyle(value = theme.summaryTextStyle, content = summary)
-            }
-        }
-    }
 }
 
 @Composable
