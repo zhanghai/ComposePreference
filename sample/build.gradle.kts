@@ -15,19 +15,19 @@
  */
 
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("plugin.compose")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.plugin.compose)
 }
 
 android {
     namespace = "me.zhanghai.compose.preference.sample"
-    buildToolsVersion = "36.0.0"
-    compileSdk = 36
+    buildToolsVersion = libs.versions.android.buildTools.get()
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         applicationId = "me.zhanghai.compose.preference.sample"
-        minSdk = 21
-        targetSdk = 36
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = (extra["VERSION_CODE"] as String).toInt()
         versionName = extra["VERSION_NAME"] as String
     }
@@ -62,11 +62,11 @@ android {
 dependencies {
     implementation(project(":library"))
 
-    implementation(platform("androidx.compose:compose-bom:2025.06.00"))
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.material3.material3)
+    implementation(libs.androidx.compose.ui.toolingPreview)
+    debugImplementation(libs.androidx.compose.ui.testManifest)
+    debugImplementation(libs.androidx.compose.ui.tooling)
 
-    implementation("androidx.activity:activity-compose:1.10.1")
+    implementation(libs.androidx.activity.compose)
 }

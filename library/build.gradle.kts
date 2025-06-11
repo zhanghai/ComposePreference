@@ -15,18 +15,18 @@
  */
 
 plugins {
-    id("com.android.library")
-    kotlin("android")
-    kotlin("plugin.compose")
-    id("com.vanniktech.maven.publish")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.plugin.compose)
+    alias(libs.plugins.mavenPublish)
 }
 
 android {
     namespace = "me.zhanghai.compose.preference"
-    buildToolsVersion = "36.0.0"
-    compileSdk = 36
+    buildToolsVersion = libs.versions.android.buildTools.get()
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
-        minSdk = 21
+        minSdk = libs.versions.android.minSdk.get().toInt()
         consumerProguardFiles("proguard-rules.pro")
     }
     compileOptions {
@@ -44,12 +44,12 @@ android {
 }
 
 dependencies {
-    implementation(platform("androidx.compose:compose-bom:2025.06.00"))
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.material3.material3)
+    implementation(libs.androidx.compose.ui.toolingPreview)
+    debugImplementation(libs.androidx.compose.ui.testManifest)
+    debugImplementation(libs.androidx.compose.ui.tooling)
 
-    implementation("androidx.core:core-ktx:1.16.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.9.1")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtimeCompose)
 }
