@@ -30,4 +30,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ComposePreference"
-include(":library", ":sample")
+include(":preference", ":sample")

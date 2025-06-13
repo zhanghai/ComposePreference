@@ -15,7 +15,7 @@ This is not an officially supported Google product.
 Gradle:
 
 ```gradle
-implementation 'me.zhanghai.compose.preference:library:1.1.1'
+implementation 'me.zhanghai.compose.preference:preference:2.0.0'
 ```
 
 ## Design
