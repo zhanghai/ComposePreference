@@ -14,11 +14,40 @@
  * limitations under the License.
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+
 plugins {
     alias(libs.plugins.android.application).apply(false)
     alias(libs.plugins.android.library).apply(false)
-    alias(libs.plugins.kotlin.android).apply(false)
+    alias(libs.plugins.compose).apply(false)
+    alias(libs.plugins.dokka).apply(false)
+    alias(libs.plugins.kotlin.multiplatform).apply(false)
     alias(libs.plugins.kotlin.plugin.compose).apply(false)
     alias(libs.plugins.mavenPublish).apply(false)
+}
+
+subprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    tasks.withType<JavaCompile> {
+        sourceCompatibility = JavaVersion.VERSION_11.toString()
+        targetCompatibility = JavaVersion.VERSION_11.toString()
+    }
+    tasks.withType<KotlinJvmCompile> {
+        compilerOptions {
+            freeCompilerArgs.add("-Xjvm-default=all")
+            jvmTarget = JvmTarget.JVM_11
+        }
+    }
+    tasks.withType<KotlinCompilationTask<*>> {
+        compilerOptions {
+            allWarningsAsErrors = true
+            freeCompilerArgs.add("-Xexpect-actual-classes")
+        }
+    }
 }

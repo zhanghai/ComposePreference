@@ -14,10 +14,94 @@
  * limitations under the License.
  */
 
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose)
+    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.plugin.compose)
+}
+
+kotlin {
+    // From AndroidX and Compose Multiplatform
+    // @see
+    // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:collection/collection/build.gradle
+    // @see
+    // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:datastore/datastore/build.gradle
+    // @see
+    // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:buildSrc/private/src/main/kotlin/androidx/build/AndroidXMultiplatformExtension.kt
+    // @see
+    // https://github.com/JetBrains/compose-multiplatform/blob/master/components/resources/library/build.gradle.kts
+    androidTarget {}
+    iosArm64()
+    iosSimulatorArm64()
+    iosX64()
+    js {
+        browser()
+        binaries.executable()
+    }
+    jvm()
+    // linuxArm64()
+    // linuxX64()
+    macosArm64()
+    macosX64()
+    // mingwX64()
+    // tvosArm64()
+    // tvosSimulatorArm64()
+    // tvosX64()
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+        binaries.executable()
+    }
+    // watchosArm32()
+    // watchosArm64()
+    // watchosDeviceArm64()
+    // watchosSimulatorArm64()
+    // watchosX64()
+
+    applyDefaultHierarchyTemplate()
+    sourceSets {
+        val commonJvmMain by creating { dependsOn(commonMain.get()) }
+        val commonJvmTest by creating { dependsOn(commonTest.get()) }
+        androidMain { dependsOn(commonJvmMain) }
+        androidUnitTest { dependsOn(commonJvmTest) }
+        jvmMain { dependsOn(commonJvmMain) }
+        jvmTest { dependsOn(commonJvmTest) }
+
+        val commonJsMain by creating { dependsOn(commonMain.get()) }
+        val commonJsTest by creating { dependsOn(commonTest.get()) }
+        jsMain { dependsOn(commonJsMain) }
+        jsTest { dependsOn(commonJsTest) }
+        wasmJsMain { dependsOn(commonJsMain) }
+        wasmJsTest { dependsOn(commonJsTest) }
+
+        commonMain {
+            dependencies {
+                implementation(project(":preference"))
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+                implementation(compose.material3)
+                implementation(compose.materialIconsExtended)
+            }
+        }
+        commonTest { dependencies { implementation(libs.kotlin.test) } }
+        androidMain {
+            dependencies {
+                implementation(libs.androidx.activity.compose)
+                implementation(libs.androidx.compose.ui.toolingPreview)
+                implementation(libs.kotlinx.coroutines.android)
+            }
+        }
+        jvmMain {
+            dependencies {
+                implementation(compose.desktop.currentOs)
+                implementation(libs.kotlinx.coroutines.swing)
+            }
+        }
+    }
 }
 
 android {
@@ -31,11 +115,6 @@ android {
         versionCode = (extra["VERSION_CODE"] as String).toInt()
         versionName = extra["VERSION_NAME"] as String
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions { jvmTarget = JavaVersion.VERSION_1_8.toString() }
     buildFeatures { compose = true }
     packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
     signingConfigs {
@@ -60,13 +139,17 @@ android {
 }
 
 dependencies {
-    implementation(project(":preference"))
-
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.material3.material3)
-    implementation(libs.androidx.compose.ui.toolingPreview)
     debugImplementation(libs.androidx.compose.ui.testManifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+}
 
-    implementation(libs.androidx.activity.compose)
+compose.desktop {
+    application {
+        mainClass = "me.zhanghai.compose.preference.sample.MainKt"
+        nativeDistributions {
+            packageName = "me.zhanghai.compose.preference.sample"
+            packageVersion = project.extra["VERSION_NAME"] as String
+            targetFormats(TargetFormat.Deb, TargetFormat.Dmg, TargetFormat.Msi)
+        }
+    }
 }

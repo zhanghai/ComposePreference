@@ -14,11 +14,83 @@
  * limitations under the License.
  */
 
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.plugin.compose)
     alias(libs.plugins.mavenPublish)
+}
+
+kotlin {
+    // From AndroidX and Compose Multiplatform
+    // @see
+    // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:collection/collection/build.gradle
+    // @see
+    // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:datastore/datastore/build.gradle
+    // @see
+    // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:buildSrc/private/src/main/kotlin/androidx/build/AndroidXMultiplatformExtension.kt
+    // @see
+    // https://github.com/JetBrains/compose-multiplatform/blob/master/components/resources/library/build.gradle.kts
+    androidTarget { publishLibraryVariants("release") }
+    iosArm64()
+    iosSimulatorArm64()
+    iosX64()
+    js { browser() }
+    jvm()
+    // linuxArm64()
+    // linuxX64()
+    macosArm64()
+    macosX64()
+    // mingwX64()
+    // tvosArm64()
+    // tvosSimulatorArm64()
+    // tvosX64()
+    @OptIn(ExperimentalWasmDsl::class) wasmJs { browser() }
+    // watchosArm32()
+    // watchosArm64()
+    // watchosDeviceArm64()
+    // watchosSimulatorArm64()
+    // watchosX64()
+
+    applyDefaultHierarchyTemplate()
+    sourceSets {
+        val commonJvmMain by creating { dependsOn(commonMain.get()) }
+        val commonJvmTest by creating { dependsOn(commonTest.get()) }
+        androidMain { dependsOn(commonJvmMain) }
+        androidUnitTest { dependsOn(commonJvmTest) }
+        jvmMain { dependsOn(commonJvmMain) }
+        jvmTest { dependsOn(commonJvmTest) }
+
+        val commonJsMain by creating { dependsOn(commonMain.get()) }
+        val commonJsTest by creating { dependsOn(commonTest.get()) }
+        jsMain { dependsOn(commonJsMain) }
+        jsTest { dependsOn(commonJsTest) }
+        wasmJsMain { dependsOn(commonJsMain) }
+        wasmJsTest { dependsOn(commonJsTest) }
+
+        val nonAndroidAppleMain by creating { dependsOn(commonMain.get()) }
+        val nonAndroidAppleTest by creating { dependsOn(commonTest.get()) }
+        jvmMain { dependsOn(nonAndroidAppleMain) }
+        jvmTest { dependsOn(nonAndroidAppleTest) }
+        commonJsMain.dependsOn(nonAndroidAppleMain)
+        commonJsTest.dependsOn(nonAndroidAppleTest)
+
+        commonMain {
+            dependencies {
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+                implementation(compose.material3)
+                implementation(libs.jetbrains.androidx.lifecycle.runtimeCompose)
+            }
+        }
+        commonTest { dependencies { implementation(libs.kotlin.test) } }
+        androidMain { dependencies { implementation(libs.androidx.compose.ui.toolingPreview) } }
+        nonAndroidAppleMain.dependencies { implementation(libs.kotlinx.serialization.json) }
+    }
 }
 
 android {
@@ -29,27 +101,12 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
         consumerProguardFiles("proguard-rules.pro")
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions { jvmTarget = JavaVersion.VERSION_1_8.toString() }
     buildFeatures { compose = true }
     packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-        }
-    }
+    buildTypes { release { isMinifyEnabled = false } }
 }
 
 dependencies {
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.material3.material3)
-    implementation(libs.androidx.compose.ui.toolingPreview)
     debugImplementation(libs.androidx.compose.ui.testManifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtimeCompose)
 }

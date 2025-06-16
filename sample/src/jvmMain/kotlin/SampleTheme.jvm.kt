@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Google LLC
+ * Copyright 2025 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
+package me.zhanghai.compose.preference.sample
+
+import androidx.compose.runtime.Composable
+
+@Composable
+actual fun SampleTheme(darkTheme: Boolean, dynamicColor: Boolean, content: @Composable () -> Unit) {
+    commonSampleTheme(darkTheme = darkTheme, content = content)
 }
-
-rootProject.name = "ComposePreference"
-
-include(":preference", ":sample")
