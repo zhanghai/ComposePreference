@@ -32,7 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-inline fun LazyListScope.twoTargetSwitchPreference(
+public inline fun LazyListScope.twoTargetSwitchPreference(
     key: String,
     defaultValue: Boolean,
     crossinline title: @Composable (Boolean) -> Unit,
@@ -63,7 +63,7 @@ inline fun LazyListScope.twoTargetSwitchPreference(
 }
 
 @Composable
-fun TwoTargetSwitchPreference(
+public fun TwoTargetSwitchPreference(
     state: MutableState<Boolean>,
     title: @Composable () -> Unit,
     modifier: Modifier = Modifier,
@@ -88,7 +88,7 @@ fun TwoTargetSwitchPreference(
 }
 
 @Composable
-fun TwoTargetSwitchPreference(
+public fun TwoTargetSwitchPreference(
     value: Boolean,
     onValueChange: (Boolean) -> Unit,
     title: @Composable () -> Unit,

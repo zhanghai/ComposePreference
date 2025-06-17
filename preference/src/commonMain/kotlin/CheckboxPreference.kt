@@ -33,7 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-inline fun LazyListScope.checkboxPreference(
+public inline fun LazyListScope.checkboxPreference(
     key: String,
     defaultValue: Boolean,
     crossinline title: @Composable (Boolean) -> Unit,
@@ -60,7 +60,7 @@ inline fun LazyListScope.checkboxPreference(
 }
 
 @Composable
-fun CheckboxPreference(
+public fun CheckboxPreference(
     state: MutableState<Boolean>,
     title: @Composable () -> Unit,
     modifier: Modifier = Modifier,
@@ -81,7 +81,7 @@ fun CheckboxPreference(
 }
 
 @Composable
-fun CheckboxPreference(
+public fun CheckboxPreference(
     value: Boolean,
     onValueChange: (Boolean) -> Unit,
     title: @Composable () -> Unit,

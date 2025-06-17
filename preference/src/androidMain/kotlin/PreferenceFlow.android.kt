@@ -28,7 +28,7 @@ import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
 
 @Composable
-actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> {
+public actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> {
     val view = LocalView.current
     if (view.isInEditMode) {
         return MutableStateFlow(MapPreferences())

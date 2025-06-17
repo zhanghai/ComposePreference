@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
@@ -28,25 +29,25 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Stable
-class PreferenceTheme(
-    val categoryPadding: PaddingValues,
-    val categoryColor: Color,
-    val categoryTextStyle: TextStyle,
-    val padding: PaddingValues,
-    val horizontalSpacing: Dp,
-    val verticalSpacing: Dp,
-    val disabledOpacity: Float,
-    val iconContainerMinWidth: Dp,
-    val iconColor: Color,
-    val titleColor: Color,
-    val titleTextStyle: TextStyle,
-    val summaryColor: Color,
-    val summaryTextStyle: TextStyle,
-    val dividerHeight: Dp,
+public class PreferenceTheme(
+    public val categoryPadding: PaddingValues,
+    public val categoryColor: Color,
+    public val categoryTextStyle: TextStyle,
+    public val padding: PaddingValues,
+    public val horizontalSpacing: Dp,
+    public val verticalSpacing: Dp,
+    public val disabledOpacity: Float,
+    public val iconContainerMinWidth: Dp,
+    public val iconColor: Color,
+    public val titleColor: Color,
+    public val titleTextStyle: TextStyle,
+    public val summaryColor: Color,
+    public val summaryTextStyle: TextStyle,
+    public val dividerHeight: Dp,
 )
 
 @Composable
-fun preferenceTheme(
+public fun preferenceTheme(
     categoryPadding: PaddingValues =
         PaddingValues(start = 16.dp, top = 24.dp, end = 16.dp, bottom = 8.dp),
     categoryColor: Color = MaterialTheme.colorScheme.secondary,
@@ -62,7 +63,7 @@ fun preferenceTheme(
     summaryColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
     summaryTextStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     dividerHeight: Dp = 32.dp,
-) =
+): PreferenceTheme =
     PreferenceTheme(
         categoryPadding = categoryPadding,
         categoryColor = categoryColor,
@@ -80,11 +81,11 @@ fun preferenceTheme(
         dividerHeight = dividerHeight,
     )
 
-val LocalPreferenceTheme =
-    compositionLocalOf<PreferenceTheme> { noLocalProvidedFor("LocalPreferenceTheme") }
+public val LocalPreferenceTheme: ProvidableCompositionLocal<PreferenceTheme> =
+    compositionLocalOf { noLocalProvidedFor("LocalPreferenceTheme") }
 
 @Composable
-fun ProvidePreferenceTheme(
+public fun ProvidePreferenceTheme(
     theme: PreferenceTheme = preferenceTheme(),
     content: @Composable () -> Unit,
 ) {

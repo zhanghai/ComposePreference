@@ -26,7 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-fun LazyListScope.radioButtonPreference(
+public fun LazyListScope.radioButtonPreference(
     key: String,
     selected: Boolean,
     title: @Composable () -> Unit,
@@ -50,7 +50,7 @@ fun LazyListScope.radioButtonPreference(
 }
 
 @Composable
-fun RadioButtonPreference(
+public fun RadioButtonPreference(
     selected: Boolean,
     title: @Composable () -> Unit,
     modifier: Modifier = Modifier,

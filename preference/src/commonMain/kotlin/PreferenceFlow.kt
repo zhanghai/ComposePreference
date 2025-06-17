@@ -18,16 +18,17 @@ package me.zhanghai.compose.preference
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.compositionLocalOf
 import kotlinx.coroutines.flow.MutableStateFlow
 
-@Composable expect fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences>
+@Composable public expect fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences>
 
-val LocalPreferenceFlow =
-    compositionLocalOf<MutableStateFlow<Preferences>> { noLocalProvidedFor("LocalPreferenceFlow") }
+public val LocalPreferenceFlow: ProvidableCompositionLocal<MutableStateFlow<Preferences>> =
+    compositionLocalOf { noLocalProvidedFor("LocalPreferenceFlow") }
 
 @Composable
-fun ProvidePreferenceFlow(
+public fun ProvidePreferenceFlow(
     flow: MutableStateFlow<Preferences> = createDefaultPreferenceFlow(),
     content: @Composable () -> Unit,
 ) {

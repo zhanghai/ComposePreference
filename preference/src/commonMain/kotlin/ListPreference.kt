@@ -55,12 +55,12 @@ import composepreference.preference.generated.resources.cancel
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-enum class ListPreferenceType {
+public enum class ListPreferenceType {
     ALERT_DIALOG,
     DROPDOWN_MENU,
 }
 
-inline fun <T> LazyListScope.listPreference(
+public inline fun <T> LazyListScope.listPreference(
     key: String,
     defaultValue: T,
     values: List<T>,
@@ -96,7 +96,7 @@ inline fun <T> LazyListScope.listPreference(
 }
 
 @Composable
-fun <T> ListPreference(
+public fun <T> ListPreference(
     state: MutableState<T>,
     values: List<T>,
     title: @Composable () -> Unit,
@@ -126,7 +126,7 @@ fun <T> ListPreference(
 }
 
 @Composable
-fun <T> ListPreference(
+public fun <T> ListPreference(
     value: T,
     onValueChange: (T) -> Unit,
     values: List<T>,

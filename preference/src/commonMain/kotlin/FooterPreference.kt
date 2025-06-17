@@ -28,7 +28,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-fun LazyListScope.footerPreference(
+public fun LazyListScope.footerPreference(
     key: String,
     summary: @Composable () -> Unit,
     modifier: Modifier = Modifier.fillMaxWidth(),
@@ -40,7 +40,7 @@ fun LazyListScope.footerPreference(
 }
 
 @Composable
-fun FooterPreference(
+public fun FooterPreference(
     summary: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     icon: @Composable () -> Unit = FooterPreferenceDefaults.Icon,

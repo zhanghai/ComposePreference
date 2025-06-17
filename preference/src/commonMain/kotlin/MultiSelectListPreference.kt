@@ -50,7 +50,7 @@ import composepreference.preference.generated.resources.ok
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-inline fun <T> LazyListScope.multiSelectListPreference(
+public inline fun <T> LazyListScope.multiSelectListPreference(
     key: String,
     defaultValue: Set<T>,
     values: List<T>,
@@ -86,7 +86,7 @@ inline fun <T> LazyListScope.multiSelectListPreference(
 }
 
 @Composable
-fun <T> MultiSelectListPreference(
+public fun <T> MultiSelectListPreference(
     state: MutableState<Set<T>>,
     values: List<T>,
     title: @Composable () -> Unit,
@@ -114,7 +114,7 @@ fun <T> MultiSelectListPreference(
 }
 
 @Composable
-fun <T> MultiSelectListPreference(
+public fun <T> MultiSelectListPreference(
     value: Set<T>,
     onValueChange: (Set<T>) -> Unit,
     values: List<T>,

@@ -26,7 +26,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 
 @Composable
-fun <T> rememberPreferenceState(
+public fun <T> rememberPreferenceState(
     key: String,
     defaultValue: T,
     flow: MutableStateFlow<Preferences> = LocalPreferenceFlow.current,

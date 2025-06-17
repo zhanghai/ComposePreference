@@ -16,14 +16,14 @@
 
 package me.zhanghai.compose.preference
 
-interface Preferences {
-    operator fun <T> get(key: String): T?
+public interface Preferences {
+    public operator fun <T> get(key: String): T?
 
-    fun asMap(): Map<String, Any>
+    public fun asMap(): Map<String, Any>
 
-    fun toPreferences(): Preferences = toMutablePreferences()
+    public fun toPreferences(): Preferences = toMutablePreferences()
 
-    fun toMutablePreferences(): MutablePreferences
+    public fun toMutablePreferences(): MutablePreferences
 }
 
 internal class MapPreferences(private val map: Map<String, Any> = emptyMap()) : Preferences {
@@ -35,18 +35,18 @@ internal class MapPreferences(private val map: Map<String, Any> = emptyMap()) : 
         MapMutablePreferences(map.toMutableMap())
 }
 
-interface MutablePreferences : Preferences {
-    operator fun <T> set(key: String, value: T?)
+public interface MutablePreferences : Preferences {
+    public operator fun <T> set(key: String, value: T?)
 
-    fun remove(key: String) {
+    public fun remove(key: String) {
         set(key, null)
     }
 
-    operator fun minusAssign(key: String) {
+    public operator fun minusAssign(key: String) {
         remove(key)
     }
 
-    fun clear()
+    public fun clear()
 }
 
 internal class MapMutablePreferences(private val map: MutableMap<String, Any> = mutableMapOf()) :

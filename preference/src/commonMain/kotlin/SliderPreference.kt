@@ -38,7 +38,7 @@ import androidx.compose.ui.Modifier
 import kotlin.math.roundToInt
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-inline fun LazyListScope.sliderPreference(
+public inline fun LazyListScope.sliderPreference(
     key: String,
     defaultValue: Float,
     crossinline title: @Composable (Float) -> Unit,
@@ -77,7 +77,7 @@ inline fun LazyListScope.sliderPreference(
 }
 
 @Composable
-fun SliderPreference(
+public fun SliderPreference(
     state: MutableState<Float>,
     title: @Composable () -> Unit,
     modifier: Modifier = Modifier,
@@ -108,7 +108,7 @@ fun SliderPreference(
 }
 
 @Composable
-fun SliderPreference(
+public fun SliderPreference(
     value: Float,
     onValueChange: (Float) -> Unit,
     sliderValue: Float,

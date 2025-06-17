@@ -21,7 +21,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
-fun ProvidePreferenceLocals(
+public fun ProvidePreferenceLocals(
     flow: MutableStateFlow<Preferences> = createDefaultPreferenceFlow(),
     theme: PreferenceTheme = preferenceTheme(),
     content: @Composable () -> Unit,

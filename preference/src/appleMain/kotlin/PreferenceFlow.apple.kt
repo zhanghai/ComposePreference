@@ -32,7 +32,7 @@ import platform.Foundation.NSString
 import platform.Foundation.NSUserDefaults
 
 @Composable
-actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> =
+public actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> =
     NSUserDefaults.standardUserDefaults.createPreferenceFlow()
 
 private fun NSUserDefaults.createPreferenceFlow(): MutableStateFlow<Preferences> =

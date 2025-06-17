@@ -26,6 +26,8 @@ plugins {
 }
 
 kotlin {
+    explicitApi()
+
     // From AndroidX and Compose Multiplatform
     // @see
     // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:collection/collection/build.gradle

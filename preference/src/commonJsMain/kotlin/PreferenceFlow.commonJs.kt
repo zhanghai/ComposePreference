@@ -25,7 +25,7 @@ import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
 
 @Composable
-actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> =
+public actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> =
     localStorage.createPreferenceFlow()
 
 private fun Storage.createPreferenceFlow(): MutableStateFlow<Preferences> =

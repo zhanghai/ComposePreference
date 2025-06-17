@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-fun LazyListScope.preference(
+public fun LazyListScope.preference(
     key: String,
     title: @Composable () -> Unit,
     modifier: Modifier = Modifier.fillMaxWidth(),
@@ -58,7 +58,7 @@ fun LazyListScope.preference(
 }
 
 @Composable
-fun Preference(
+public fun Preference(
     title: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,

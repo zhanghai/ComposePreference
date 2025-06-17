@@ -28,7 +28,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
-fun LazyListScope.twoTargetPreference(
+public fun LazyListScope.twoTargetPreference(
     key: String,
     title: @Composable () -> Unit,
     secondTarget: @Composable () -> Unit,
@@ -52,7 +52,7 @@ fun LazyListScope.twoTargetPreference(
 }
 
 @Composable
-fun TwoTargetPreference(
+public fun TwoTargetPreference(
     title: @Composable () -> Unit,
     secondTarget: @Composable () -> Unit,
     modifier: Modifier = Modifier,

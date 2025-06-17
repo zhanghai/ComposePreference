@@ -25,7 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
-fun LazyListScope.basicPreference(
+public fun LazyListScope.basicPreference(
     key: String,
     textContainer: @Composable () -> Unit,
     modifier: Modifier = Modifier.fillMaxWidth(),
@@ -47,7 +47,7 @@ fun LazyListScope.basicPreference(
 }
 
 @Composable
-fun BasicPreference(
+public fun BasicPreference(
     textContainer: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,

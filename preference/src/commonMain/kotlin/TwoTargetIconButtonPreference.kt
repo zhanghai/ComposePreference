@@ -28,7 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-fun LazyListScope.twoTargetIconButtonPreference(
+public fun LazyListScope.twoTargetIconButtonPreference(
     key: String,
     title: @Composable () -> Unit,
     iconButtonIcon: @Composable () -> Unit,
@@ -56,7 +56,7 @@ fun LazyListScope.twoTargetIconButtonPreference(
 }
 
 @Composable
-fun TwoTargetIconButtonPreference(
+public fun TwoTargetIconButtonPreference(
     title: @Composable () -> Unit,
     iconButtonIcon: @Composable () -> Unit,
     modifier: Modifier = Modifier,

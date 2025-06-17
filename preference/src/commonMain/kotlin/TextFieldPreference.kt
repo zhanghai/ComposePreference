@@ -45,7 +45,7 @@ import composepreference.preference.generated.resources.ok
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-inline fun <T> LazyListScope.textFieldPreference(
+public inline fun <T> LazyListScope.textFieldPreference(
     key: String,
     defaultValue: T,
     crossinline title: @Composable (T) -> Unit,
@@ -81,7 +81,7 @@ inline fun <T> LazyListScope.textFieldPreference(
 }
 
 @Composable
-fun <T> TextFieldPreference(
+public fun <T> TextFieldPreference(
     state: MutableState<T>,
     title: @Composable () -> Unit,
     textToValue: (String) -> T?,
@@ -111,7 +111,7 @@ fun <T> TextFieldPreference(
 }
 
 @Composable
-fun <T> TextFieldPreference(
+public fun <T> TextFieldPreference(
     value: T,
     onValueChange: (T) -> Unit,
     title: @Composable () -> Unit,

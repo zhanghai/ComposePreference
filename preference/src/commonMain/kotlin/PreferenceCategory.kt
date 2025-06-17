@@ -29,7 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-fun LazyListScope.preferenceCategory(
+public fun LazyListScope.preferenceCategory(
     key: String,
     title: @Composable () -> Unit,
     modifier: Modifier = Modifier.fillMaxWidth(),
@@ -40,7 +40,7 @@ fun LazyListScope.preferenceCategory(
 }
 
 @Composable
-fun PreferenceCategory(title: @Composable () -> Unit, modifier: Modifier = Modifier) {
+public fun PreferenceCategory(title: @Composable () -> Unit, modifier: Modifier = Modifier) {
     BasicPreference(
         textContainer = {
             val theme = LocalPreferenceTheme.current

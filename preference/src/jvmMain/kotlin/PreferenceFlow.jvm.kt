@@ -30,7 +30,7 @@ private const val SunJavaCommandPropertyName = "sun.java.command"
 private const val PackagePreferenceNodeName = "preference"
 
 @Composable
-actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> {
+public actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> {
     val nodeName = System.getProperty(PreferenceNodePropertyName)
     val javaPreferences =
         if (nodeName != null) {
