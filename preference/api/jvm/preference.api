@@ -1,0 +1,209 @@
+public final class me/zhanghai/compose/preference/BasicPreferenceKt {
+	public static final fun BasicPreference (Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;II)V
+	public static final fun basicPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun basicPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/CheckboxPreferenceKt {
+	public static final fun CheckboxPreference (Landroidx/compose/runtime/MutableState;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CheckboxPreference (ZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
+	public static final fun checkboxPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;ZLkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;)V
+	public static synthetic fun checkboxPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;ZLkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/ComposableSingletons$BasicPreferenceKt {
+	public static final field INSTANCE Lme/zhanghai/compose/preference/ComposableSingletons$BasicPreferenceKt;
+	public fun <init> ()V
+	public final fun getLambda$-1070936785$preference ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-1694088339$preference ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$1430893402$preference ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$1998655096$preference ()Lkotlin/jvm/functions/Function2;
+}
+
+public final class me/zhanghai/compose/preference/ComposableSingletons$FooterPreferenceKt {
+	public static final field INSTANCE Lme/zhanghai/compose/preference/ComposableSingletons$FooterPreferenceKt;
+	public fun <init> ()V
+	public final fun getLambda$-491883186$preference ()Lkotlin/jvm/functions/Function2;
+}
+
+public final class me/zhanghai/compose/preference/ComposableSingletons$ListPreferenceKt {
+	public static final field INSTANCE Lme/zhanghai/compose/preference/ComposableSingletons$ListPreferenceKt;
+	public fun <init> ()V
+	public final fun getLambda$-1316074686$preference ()Lkotlin/jvm/functions/Function3;
+}
+
+public final class me/zhanghai/compose/preference/ComposableSingletons$MultiSelectListPreferenceKt {
+	public static final field INSTANCE Lme/zhanghai/compose/preference/ComposableSingletons$MultiSelectListPreferenceKt;
+	public fun <init> ()V
+	public final fun getLambda$-1748350714$preference ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$1668324637$preference ()Lkotlin/jvm/functions/Function3;
+}
+
+public final class me/zhanghai/compose/preference/ComposableSingletons$TextFieldPreferenceKt {
+	public static final field INSTANCE Lme/zhanghai/compose/preference/ComposableSingletons$TextFieldPreferenceKt;
+	public fun <init> ()V
+	public final fun getLambda$1675242031$preference ()Lkotlin/jvm/functions/Function5;
+	public final fun getLambda$291328041$preference ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$343848498$preference ()Lkotlin/jvm/functions/Function3;
+}
+
+public final class me/zhanghai/compose/preference/FooterPreferenceKt {
+	public static final fun FooterPreference (Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
+	public static final fun footerPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;)V
+	public static synthetic fun footerPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/ListPreferenceDefaults {
+	public static final field $stable I
+	public static final field INSTANCE Lme/zhanghai/compose/preference/ListPreferenceDefaults;
+	public final fun item (Lme/zhanghai/compose/preference/ListPreferenceType;Lkotlin/jvm/functions/Function1;)Lkotlin/jvm/functions/Function5;
+}
+
+public final class me/zhanghai/compose/preference/ListPreferenceKt {
+	public static final fun ListPreference (Landroidx/compose/runtime/MutableState;Ljava/util/List;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lme/zhanghai/compose/preference/ListPreferenceType;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;Landroidx/compose/runtime/Composer;II)V
+	public static final fun ListPreference (Ljava/lang/Object;Lkotlin/jvm/functions/Function1;Ljava/util/List;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lme/zhanghai/compose/preference/ListPreferenceType;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;Landroidx/compose/runtime/Composer;III)V
+	public static final fun listPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Ljava/lang/Object;Ljava/util/List;Lkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lme/zhanghai/compose/preference/ListPreferenceType;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;)V
+	public static synthetic fun listPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Ljava/lang/Object;Ljava/util/List;Lkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lme/zhanghai/compose/preference/ListPreferenceType;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/ListPreferenceType : java/lang/Enum {
+	public static final field ALERT_DIALOG Lme/zhanghai/compose/preference/ListPreferenceType;
+	public static final field DROPDOWN_MENU Lme/zhanghai/compose/preference/ListPreferenceType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lme/zhanghai/compose/preference/ListPreferenceType;
+	public static fun values ()[Lme/zhanghai/compose/preference/ListPreferenceType;
+}
+
+public final class me/zhanghai/compose/preference/MultiSelectListPreferenceDefaults {
+	public static final field $stable I
+	public static final field INSTANCE Lme/zhanghai/compose/preference/MultiSelectListPreferenceDefaults;
+	public final fun item (Lkotlin/jvm/functions/Function1;)Lkotlin/jvm/functions/Function5;
+}
+
+public final class me/zhanghai/compose/preference/MultiSelectListPreferenceKt {
+	public static final fun MultiSelectListPreference (Landroidx/compose/runtime/MutableState;Ljava/util/List;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;Landroidx/compose/runtime/Composer;II)V
+	public static final fun MultiSelectListPreference (Ljava/util/Set;Lkotlin/jvm/functions/Function1;Ljava/util/List;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;Landroidx/compose/runtime/Composer;II)V
+	public static final fun multiSelectListPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Ljava/util/Set;Ljava/util/List;Lkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;)V
+	public static synthetic fun multiSelectListPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Ljava/util/Set;Ljava/util/List;Lkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;ILjava/lang/Object;)V
+}
+
+public abstract interface class me/zhanghai/compose/preference/MutablePreferences : me/zhanghai/compose/preference/Preferences {
+	public abstract fun clear ()V
+	public fun minusAssign (Ljava/lang/String;)V
+	public fun remove (Ljava/lang/String;)V
+	public abstract fun set (Ljava/lang/String;Ljava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/PreferenceCategoryKt {
+	public static final fun PreferenceCategory (Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun preferenceCategory (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;)V
+	public static synthetic fun preferenceCategory$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/PreferenceFlowKt {
+	public static final fun ProvidePreferenceFlow (Lkotlinx/coroutines/flow/MutableStateFlow;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
+	public static final fun getLocalPreferenceFlow ()Landroidx/compose/runtime/ProvidableCompositionLocal;
+}
+
+public final class me/zhanghai/compose/preference/PreferenceFlow_jvmKt {
+	public static final fun createDefaultPreferenceFlow (Landroidx/compose/runtime/Composer;I)Lkotlinx/coroutines/flow/MutableStateFlow;
+}
+
+public final class me/zhanghai/compose/preference/PreferenceKt {
+	public static final fun Preference (Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;II)V
+	public static final fun preference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun preference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/PreferenceLocalsKt {
+	public static final fun ProvidePreferenceLocals (Lkotlinx/coroutines/flow/MutableStateFlow;Lme/zhanghai/compose/preference/PreferenceTheme;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
+}
+
+public final class me/zhanghai/compose/preference/PreferenceStateKt {
+	public static final fun rememberPreferenceState (Ljava/lang/String;Ljava/lang/Object;Lkotlinx/coroutines/flow/MutableStateFlow;Landroidx/compose/runtime/Composer;II)Landroidx/compose/runtime/MutableState;
+}
+
+public final class me/zhanghai/compose/preference/PreferenceTheme {
+	public static final field $stable I
+	public synthetic fun <init> (Landroidx/compose/foundation/layout/PaddingValues;JLandroidx/compose/ui/text/TextStyle;Landroidx/compose/foundation/layout/PaddingValues;FFFFJJLandroidx/compose/ui/text/TextStyle;JLandroidx/compose/ui/text/TextStyle;FLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getCategoryColor-0d7_KjU ()J
+	public final fun getCategoryPadding ()Landroidx/compose/foundation/layout/PaddingValues;
+	public final fun getCategoryTextStyle ()Landroidx/compose/ui/text/TextStyle;
+	public final fun getDisabledOpacity ()F
+	public final fun getDividerHeight-D9Ej5fM ()F
+	public final fun getHorizontalSpacing-D9Ej5fM ()F
+	public final fun getIconColor-0d7_KjU ()J
+	public final fun getIconContainerMinWidth-D9Ej5fM ()F
+	public final fun getPadding ()Landroidx/compose/foundation/layout/PaddingValues;
+	public final fun getSummaryColor-0d7_KjU ()J
+	public final fun getSummaryTextStyle ()Landroidx/compose/ui/text/TextStyle;
+	public final fun getTitleColor-0d7_KjU ()J
+	public final fun getTitleTextStyle ()Landroidx/compose/ui/text/TextStyle;
+	public final fun getVerticalSpacing-D9Ej5fM ()F
+}
+
+public final class me/zhanghai/compose/preference/PreferenceThemeKt {
+	public static final fun ProvidePreferenceTheme (Lme/zhanghai/compose/preference/PreferenceTheme;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
+	public static final fun getLocalPreferenceTheme ()Landroidx/compose/runtime/ProvidableCompositionLocal;
+	public static final fun preferenceTheme-rJVHg3Y (Landroidx/compose/foundation/layout/PaddingValues;JLandroidx/compose/ui/text/TextStyle;Landroidx/compose/foundation/layout/PaddingValues;FFFFJJLandroidx/compose/ui/text/TextStyle;JLandroidx/compose/ui/text/TextStyle;FLandroidx/compose/runtime/Composer;III)Lme/zhanghai/compose/preference/PreferenceTheme;
+}
+
+public abstract interface class me/zhanghai/compose/preference/Preferences {
+	public abstract fun asMap ()Ljava/util/Map;
+	public abstract fun get (Ljava/lang/String;)Ljava/lang/Object;
+	public abstract fun toMutablePreferences ()Lme/zhanghai/compose/preference/MutablePreferences;
+	public fun toPreferences ()Lme/zhanghai/compose/preference/Preferences;
+}
+
+public final class me/zhanghai/compose/preference/RadioButtonPreferenceKt {
+	public static final fun RadioButtonPreference (ZLkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;II)V
+	public static final fun radioButtonPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun radioButtonPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/SliderPreferenceKt {
+	public static final fun SliderPreference (FLkotlin/jvm/functions/Function1;FLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;Lkotlin/ranges/ClosedFloatingPointRange;IZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;III)V
+	public static final fun SliderPreference (Landroidx/compose/runtime/MutableState;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;Lkotlin/ranges/ClosedFloatingPointRange;ILandroidx/compose/runtime/MutableState;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
+	public static final fun sliderPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;FLkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/ranges/ClosedFloatingPointRange;ILkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;)V
+	public static synthetic fun sliderPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;FLkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/ranges/ClosedFloatingPointRange;ILkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/SwitchPreferenceKt {
+	public static final fun SwitchPreference (Landroidx/compose/runtime/MutableState;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
+	public static final fun SwitchPreference (ZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
+	public static final fun switchPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;ZLkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;)V
+	public static synthetic fun switchPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;ZLkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/TextFieldPreferenceDefaults {
+	public static final field $stable I
+	public static final field INSTANCE Lme/zhanghai/compose/preference/TextFieldPreferenceDefaults;
+	public final fun getTextField ()Lkotlin/jvm/functions/Function5;
+}
+
+public final class me/zhanghai/compose/preference/TextFieldPreferenceKt {
+	public static final fun TextFieldPreference (Landroidx/compose/runtime/MutableState;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;Landroidx/compose/runtime/Composer;II)V
+	public static final fun TextFieldPreference (Ljava/lang/Object;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;Landroidx/compose/runtime/Composer;II)V
+	public static final fun textFieldPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;)V
+	public static synthetic fun textFieldPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/TwoTargetIconButtonPreferenceKt {
+	public static final fun TwoTargetIconButtonPreference (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;ZLkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;II)V
+	public static final fun twoTargetIconButtonPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;ZLkotlin/jvm/functions/Function0;)V
+	public static synthetic fun twoTargetIconButtonPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;ZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/TwoTargetPreferenceKt {
+	public static final fun TwoTargetPreference (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;II)V
+	public static final fun twoTargetPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun twoTargetPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/TwoTargetSwitchPreferenceKt {
+	public static final fun TwoTargetSwitchPreference (Landroidx/compose/runtime/MutableState;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;ZLkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;II)V
+	public static final fun TwoTargetSwitchPreference (ZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;ZLkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;II)V
+	public static final fun twoTargetSwitchPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;ZLkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun twoTargetSwitchPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;ZLkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+}
+

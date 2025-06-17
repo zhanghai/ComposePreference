@@ -9,6 +9,7 @@ compose = "1.8.1"
 dokka = "2.0.0"
 jetbrains-androidx-lifecycle = "2.9.0"
 kotlin = "2.1.21"
+kotlinx-binaryCompatibilityValidator = "0.17.0"
 kotlinx-coroutines = "1.10.2"
 kotlinx-serialization = "1.8.1"
 mavenPublish = "0.32.0"
@@ -31,4 +32,5 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinx-binaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "kotlinx-binaryCompatibilityValidator" }
 mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

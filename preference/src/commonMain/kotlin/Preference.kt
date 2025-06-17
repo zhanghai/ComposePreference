@@ -22,17 +22,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.ProvideTextStyle
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 public fun LazyListScope.preference(
     key: String,
@@ -123,17 +120,4 @@ public fun Preference(
         widgetContainer = { widgetContainer?.invoke() },
         onClick = onClick,
     )
-}
-
-@Composable
-@Preview
-private fun PreferencePreview() {
-    ProvidePreferenceTheme {
-        Preference(
-            title = { Text(text = "Preference") },
-            modifier = Modifier.fillMaxWidth(),
-            icon = { Icon(imageVector = PreviewIcons.Info, contentDescription = null) },
-            summary = { Text(text = "Summary") },
-        )
-    }
 }

@@ -22,21 +22,16 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Slider
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import kotlin.math.roundToInt
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 public inline fun LazyListScope.sliderPreference(
     key: String,
@@ -164,24 +159,4 @@ public fun SliderPreference(
             }
         },
     )
-}
-
-@Composable
-@Preview
-private fun SliderPreferencePreview() {
-    ProvidePreferenceTheme {
-        val state = remember { mutableStateOf(3.5f) }
-        val sliderState = remember { mutableStateOf(state.value) }
-        SliderPreference(
-            state = state,
-            title = { Text(text = "Slider preference") },
-            modifier = Modifier.fillMaxWidth(),
-            valueRange = 0f..5f,
-            valueSteps = 9,
-            sliderState = sliderState,
-            icon = { Icon(imageVector = PreviewIcons.Info, contentDescription = null) },
-            summary = { Text(text = "Summary") },
-            valueText = { Text(text = ((sliderState.value / 0.5f).roundToInt() * 0.5f).toString()) },
-        )
-    }
 }

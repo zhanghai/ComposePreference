@@ -21,7 +21,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -43,7 +42,6 @@ import composepreference.preference.generated.resources.Res
 import composepreference.preference.generated.resources.cancel
 import composepreference.preference.generated.resources.ok
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 public inline fun <T> LazyListScope.textFieldPreference(
     key: String,
@@ -187,20 +185,4 @@ internal object TextFieldPreferenceDefaults {
                 singleLine = true,
             )
         }
-}
-
-@Composable
-@Preview
-private fun TextFieldPreferencePreview() {
-    ProvidePreferenceTheme {
-        val state = remember { mutableStateOf("Value") }
-        TextFieldPreference(
-            state = state,
-            title = { Text(text = "Text field preference") },
-            textToValue = { it },
-            modifier = Modifier.fillMaxWidth(),
-            icon = { Icon(imageVector = PreviewIcons.Info, contentDescription = null) },
-            summary = { Text(text = state.value) },
-        )
-    }
 }

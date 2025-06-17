@@ -22,12 +22,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.ProvideTextStyle
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 public fun LazyListScope.preferenceCategory(
     key: String,
@@ -55,15 +53,4 @@ public fun PreferenceCategory(title: @Composable () -> Unit, modifier: Modifier 
         },
         modifier = modifier,
     )
-}
-
-@Composable
-@Preview
-private fun PreferenceCategoryPreview() {
-    ProvidePreferenceTheme {
-        PreferenceCategory(
-            title = { Text(text = "Preference category") },
-            modifier = Modifier.fillMaxWidth(),
-        )
-    }
 }

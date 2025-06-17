@@ -28,7 +28,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -36,7 +35,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -48,7 +46,6 @@ import composepreference.preference.generated.resources.Res
 import composepreference.preference.generated.resources.cancel
 import composepreference.preference.generated.resources.ok
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 public inline fun <T> LazyListScope.multiSelectListPreference(
     key: String,
@@ -204,21 +201,5 @@ internal object MultiSelectListPreferenceDefaults {
                 style = MaterialTheme.typography.bodyLarge,
             )
         }
-    }
-}
-
-@Composable
-@Preview
-private fun MultiSelectListPreferencePreview() {
-    ProvidePreferenceTheme {
-        val state = remember { mutableStateOf(setOf("Alpha", "Beta")) }
-        MultiSelectListPreference(
-            state = state,
-            values = listOf("Alpha", "Beta", "Canary"),
-            title = { Text(text = "Multi-select list preference") },
-            modifier = Modifier.fillMaxWidth(),
-            icon = { Icon(imageVector = PreviewIcons.Info, contentDescription = null) },
-            summary = { Text(text = state.value.joinToString(", ")) },
-        )
     }
 }

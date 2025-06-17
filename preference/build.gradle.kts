@@ -22,6 +22,7 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.plugin.compose)
+    alias(libs.plugins.kotlinx.binaryCompatibilityValidator)
     alias(libs.plugins.mavenPublish)
 }
 
@@ -84,13 +85,11 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(compose.components.resources)
-                implementation(compose.components.uiToolingPreview)
                 implementation(compose.material3)
                 implementation(libs.jetbrains.androidx.lifecycle.runtimeCompose)
             }
         }
         commonTest { dependencies { implementation(libs.kotlin.test) } }
-        androidMain { dependencies { implementation(libs.androidx.compose.ui.toolingPreview) } }
         nonAndroidAppleMain.dependencies { implementation(libs.kotlinx.serialization.json) }
     }
 }
@@ -106,9 +105,4 @@ android {
     buildFeatures { compose = true }
     packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
     buildTypes { release { isMinifyEnabled = false } }
-}
-
-dependencies {
-    debugImplementation(libs.androidx.compose.ui.testManifest)
-    debugImplementation(libs.androidx.compose.ui.tooling)
 }

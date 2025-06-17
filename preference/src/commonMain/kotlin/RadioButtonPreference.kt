@@ -16,15 +16,12 @@
 
 package me.zhanghai.compose.preference
 
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 public fun LazyListScope.radioButtonPreference(
     key: String,
@@ -67,17 +64,4 @@ public fun RadioButtonPreference(
         summary = summary,
         widgetContainer = widgetContainer,
     )
-}
-
-@Composable
-@Preview
-private fun RadioButtonPreferencePreview() {
-    ProvidePreferenceTheme {
-        RadioButtonPreference(
-            selected = true,
-            title = { Text(text = "Radio button preference") },
-            modifier = Modifier.fillMaxWidth(),
-            summary = { Text(text = "Summary") },
-        ) {}
-    }
 }
