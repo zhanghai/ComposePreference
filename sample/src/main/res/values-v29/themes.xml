@@ -18,6 +18,8 @@
 
 <resources>
     <style name="Platform.Theme.Sample.V29" parent="Platform.Theme.Sample.V27">
+        <item name="android:enforceNavigationBarContrast">false</item>
+        <item name="android:enforceStatusBarContrast">false</item>
         <item name="android:forceDarkAllowed">false</item>
     </style>
     <style name="Platform.Theme.Sample" parent="Platform.Theme.Sample.V29" />
