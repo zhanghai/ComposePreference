@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="cancel">"បោះ​បង់​"</string>
-    <string name="ok">"យល់​ព្រម​"</string>
+    <string name="cancel">បោះ​បង់​</string>
+    <string name="ok">យល់​ព្រម​</string>
 </resources>

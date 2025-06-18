@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="cancel">"रद्द गर्नुहोस्"</string>
-    <string name="ok">"ठिक छ"</string>
+    <string name="cancel">रद्द गर्नुहोस्</string>
+    <string name="ok">ठिक छ</string>
 </resources>

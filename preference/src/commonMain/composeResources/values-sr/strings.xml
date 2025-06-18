@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="cancel">"Откажи"</string>
-    <string name="ok">"Потврди"</string>
+    <string name="cancel">Откажи</string>
+    <string name="ok">Потврди</string>
 </resources>

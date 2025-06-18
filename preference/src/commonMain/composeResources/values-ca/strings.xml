@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="cancel">"Cancel·la"</string>
-    <string name="ok">"D\'acord"</string>
+    <string name="cancel">Cancel·la</string>
+    <string name="ok">D\'acord</string>
 </resources>

@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="cancel">"Khansela"</string>
-    <string name="ok">"KULUNGILE"</string>
+    <string name="cancel">Khansela</string>
+    <string name="ok">KULUNGILE</string>
 </resources>

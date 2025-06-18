@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="cancel">"İptal"</string>
-    <string name="ok">"Tamam"</string>
+    <string name="cancel">İptal</string>
+    <string name="ok">Tamam</string>
 </resources>

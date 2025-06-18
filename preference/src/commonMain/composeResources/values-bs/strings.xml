@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="cancel">"Otkaži"</string>
-    <string name="ok">"Uredu"</string>
+    <string name="cancel">Otkaži</string>
+    <string name="ok">Uredu</string>
 </resources>

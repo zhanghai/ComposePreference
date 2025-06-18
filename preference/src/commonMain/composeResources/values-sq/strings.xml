@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="cancel">"Anulo"</string>
-    <string name="ok">"Në rregull"</string>
+    <string name="cancel">Anulo</string>
+    <string name="ok">Në rregull</string>
 </resources>

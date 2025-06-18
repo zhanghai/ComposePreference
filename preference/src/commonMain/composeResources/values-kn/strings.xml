@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="cancel">"ರದ್ದುಮಾಡಿ"</string>
-    <string name="ok">"ಸರಿ"</string>
+    <string name="cancel">ರದ್ದುಮಾಡಿ</string>
+    <string name="ok">ಸರಿ</string>
 </resources>

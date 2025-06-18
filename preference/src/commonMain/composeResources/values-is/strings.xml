@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="cancel">"Hætta við"</string>
-    <string name="ok">"Í lagi"</string>
+    <string name="cancel">Hætta við</string>
+    <string name="ok">Í lagi</string>
 </resources>
