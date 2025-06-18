@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="cancel">Cancel</string>
-    <string name="ok">OK</string>
+    <string name="cancel">"ይቅር"</string>
+    <string name="ok">"እሺ"</string>
 </resources>

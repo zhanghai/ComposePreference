@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="cancel">Cancel</string>
-    <string name="ok">OK</string>
+    <string name="cancel">"Cancelar"</string>
+    <string name="ok">"Aceptar"</string>
 </resources>
