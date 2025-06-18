@@ -90,16 +90,17 @@ The [`Preferences`](library/src/main/java/me/zhanghai/compose/preference/Prefere
 - It doesn't have to be produced and updated via a [`DataStore`](https://developer.android.com/reference/kotlin/androidx/datastore/core/DataStore).
 - It doesn't mandate a fixed set of types that an implementation has to support, so that implementations have the flexibility to support much more or less types. The implementations within this library will always support the types supported by `SharedPreferences` (the same as AndroidX DataStore).
 
-The default data source provided by this library (`defaultPreferenceFlow`) is implemented with `SharedPreferences`, because:
+The default data source provided by this library (`defaultPreferenceFlow`) is implemented with [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences) on Android (or [`NSUserDefaults`](https://developer.apple.com/documentation/foundation/userdefaults) on Apple, [`Preferences`](https://docs.oracle.com/javase/8/docs/api/java/util/prefs/Preferences.html) on JVM, and [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) on Web), because:
 
 - `SharedPreferences` is available as part of the Android framework, and doesn't require external dependencies like AndroidX DataStore which [bundles its own copy of `protobuf-lite`](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:datastore/datastore-preferences-core/build.gradle;l=108;drc=9fd0cda7bb963d41fd25645b0761776caa830ed7).
 - `SharedPreferences` can actually be [10x faster](https://stackoverflow.com/q/71601343) than AndroidX DataStore, likely due to its existing optimizations and simple threading and persistence model (XML is simple enough to be faster than Protobuf).
 - `SharedPreferences` has a synchronous API, but it is actually async except for the first (un-cached) read, and allows in-memory value change without waiting for the disk write to complete, which is good for the preference use case.
 - Existing users of `SharedPreferences` can use this library directly with the default data source.
+- AndroidX DataStore doesn't support Kotlin/JS and Kotlin/Wasm yet.
 
 There should only be at most one instance of `defaultPreferenceFlow`, similar to `DataStore` in AndroidX DataStore. It is also only for usage within a single process due to being backed by `SharedPreferences`.
 
-If AndroidX DataStore is considered more appropriate for your use case, e.g. you are working on a [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) project or you need multi-process support, you can also easily use a AndroidX DataStore backed implementation that provides a `MutableStateFlow<Preferences>`.
+If AndroidX DataStore is considered more appropriate for your use case, e.g. you need multi-process support, you can also create an AndroidX DataStore backed implementation that provides a `MutableStateFlow<Preferences>` on your own.
 
 ## License
 
