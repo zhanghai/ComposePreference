@@ -54,10 +54,9 @@ private var NSUserDefaults.preferences: Preferences
                         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
                         @OptIn(ExperimentalForeignApi::class)
                         when (val objCType = value.objCType?.toKString()) {
-                            "b" -> value.boolValue
-                            "i" -> value.intValue
-                            "l" -> value.longValue
-                            "f" -> value.floatValue
+                            "c", "C", "B" -> value as Boolean
+                            "i", "s", "l", "q", "I", "S", "Q" -> value as Int
+                            "f", "d" -> value as Float
                             else ->
                                 throw IllegalArgumentException(
                                     "Unsupported objCType \"$objCType\" for value $value"
@@ -76,10 +75,9 @@ private var NSUserDefaults.preferences: Preferences
         val dictionary: Map<Any?, *> =
             value.asMap().mapValues { (_, mapValue) ->
                 when (mapValue) {
-                    is Boolean -> NSNumber(mapValue)
-                    is Int -> NSNumber(mapValue)
-                    is Long -> NSNumber(mapValue)
-                    is Float -> NSNumber(mapValue)
+                    is Boolean -> mapValue as NSNumber
+                    is Int -> mapValue as NSNumber
+                    is Float -> mapValue as NSNumber
                     is String -> mapValue as NSString
                     is Set<*> ->
                         @Suppress("CAST_NEVER_SUCCEEDS", "UNCHECKED_CAST")

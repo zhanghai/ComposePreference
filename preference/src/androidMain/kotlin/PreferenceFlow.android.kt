@@ -54,7 +54,6 @@ private var SharedPreferences.preferences: Preferences
                 when (mapValue) {
                     is Boolean -> putBoolean(key, mapValue)
                     is Int -> putInt(key, mapValue)
-                    is Long -> putLong(key, mapValue)
                     is Float -> putFloat(key, mapValue)
                     is String -> putString(key, mapValue)
                     is Set<*> ->
