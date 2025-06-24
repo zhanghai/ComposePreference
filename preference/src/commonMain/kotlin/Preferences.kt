@@ -26,15 +26,6 @@ public interface Preferences {
     public fun toMutablePreferences(): MutablePreferences
 }
 
-internal class MapPreferences(private val map: Map<String, Any> = emptyMap()) : Preferences {
-    @Suppress("UNCHECKED_CAST") override fun <T> get(key: String): T? = map[key] as T?
-
-    override fun asMap(): Map<String, Any> = map
-
-    override fun toMutablePreferences(): MutablePreferences =
-        MapMutablePreferences(map.toMutableMap())
-}
-
 public interface MutablePreferences : Preferences {
     public operator fun <T> set(key: String, value: T?)
 
@@ -49,14 +40,23 @@ public interface MutablePreferences : Preferences {
     public fun clear()
 }
 
-internal class MapMutablePreferences(private val map: MutableMap<String, Any> = mutableMapOf()) :
+public class MapPreferences(private val map: Map<String, Any> = emptyMap()) : Preferences {
+    @Suppress("UNCHECKED_CAST") override fun <T> get(key: String): T? = map[key] as T?
+
+    override fun asMap(): Map<String, Any> = map
+
+    override fun toMutablePreferences(): MutablePreferences =
+        MutableMapPreferences(map.toMutableMap())
+}
+
+public class MutableMapPreferences(private val map: MutableMap<String, Any> = mutableMapOf()) :
     MutablePreferences {
     @Suppress("UNCHECKED_CAST") override fun <T> get(key: String): T? = map[key] as T?
 
     override fun asMap(): Map<String, Any> = map
 
     override fun toMutablePreferences(): MutablePreferences =
-        MapMutablePreferences(map.toMutableMap())
+        MutableMapPreferences(map.toMutableMap())
 
     override fun <T> set(key: String, value: T?) {
         if (value != null) {

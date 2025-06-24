@@ -74,6 +74,16 @@ public final class me/zhanghai/compose/preference/ListPreferenceType : java/lang
 	public static fun values ()[Lme/zhanghai/compose/preference/ListPreferenceType;
 }
 
+public final class me/zhanghai/compose/preference/MapPreferences : me/zhanghai/compose/preference/Preferences {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun <init> (Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun asMap ()Ljava/util/Map;
+	public fun get (Ljava/lang/String;)Ljava/lang/Object;
+	public fun toMutablePreferences ()Lme/zhanghai/compose/preference/MutablePreferences;
+}
+
 public final class me/zhanghai/compose/preference/MultiSelectListPreferenceDefaults {
 	public static final field $stable I
 	public static final field INSTANCE Lme/zhanghai/compose/preference/MultiSelectListPreferenceDefaults;
@@ -85,6 +95,18 @@ public final class me/zhanghai/compose/preference/MultiSelectListPreferenceKt {
 	public static final fun MultiSelectListPreference (Ljava/util/Set;Lkotlin/jvm/functions/Function1;Ljava/util/List;Lkotlin/jvm/functions/Function2;Landroidx/compose/ui/Modifier;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;Landroidx/compose/runtime/Composer;II)V
 	public static final fun multiSelectListPreference (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Ljava/util/Set;Ljava/util/List;Lkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;)V
 	public static synthetic fun multiSelectListPreference$default (Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/String;Ljava/util/Set;Ljava/util/List;Lkotlin/jvm/functions/Function3;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function5;ILjava/lang/Object;)V
+}
+
+public final class me/zhanghai/compose/preference/MutableMapPreferences : me/zhanghai/compose/preference/MutablePreferences {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun <init> (Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun asMap ()Ljava/util/Map;
+	public fun clear ()V
+	public fun get (Ljava/lang/String;)Ljava/lang/Object;
+	public fun set (Ljava/lang/String;Ljava/lang/Object;)V
+	public fun toMutablePreferences ()Lme/zhanghai/compose/preference/MutablePreferences;
 }
 
 public abstract interface class me/zhanghai/compose/preference/MutablePreferences : me/zhanghai/compose/preference/Preferences {
