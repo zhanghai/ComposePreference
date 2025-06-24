@@ -2,6 +2,8 @@
 
 [![Android CI status](https://github.com/zhanghai/ComposePreference/workflows/Android%20CI/badge.svg)](https://github.com/zhanghai/ComposePreference/actions) [![GitHub release](https://img.shields.io/github/v/release/zhanghai/ComposePreference)](https://github.com/zhanghai/ComposePreference/releases) [![License](https://img.shields.io/github/license/zhanghai/ComposePreference?color=blue)](LICENSE)
 
+![Kotlin version](https://img.shields.io/badge/Kotlin-2.1.21-7F52FF?logo=kotlin) ![Compose version](https://img.shields.io/badge/Compose-1.8.1-4285F4?logo=jetpackcompose) ![Platform Android](https://img.shields.io/badge/Platform-Android-3DDC84?logo=android) ![Platform iOS](https://img.shields.io/badge/Platform-iOS-FFFFFF?logo=ios) ![Platform macOS](https://img.shields.io/badge/Platform-macOS-FFFFFF?logo=macos) ![Platform JVM](https://img.shields.io/badge/Platform-JVM-007396?logo=openjdk) ![Platform JS](https://img.shields.io/badge/Platform-JS-F7DF1E?logo=javascript) ![Platform Wasm](https://img.shields.io/badge/Platform-Wasm-654FF0?logo=webassembly)
+
 [Preference](https://developer.android.com/develop/ui/views/components/settings) implementation for [Jetpack Compose](https://developer.android.com/jetpack/compose) [Material 3](https://developer.android.com/jetpack/compose/designsystems/material3).
 
 This is not an officially supported Google product.
@@ -14,8 +16,8 @@ This is not an officially supported Google product.
 
 Gradle:
 
-```gradle
-implementation 'me.zhanghai.compose.preference:preference:2.0.0'
+```kotlin
+implementation("me.zhanghai.compose.preference:preference:2.0.0")
 ```
 
 ## Design
@@ -88,7 +90,7 @@ The [`Preferences`](library/src/main/java/me/zhanghai/compose/preference/Prefere
 
 - It can be implemented by other mechanisms like [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences), thanks to being a public interface instead of an abstract class with only an internal constructor.
 - It doesn't have to be produced and updated via a [`DataStore`](https://developer.android.com/reference/kotlin/androidx/datastore/core/DataStore).
-- It doesn't mandate a fixed set of types that an implementation has to support, so that implementations have the flexibility to support much more or less types. The implementations within this library supports most of the types supported by `SharedPreferences` *except for `Long`* (due to non-Android platforms).
+- It doesn't mandate a fixed set of types that an implementation has to support, so that implementations have the flexibility to support much more or less types. The implementations within this library supports most of the types supported by `SharedPreferences` **except for `Long`** (due to non-Android platforms).
 
 The default data source provided by this library (`createDefaultPreferenceFlow()`) is implemented with [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences) on Android (or [`NSUserDefaults`](https://developer.apple.com/documentation/foundation/userdefaults) on Apple, [`Preferences`](https://docs.oracle.com/javase/8/docs/api/java/util/prefs/Preferences.html) on JVM, and [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) on Web), because:
 
@@ -98,7 +100,7 @@ The default data source provided by this library (`createDefaultPreferenceFlow()
 - Existing users of `SharedPreferences` can use this library directly with the default data source.
 - AndroidX DataStore doesn't support Kotlin/JS and Kotlin/Wasm yet.
 
-There should only be at most one invocation of `createDefaultPreferenceFlow()`, similar to creating `DataStore` in AndroidX DataStore. It is also only for usage within a single process due to being backed by `SharedPreferences`.
+**There should only be at most one invocation of `createDefaultPreferenceFlow()`**, similar to creating `DataStore` in AndroidX DataStore. It is also only for usage within a single process due to being backed by `SharedPreferences`.
 
 If AndroidX DataStore is considered more appropriate for your use case, e.g. you need multi-process support, you can also create an AndroidX DataStore backed implementation that provides a `MutableStateFlow<Preferences>` on your own.
 
