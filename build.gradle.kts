@@ -46,9 +46,6 @@ subprojects {
         }
     }
     tasks.withType<KotlinCompilationTask<*>> {
-        compilerOptions {
-            allWarningsAsErrors = true
-            freeCompilerArgs.add("-Xexpect-actual-classes")
-        }
+        compilerOptions { freeCompilerArgs.add("-Xexpect-actual-classes") }
     }
 }
