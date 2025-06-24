@@ -75,12 +75,12 @@ kotlin {
         wasmJsMain { dependsOn(commonJsMain) }
         wasmJsTest { dependsOn(commonJsTest) }
 
-        val nonAndroidAppleMain by creating { dependsOn(commonMain.get()) }
-        val nonAndroidAppleTest by creating { dependsOn(commonTest.get()) }
-        jvmMain { dependsOn(nonAndroidAppleMain) }
-        jvmTest { dependsOn(nonAndroidAppleTest) }
-        commonJsMain.dependsOn(nonAndroidAppleMain)
-        commonJsTest.dependsOn(nonAndroidAppleTest)
+        val jvmWasmJsMain by creating { dependsOn(commonMain.get()) }
+        val jvmWasmJsTest by creating { dependsOn(commonTest.get()) }
+        jvmMain { dependsOn(jvmWasmJsMain) }
+        jvmTest { dependsOn(jvmWasmJsTest) }
+        wasmJsMain { dependsOn(jvmWasmJsMain) }
+        wasmJsTest { dependsOn(jvmWasmJsTest) }
 
         commonMain {
             dependencies {
@@ -90,7 +90,7 @@ kotlin {
             }
         }
         commonTest { dependencies { implementation(libs.kotlin.test) } }
-        nonAndroidAppleMain.dependencies { implementation(libs.kotlinx.serialization.json) }
+        jvmWasmJsMain.dependencies { implementation(libs.kotlinx.serialization.json) }
     }
 }
 

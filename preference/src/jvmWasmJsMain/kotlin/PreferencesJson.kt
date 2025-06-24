@@ -28,6 +28,35 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 internal object PreferencesJson {
+    fun decodeFromString(string: String): Preferences =
+        MapPreferences(
+            buildMap {
+                for ((key, jsonValue) in Json.parseToJsonElement(string).jsonObject) {
+                    val value: Any =
+                        when (jsonValue) {
+                            is JsonPrimitive ->
+                                when {
+                                    jsonValue is JsonNull -> continue
+                                    jsonValue.isString -> jsonValue.content
+                                    else ->
+                                        jsonValue.booleanOrNull
+                                            // Don't parse numbers with an exponent part as Int
+                                            //?: jsonValue.intOrNull
+                                            ?: jsonValue.intOrNullStrict
+                                            ?: jsonValue.float
+                                }
+                            is JsonArray ->
+                                jsonValue.mapTo(mutableSetOf()) { it.jsonPrimitive.contentOrNull }
+                            else -> error("Unsupported JSON value $jsonValue")
+                        }
+                    put(key, value)
+                }
+            }
+        )
+
+    private val JsonPrimitive.intOrNullStrict: Int?
+        get() = content.toIntOrNull()
+
     fun encodeToString(preferences: Preferences): String =
         Json.encodeToString(
             buildJsonObject {
@@ -48,31 +77,4 @@ internal object PreferencesJson {
                 }
             }
         )
-
-    fun decodeFromString(string: String): Preferences =
-        MapPreferences(
-            buildMap {
-                for ((key, jsonValue) in Json.parseToJsonElement(string).jsonObject) {
-                    val value: Any =
-                        when (jsonValue) {
-                            is JsonPrimitive ->
-                                when {
-                                    jsonValue is JsonNull -> continue
-                                    jsonValue.isString -> jsonValue.content
-                                    else ->
-                                        jsonValue.booleanOrNull
-                                            ?: jsonValue.intOrNullStrict
-                                            ?: jsonValue.float
-                                }
-                            is JsonArray ->
-                                jsonValue.mapTo(mutableSetOf()) { it.jsonPrimitive.contentOrNull }
-                            else -> error("Unsupported JSON value $jsonValue")
-                        }
-                    put(key, value)
-                }
-            }
-        )
-
-    private val JsonPrimitive.intOrNullStrict: Int?
-        get() = content.toIntOrNull()
 }

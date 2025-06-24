@@ -38,8 +38,12 @@ private const val PreferencesKey = "me.zhanghai.compose.preference"
 
 private var Storage.preferences: Preferences
     get() =
-        localStorage.getItem(PreferencesKey)?.let { PreferencesJson.decodeFromString(it) }
+        localStorage.getItem(PreferencesKey)?.let { decodePreferencesFromString(it) }
             ?: MapPreferences()
     set(value) {
-        localStorage.setItem(PreferencesKey, PreferencesJson.encodeToString(value))
+        localStorage.setItem(PreferencesKey, encodePreferencesToString(value))
     }
+
+internal expect fun decodePreferencesFromString(string: String): Preferences
+
+internal expect fun encodePreferencesToString(preferences: Preferences): String
