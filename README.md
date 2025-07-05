@@ -57,18 +57,18 @@ AppTheme {
 
 Built-in types of preferences include:
 
-- [`Preference`](library/src/main/java/me/zhanghai/compose/preference/Preference.kt)
-- [`PreferenceCategory`](library/src/main/java/me/zhanghai/compose/preference/PreferenceCategory.kt)
-- [`CheckboxPreference`](library/src/main/java/me/zhanghai/compose/preference/CheckboxPreference.kt)
-- [`FooterPreference`](library/src/main/java/me/zhanghai/compose/preference/FooterPreference.kt)
-- [`ListPreference`](library/src/main/java/me/zhanghai/compose/preference/ListPreference.kt) (supports both alert dialog and dropdown menu)
-- [`MultiSelectListPreference`](library/src/main/java/me/zhanghai/compose/preference/MultiSelectListPreference.kt)
-- [`RadioButtonPreference`](library/src/main/java/me/zhanghai/compose/preference/RadioButtonPreference.kt)
-- [`SliderPreference`](library/src/main/java/me/zhanghai/compose/preference/SliderPreference.kt)
-- [`SwitchPreference`](library/src/main/java/me/zhanghai/compose/preference/SwitchPreference.kt)
-- [`TextFieldPreference`](library/src/main/java/me/zhanghai/compose/preference/TextFieldPreference.kt)
-- [`TwoTargetIconButtonPreference`](library/src/main/java/me/zhanghai/compose/preference/TwoTargetIconButtonPreference.kt)
-- [`TwoTargetSwitchPreference`](library/src/main/java/me/zhanghai/compose/preference/TwoTargetSwitchPreference.kt)
+- [`Preference`](preference/src/commonMain/kotlin/Preference.kt)
+- [`PreferenceCategory`](preference/src/commonMain/kotlin/PreferenceCategory.kt)
+- [`CheckboxPreference`](preference/src/commonMain/kotlin/CheckboxPreference.kt)
+- [`FooterPreference`](preference/src/commonMain/kotlin/FooterPreference.kt)
+- [`ListPreference`](preference/src/commonMain/kotlin/ListPreference.kt) (supports both alert dialog and dropdown menu)
+- [`MultiSelectListPreference`](preference/src/commonMain/kotlin/MultiSelectListPreference.kt)
+- [`RadioButtonPreference`](preference/src/commonMain/kotlin/RadioButtonPreference.kt)
+- [`SliderPreference`](preference/src/commonMain/kotlin/SliderPreference.kt)
+- [`SwitchPreference`](preference/src/commonMain/kotlin/SwitchPreference.kt)
+- [`TextFieldPreference`](preference/src/commonMain/kotlin/TextFieldPreference.kt)
+- [`TwoTargetIconButtonPreference`](preference/src/commonMain/kotlin/TwoTargetIconButtonPreference.kt)
+- [`TwoTargetSwitchPreference`](preference/src/commonMain/kotlin/TwoTargetSwitchPreference.kt)
 
 Each type of built-in preference includes 3 kinds of APIs:
 
@@ -78,7 +78,7 @@ Each type of built-in preference includes 3 kinds of APIs:
 
 ### Theming
 
-The visual appearance of the preferences can be customized by providing a custom [`PreferenceTheme`](library/src/main/java/me/zhanghai/compose/preference/PreferenceTheme.kt) with `preferenceTheme` to `ProvidePreferenceLocals` or `ProvidePreferenceTheme`.
+The visual appearance of the preferences can be customized by providing a custom [`PreferenceTheme`](preference/src/commonMain/kotlin/PreferenceTheme.kt) with `preferenceTheme` to `ProvidePreferenceLocals` or `ProvidePreferenceTheme`.
 
 Customizable values in the theme include most dimensions, colors and text styles used by the built-in preferences.
 
@@ -86,7 +86,7 @@ Customizable values in the theme include most dimensions, colors and text styles
 
 The data source of the preferences can be customized by providing a custom `MutableStateFlow<Preferences>` to `ProvidePreferenceLocals` or `ProvidePreferenceFlow`.
 
-The [`Preferences`](library/src/main/java/me/zhanghai/compose/preference/Preferences.kt) interface defined in this library is similar to the AndroidX DataStore [`Preferences`](https://developer.android.com/reference/kotlin/androidx/datastore/preferences/core/Preferences) class, but:
+The [`Preferences`](preference/src/commonMain/kotlin/Preferences.kt) interface defined in this library is similar to the AndroidX DataStore [`Preferences`](https://developer.android.com/reference/kotlin/androidx/datastore/preferences/core/Preferences) class, but:
 
 - It can be implemented by other mechanisms like [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences), thanks to being a public interface instead of an abstract class with only an internal constructor.
 - It doesn't have to be produced and updated via a [`DataStore`](https://developer.android.com/reference/kotlin/androidx/datastore/core/DataStore).
