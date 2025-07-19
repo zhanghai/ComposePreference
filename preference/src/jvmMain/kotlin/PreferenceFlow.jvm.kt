@@ -44,13 +44,15 @@ public actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> {
             val mainClass = Class.forName(command.split(' ')[0])
             JavaPreferences.userNodeForPackage(mainClass).node(PackagePreferenceNodeName)
         }
-    return javaPreferences.createPreferenceFlow()
+    return createPreferenceFlow(javaPreferences)
 }
 
-private fun JavaPreferences.createPreferenceFlow(): MutableStateFlow<Preferences> =
-    MutableStateFlow(preferences).also {
+public fun createPreferenceFlow(javaPreferences: JavaPreferences): MutableStateFlow<Preferences> =
+    MutableStateFlow(javaPreferences.preferences).also {
         @OptIn(DelicateCoroutinesApi::class)
-        GlobalScope.launch(Dispatchers.Main.immediate) { it.drop(1).collect { preferences = it } }
+        GlobalScope.launch(Dispatchers.Main.immediate) {
+            it.drop(1).collect { javaPreferences.preferences = it }
+        }
     }
 
 private const val PreferencesKey = "preferences"

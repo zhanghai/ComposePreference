@@ -35,14 +35,19 @@ public actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> {
     }
     val context = LocalContext.current
     @Suppress("DEPRECATION")
-    return android.preference.PreferenceManager.getDefaultSharedPreferences(context)
-        .createPreferenceFlow()
+    return createPreferenceFlow(
+        android.preference.PreferenceManager.getDefaultSharedPreferences(context)
+    )
 }
 
-private fun SharedPreferences.createPreferenceFlow(): MutableStateFlow<Preferences> =
-    MutableStateFlow(preferences).also {
+public fun createPreferenceFlow(
+    sharedPreferences: SharedPreferences
+): MutableStateFlow<Preferences> =
+    MutableStateFlow(sharedPreferences.preferences).also {
         @OptIn(DelicateCoroutinesApi::class)
-        GlobalScope.launch(Dispatchers.Main.immediate) { it.drop(1).collect { preferences = it } }
+        GlobalScope.launch(Dispatchers.Main.immediate) {
+            it.drop(1).collect { sharedPreferences.preferences = it }
+        }
     }
 
 private var SharedPreferences.preferences: Preferences

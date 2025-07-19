@@ -33,12 +33,14 @@ import platform.Foundation.NSUserDefaults
 
 @Composable
 public actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> =
-    NSUserDefaults.standardUserDefaults.createPreferenceFlow()
+    createPreferenceFlow(NSUserDefaults.standardUserDefaults)
 
-private fun NSUserDefaults.createPreferenceFlow(): MutableStateFlow<Preferences> =
-    MutableStateFlow(preferences).also {
+public fun createPreferenceFlow(userDefaults: NSUserDefaults): MutableStateFlow<Preferences> =
+    MutableStateFlow(userDefaults.preferences).also {
         @OptIn(DelicateCoroutinesApi::class)
-        GlobalScope.launch(Dispatchers.Main.immediate) { it.drop(1).collect { preferences = it } }
+        GlobalScope.launch(Dispatchers.Main.immediate) {
+            it.drop(1).collect { userDefaults.preferences = it }
+        }
     }
 
 private var NSUserDefaults.preferences: Preferences
@@ -54,9 +56,18 @@ private var NSUserDefaults.preferences: Preferences
                         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
                         @OptIn(ExperimentalForeignApi::class)
                         when (val objCType = value.objCType?.toKString()) {
-                            "c", "C", "B" -> value as Boolean
-                            "i", "s", "l", "q", "I", "S", "Q" -> value as Int
-                            "f", "d" -> value as Float
+                            "c",
+                            "C",
+                            "B" -> value as Boolean
+                            "i",
+                            "s",
+                            "l",
+                            "q",
+                            "I",
+                            "S",
+                            "Q" -> value as Int
+                            "f",
+                            "d" -> value as Float
                             else ->
                                 throw IllegalArgumentException(
                                     "Unsupported objCType \"$objCType\" for value $value"

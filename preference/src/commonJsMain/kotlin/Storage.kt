@@ -16,18 +16,18 @@
 
 package me.zhanghai.compose.preference
 
-internal external val localStorage: Storage
+public external interface Storage {
+    public val length: Int
 
-internal external interface Storage {
-    val length: Int
+    public fun key(index: Int): String?
 
-    fun key(index: Int): String?
+    public fun getItem(keyName: String): String?
 
-    fun getItem(keyName: String): String?
+    public fun setItem(keyName: String, keyValue: String)
 
-    fun setItem(keyName: String, keyValue: String)
+    public fun removeItem(keyName: String)
 
-    fun removeItem(keyName: String)
-
-    fun clear()
+    public fun clear()
 }
+
+internal external val localStorage: Storage

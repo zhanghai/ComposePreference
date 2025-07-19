@@ -26,22 +26,22 @@ import kotlinx.coroutines.launch
 
 @Composable
 public actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> =
-    localStorage.createPreferenceFlow()
+    createPreferenceFlow(localStorage)
 
-private fun Storage.createPreferenceFlow(): MutableStateFlow<Preferences> =
-    MutableStateFlow(preferences).also {
+public fun createPreferenceFlow(storage: Storage): MutableStateFlow<Preferences> =
+    MutableStateFlow(storage.preferences).also {
         @OptIn(DelicateCoroutinesApi::class)
-        GlobalScope.launch(Dispatchers.Main.immediate) { it.drop(1).collect { preferences = it } }
+        GlobalScope.launch(Dispatchers.Main.immediate) {
+            it.drop(1).collect { storage.preferences = it }
+        }
     }
 
 private const val PreferencesKey = "me.zhanghai.compose.preference"
 
 private var Storage.preferences: Preferences
-    get() =
-        localStorage.getItem(PreferencesKey)?.let { decodePreferencesFromString(it) }
-            ?: MapPreferences()
+    get() = getItem(PreferencesKey)?.let { decodePreferencesFromString(it) } ?: MapPreferences()
     set(value) {
-        localStorage.setItem(PreferencesKey, encodePreferencesToString(value))
+        setItem(PreferencesKey, encodePreferencesToString(value))
     }
 
 internal expect fun decodePreferencesFromString(string: String): Preferences

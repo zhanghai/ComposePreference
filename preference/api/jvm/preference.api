@@ -129,6 +129,7 @@ public final class me/zhanghai/compose/preference/PreferenceFlowKt {
 
 public final class me/zhanghai/compose/preference/PreferenceFlow_jvmKt {
 	public static final fun createDefaultPreferenceFlow (Landroidx/compose/runtime/Composer;I)Lkotlinx/coroutines/flow/MutableStateFlow;
+	public static final fun createPreferenceFlow (Ljava/util/prefs/Preferences;)Lkotlinx/coroutines/flow/MutableStateFlow;
 }
 
 public final class me/zhanghai/compose/preference/PreferenceKt {
