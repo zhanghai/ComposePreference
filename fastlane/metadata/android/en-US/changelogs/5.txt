@@ -1,0 +1,3 @@
+- Added platform-specific createPreferenceFlow() that takes platform-specific inputs.
+- Changed sliderState in SliderPreference to use MutableFloatState in order to avoid auto-boxing.
+- Fixed missing translations for certain locales.

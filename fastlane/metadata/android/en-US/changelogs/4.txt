@@ -1,0 +1,3 @@
+- Added support for Compose Multiplatform.
+- Library artifact ID is renamed from library to preference.
+- defaultPreferenceFlow() is renamed to createDefaultPreferenceFlow(), and support for Long is dropped for parity with non-Android platforms.
