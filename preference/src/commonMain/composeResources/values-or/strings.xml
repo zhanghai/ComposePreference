@@ -17,4 +17,6 @@
   -->
 
 <resources>
+    <string name="cancel">ବାତିଲ କରନ୍ତୁ</string>
+    <string name="ok">ଠିକ ଅଛି</string>
 </resources>

@@ -17,4 +17,6 @@
   -->
 
 <resources>
+    <string name="cancel">ரத்துசெய்</string>
+    <string name="ok">சரி</string>
 </resources>
