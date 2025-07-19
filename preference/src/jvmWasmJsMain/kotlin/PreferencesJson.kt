@@ -41,7 +41,7 @@ internal object PreferencesJson {
                                     else ->
                                         jsonValue.booleanOrNull
                                             // Don't parse numbers with an exponent part as Int
-                                            //?: jsonValue.intOrNull
+                                            // ?: jsonValue.intOrNull
                                             ?: jsonValue.intOrNullStrict
                                             ?: jsonValue.float
                                 }

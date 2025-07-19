@@ -81,8 +81,9 @@ public fun preferenceTheme(
         dividerHeight = dividerHeight,
     )
 
-public val LocalPreferenceTheme: ProvidableCompositionLocal<PreferenceTheme> =
-    compositionLocalOf { noLocalProvidedFor("LocalPreferenceTheme") }
+public val LocalPreferenceTheme: ProvidableCompositionLocal<PreferenceTheme> = compositionLocalOf {
+    noLocalProvidedFor("LocalPreferenceTheme")
+}
 
 @Composable
 public fun ProvidePreferenceTheme(

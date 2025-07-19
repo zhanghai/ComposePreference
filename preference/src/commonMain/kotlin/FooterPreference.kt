@@ -56,7 +56,5 @@ public fun FooterPreference(
 }
 
 private object FooterPreferenceDefaults {
-    val Icon: @Composable () -> Unit = {
-        Icon(imageVector = Icons.Info, contentDescription = null)
-    }
+    val Icon: @Composable () -> Unit = { Icon(imageVector = Icons.Info, contentDescription = null) }
 }

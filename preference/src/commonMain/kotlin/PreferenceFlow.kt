@@ -25,7 +25,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 @Composable public expect fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences>
 
 public val LocalPreferenceFlow: ProvidableCompositionLocal<MutableStateFlow<Preferences>> =
-    compositionLocalOf { noLocalProvidedFor("LocalPreferenceFlow") }
+    compositionLocalOf {
+        noLocalProvidedFor("LocalPreferenceFlow")
+    }
 
 @Composable
 public fun ProvidePreferenceFlow(
