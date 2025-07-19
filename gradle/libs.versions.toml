@@ -1,18 +1,18 @@
 [versions]
 android-buildTools = "36.0.0"
 android-compileSdk = "36"
-android-gradlePlugin = "8.10.1"
+android-gradlePlugin = "8.11.1"
 android-minSdk = "21"
 android-targetSdk = "36"
 androidx-activity = "1.10.1"
-compose = "1.8.1"
+compose = "1.8.2"
 dokka = "2.0.0"
-jetbrains-androidx-lifecycle = "2.9.0"
-kotlin = "2.1.21"
-kotlinx-binaryCompatibilityValidator = "0.17.0"
+jetbrains-androidx-lifecycle = "2.9.1"
+kotlin = "2.2.0"
+kotlinx-binaryCompatibilityValidator = "0.18.1"
 kotlinx-coroutines = "1.10.2"
-kotlinx-serialization = "1.8.1"
-mavenPublish = "0.32.0"
+kotlinx-serialization = "1.9.0"
+mavenPublish = "0.34.0"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
