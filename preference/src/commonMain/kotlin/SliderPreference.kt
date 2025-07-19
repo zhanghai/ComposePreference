@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.material3.Slider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableFloatState
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
@@ -43,7 +44,7 @@ public inline fun LazyListScope.sliderPreference(
     },
     valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
     valueSteps: Int = 0,
-    crossinline rememberSliderState: @Composable (Float) -> MutableState<Float> = {
+    crossinline rememberSliderState: @Composable (Float) -> MutableFloatState = {
         remember { mutableFloatStateOf(it) }
     },
     crossinline enabled: (Float) -> Boolean = { true },
@@ -78,7 +79,7 @@ public fun SliderPreference(
     modifier: Modifier = Modifier,
     valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
     valueSteps: Int = 0,
-    sliderState: MutableState<Float> = remember { mutableFloatStateOf(state.value) },
+    sliderState: MutableFloatState = remember { mutableFloatStateOf(state.value) },
     enabled: Boolean = true,
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
