@@ -8,6 +8,7 @@ androidx-activity = "1.10.1"
 compose = "1.8.2"
 dokka = "2.0.0"
 jetbrains-androidx-lifecycle = "2.9.3"
+# TODO: Migrate to official web source sets once upgraded to Kotlin 2.2.20.
 kotlin = "2.2.10"
 kotlinx-binaryCompatibilityValidator = "0.18.1"
 kotlinx-coroutines = "1.10.2"
