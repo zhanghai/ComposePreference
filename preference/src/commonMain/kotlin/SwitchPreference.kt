@@ -87,7 +87,7 @@ public fun SwitchPreference(
 ) {
     Preference(
         title = title,
-        modifier = modifier.toggleable(value, enabled, Role.Switch, onValueChange),
+        modifier = modifier.toggleable(value, enabled, Role.Switch, onValueChange = onValueChange),
         enabled = enabled,
         icon = icon,
         summary = summary,

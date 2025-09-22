@@ -189,7 +189,7 @@ internal object MultiSelectListPreferenceDefaults {
             modifier =
                 Modifier.fillMaxWidth()
                     .heightIn(min = 48.dp)
-                    .toggleable(checked, true, Role.Checkbox, onToggle)
+                    .toggleable(checked, true, Role.Checkbox, onValueChange = onToggle)
                     .padding(horizontal = 24.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {

@@ -68,14 +68,6 @@ kotlin {
         jvmMain { dependsOn(commonJvmMain) }
         jvmTest { dependsOn(commonJvmTest) }
 
-        // TODO: Migrate to official web source sets once upgraded to Kotlin 2.2.20.
-        val webMain by creating { dependsOn(commonMain.get()) }
-        val webTest by creating { dependsOn(commonTest.get()) }
-        jsMain { dependsOn(webMain) }
-        jsTest { dependsOn(webTest) }
-        wasmJsMain { dependsOn(webMain) }
-        wasmJsTest { dependsOn(webTest) }
-
         val jvmWasmJsMain by creating { dependsOn(commonMain.get()) }
         val jvmWasmJsTest by creating { dependsOn(commonTest.get()) }
         jvmMain { dependsOn(jvmWasmJsMain) }

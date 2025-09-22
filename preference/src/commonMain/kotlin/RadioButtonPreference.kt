@@ -58,7 +58,7 @@ public fun RadioButtonPreference(
 ) {
     Preference(
         title = title,
-        modifier = modifier.selectable(selected, enabled, Role.RadioButton, onClick),
+        modifier = modifier.selectable(selected, enabled, Role.RadioButton, onClick = onClick),
         enabled = enabled,
         icon = { RadioButton(selected = selected, onClick = null, enabled = enabled) },
         summary = summary,

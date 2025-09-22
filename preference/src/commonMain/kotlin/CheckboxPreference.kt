@@ -87,7 +87,8 @@ public fun CheckboxPreference(
 ) {
     Preference(
         title = title,
-        modifier = modifier.toggleable(value, enabled, Role.Checkbox, onValueChange),
+        modifier =
+            modifier.toggleable(value, enabled, Role.Checkbox, onValueChange = onValueChange),
         enabled = enabled,
         icon = icon,
         summary = summary,
