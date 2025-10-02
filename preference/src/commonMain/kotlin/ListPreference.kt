@@ -40,13 +40,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.PointerEventType
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import composepreference.preference.generated.resources.Res
 import composepreference.preference.generated.resources.cancel
@@ -138,6 +144,7 @@ public fun <T> ListPreference(
         ListPreferenceDefaults.item(type, valueToText),
 ) {
     var openSelector by rememberSaveable { mutableStateOf(false) }
+    var pointPosition by remember { mutableStateOf(Offset(0f, 0f)) }
     // Put DropdownMenu before Preference so that it can anchor to the right position.
     if (openSelector) {
         when (type) {
@@ -167,12 +174,16 @@ public fun <T> ListPreference(
             }
             ListPreferenceType.DROPDOWN_MENU -> {
                 val theme = LocalPreferenceTheme.current
+                val density = LocalDensity.current
                 Box(
                     modifier = Modifier.fillMaxWidth().padding(theme.padding.copy(vertical = 0.dp))
                 ) {
                     DropdownMenu(
                         expanded = openSelector,
                         onDismissRequest = { openSelector = false },
+                        offset = with(density) {
+                            DpOffset(x = pointPosition.x.toDp(), y = pointPosition.y.toDp())
+                        },
                     ) {
                         for (itemValue in values) {
                             item(itemValue, value) {
@@ -187,7 +198,16 @@ public fun <T> ListPreference(
     }
     Preference(
         title = title,
-        modifier = modifier,
+        modifier = modifier.pointerInput(Unit) {
+            awaitPointerEventScope {
+                while (true) {
+                    val event = awaitPointerEvent()
+                    if (event.type == PointerEventType.Press) {
+                        pointPosition = event.changes.first().position
+                    }
+                }
+            }
+        },
         enabled = enabled,
         icon = icon,
         summary = summary,
@@ -208,6 +228,7 @@ internal object ListPreferenceDefaults {
                     DialogItem(value, currentValue, valueToText, onClick)
                 }
             }
+
             ListPreferenceType.DROPDOWN_MENU -> {
                 { value, currentValue, onClick ->
                     DropdownMenuItem(value, currentValue, valueToText, onClick)
