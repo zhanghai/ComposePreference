@@ -44,7 +44,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
@@ -252,10 +251,11 @@ internal object ListPreferenceDefaults {
             text = { Text(text = valueToText(value)) },
             onClick = onClick,
             modifier =
-                Modifier.background(
-                    if (value == currentValue) MaterialTheme.colorScheme.secondaryContainer
-                    else Color.Transparent
-                ),
+                if (value == currentValue) {
+                    Modifier.background(MaterialTheme.colorScheme.surfaceContainerHighest)
+                } else {
+                    Modifier
+                },
             colors = MenuDefaults.itemColors(),
         )
     }
