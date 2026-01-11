@@ -130,6 +130,8 @@ public final class me/zhanghai/compose/preference/PreferenceFlowKt {
 public final class me/zhanghai/compose/preference/PreferenceFlow_androidKt {
 	public static final fun createDefaultPreferenceFlow (Landroidx/compose/runtime/Composer;I)Lkotlinx/coroutines/flow/MutableStateFlow;
 	public static final fun createPreferenceFlow (Landroid/content/SharedPreferences;)Lkotlinx/coroutines/flow/MutableStateFlow;
+	public static final fun isDefaultPreferenceFlowLongSupportEnabled ()Z
+	public static final fun setDefaultPreferenceFlowLongSupportEnabled (Z)V
 }
 
 public final class me/zhanghai/compose/preference/PreferenceKt {

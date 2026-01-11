@@ -27,6 +27,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
 
+@Volatile
+public var isDefaultPreferenceFlowLongSupportEnabled: Boolean = false
+
 @Composable
 public actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> {
     val view = LocalView.current
@@ -59,6 +62,13 @@ private var SharedPreferences.preferences: Preferences
                 when (mapValue) {
                     is Boolean -> putBoolean(key, mapValue)
                     is Int -> putInt(key, mapValue)
+                    is Long -> {
+                        check(isDefaultPreferenceFlowLongSupportEnabled) {
+                            "Android-only support for Long isn't enabled by default. You can opt" +
+                                " in by setting isDefaultPreferenceFlowLongSupportEnabled to true"
+                        }
+                        putLong(key, mapValue)
+                    }
                     is Float -> putFloat(key, mapValue)
                     is String -> putString(key, mapValue)
                     is Set<*> ->

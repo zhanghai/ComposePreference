@@ -90,7 +90,7 @@ The [`Preferences`](preference/src/commonMain/kotlin/Preferences.kt) interface d
 
 - It can be implemented by other mechanisms like [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences), thanks to being a public interface instead of an abstract class with only an internal constructor.
 - It doesn't have to be produced and updated via a [`DataStore`](https://developer.android.com/reference/kotlin/androidx/datastore/core/DataStore).
-- It doesn't mandate a fixed set of types that an implementation has to support, so that implementations have the flexibility to support much more or less types. The implementations within this library supports most of the types supported by `SharedPreferences` **except for `Long`** (due to non-Android platforms).
+- It doesn't mandate a fixed set of types that an implementation has to support, so that implementations have the flexibility to support much more or less types. The implementations within this library supports most of the types supported by `SharedPreferences` **except for `Long`** by default (due to non-Android platforms), and you can opt in to Android-only support for `Long` by setting `isDefaultPreferenceFlowLongSupportEnabled` to `true`.
 
 The default data source provided by this library (`createDefaultPreferenceFlow()`) is implemented with [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences) on Android (or [`NSUserDefaults`](https://developer.apple.com/documentation/foundation/userdefaults) on Apple, [`Preferences`](https://docs.oracle.com/javase/8/docs/api/java/util/prefs/Preferences.html) on JVM, and [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) on Web), because:
 
