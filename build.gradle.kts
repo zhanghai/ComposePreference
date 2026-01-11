@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
@@ -41,7 +42,7 @@ subprojects {
     }
     tasks.withType<KotlinJvmCompile> {
         compilerOptions {
-            freeCompilerArgs.add("-Xjvm-default=all")
+            jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
             jvmTarget = JvmTarget.JVM_11
         }
     }
