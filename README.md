@@ -17,7 +17,7 @@ This is not an officially supported Google product.
 Gradle:
 
 ```kotlin
-implementation("me.zhanghai.compose.preference:preference:2.1.0")
+implementation("me.zhanghai.compose.preference:preference:2.1.1")
 ```
 
 ## Design
