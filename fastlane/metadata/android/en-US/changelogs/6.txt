@@ -1,1 +1,2 @@
 - Added opt-in for Android-only support for Long in default preference flow.
+- Fixed ListPreference drop-down menu item selected background color.
