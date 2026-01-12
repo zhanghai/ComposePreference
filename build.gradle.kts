@@ -42,7 +42,7 @@ subprojects {
     }
     tasks.withType<KotlinJvmCompile> {
         compilerOptions {
-            jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
+            jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
             jvmTarget = JvmTarget.JVM_11
         }
     }
