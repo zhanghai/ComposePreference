@@ -77,6 +77,8 @@ kotlin {
 
         commonMain {
             dependencies {
+                // TODO: Migrate away from deprecated dependency aliases once they have a BOM for
+                //  compatible versions.
                 implementation(compose.components.resources)
                 implementation(compose.material3)
                 implementation(libs.jetbrains.androidx.lifecycle.runtimeCompose)

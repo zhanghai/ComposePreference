@@ -74,6 +74,8 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(project(":preference"))
+                // TODO: Migrate away from deprecated dependency aliases once they have a BOM for
+                //  compatible versions.
                 implementation(compose.components.resources)
                 implementation(compose.components.uiToolingPreview)
                 implementation(compose.material3)
