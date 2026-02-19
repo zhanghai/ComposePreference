@@ -4,22 +4,20 @@ android-compileSdk = "36"
 android-gradlePlugin = "9.0.1"
 android-minSdk = "23"
 android-targetSdk = "36"
-androidx-activity = "1.12.2"
-compose = "1.10.0"
+androidx-activity = "1.12.4"
+compose = "1.10.1"
 dokka = "2.1.0"
 # https://kotlinlang.org/docs/multiplatform/whats-new-compose-110.html#dependencies
-jetbrains-androidx-lifecycle = "2.10.0-alpha07"
-kotlin = "2.3.0"
+jetbrains-androidx-lifecycle = "2.10.0-alpha08"
+kotlin = "2.3.10"
 kotlinx-binaryCompatibilityValidator = "0.18.1"
 kotlinx-coroutines = "1.10.2"
-kotlinx-serialization = "1.9.0"
-mavenPublish = "0.35.0"
+kotlinx-serialization = "1.10.0"
+mavenPublish = "0.36.0"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
 androidx-compose-ui-testManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidx-compose-ui-toolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 jetbrains-androidx-lifecycle-runtimeCompose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "jetbrains-androidx-lifecycle" }
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
@@ -28,7 +26,7 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradlePlugin" }
-android-library = { id = "com.android.library", version.ref = "android-gradlePlugin" }
+android-kotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradlePlugin" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

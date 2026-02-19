@@ -34,6 +34,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.tooling.preview.Preview
 import kotlin.math.roundToInt
 import me.zhanghai.compose.preference.ListPreferenceType
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
@@ -48,7 +49,6 @@ import me.zhanghai.compose.preference.switchPreference
 import me.zhanghai.compose.preference.textFieldPreference
 import me.zhanghai.compose.preference.twoTargetIconButtonPreference
 import me.zhanghai.compose.preference.twoTargetSwitchPreference
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 const val SampleTitle = "ComposePreference Sample"
 

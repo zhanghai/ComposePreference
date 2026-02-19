@@ -17,7 +17,7 @@
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.kotlinMultiplatformLibrary)
     alias(libs.plugins.compose)
     alias(libs.plugins.dokka)
     alias(libs.plugins.kotlin.multiplatform)
@@ -38,26 +38,34 @@ kotlin {
     // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:buildSrc/private/src/main/kotlin/androidx/build/AndroidXMultiplatformExtension.kt
     // @see
     // https://github.com/JetBrains/compose-multiplatform/blob/master/components/resources/library/build.gradle.kts
-    androidTarget { publishLibraryVariants("release") }
+    androidLibrary {
+        namespace = "me.zhanghai.compose.preference"
+        buildToolsVersion = libs.versions.android.buildTools.get()
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        optimization {
+            consumerKeepRules.apply {
+                publish = true
+                file("consumer-proguard-rules.pro")
+            }
+        }
+        packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
+    }
     iosArm64()
     iosSimulatorArm64()
-    iosX64()
     js { browser() }
     jvm()
     // linuxArm64()
     // linuxX64()
     macosArm64()
-    macosX64()
     // mingwX64()
     // tvosArm64()
     // tvosSimulatorArm64()
-    // tvosX64()
     @OptIn(ExperimentalWasmDsl::class) wasmJs { browser() }
     // watchosArm32()
     // watchosArm64()
     // watchosDeviceArm64()
     // watchosSimulatorArm64()
-    // watchosX64()
 
     applyDefaultHierarchyTemplate()
     sourceSets {
@@ -87,17 +95,4 @@ kotlin {
         commonTest { dependencies { implementation(libs.kotlin.test) } }
         jvmWasmJsMain.dependencies { implementation(libs.kotlinx.serialization.json) }
     }
-}
-
-android {
-    namespace = "me.zhanghai.compose.preference"
-    buildToolsVersion = libs.versions.android.buildTools.get()
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-    defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        consumerProguardFiles("proguard-rules.pro")
-    }
-    buildFeatures { compose = true }
-    packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
-    buildTypes { release { isMinifyEnabled = false } }
 }

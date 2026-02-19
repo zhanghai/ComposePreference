@@ -21,7 +21,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
     alias(libs.plugins.android.application).apply(false)
-    alias(libs.plugins.android.library).apply(false)
+    alias(libs.plugins.android.kotlinMultiplatformLibrary).apply(false)
     alias(libs.plugins.compose).apply(false)
     alias(libs.plugins.dokka).apply(false)
     alias(libs.plugins.kotlin.multiplatform).apply(false)

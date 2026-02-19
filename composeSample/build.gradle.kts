@@ -18,7 +18,7 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.kotlinMultiplatformLibrary)
     alias(libs.plugins.compose)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.plugin.compose)
@@ -34,10 +34,22 @@ kotlin {
     // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:buildSrc/private/src/main/kotlin/androidx/build/AndroidXMultiplatformExtension.kt
     // @see
     // https://github.com/JetBrains/compose-multiplatform/blob/master/components/resources/library/build.gradle.kts
-    androidTarget {}
+    androidLibrary {
+        namespace = "me.zhanghai.compose.preference.sample"
+        buildToolsVersion = libs.versions.android.buildTools.get()
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        androidResources { enable = true }
+        optimization {
+            consumerKeepRules.apply {
+                publish = true
+                file("consumer-proguard-rules.pro")
+            }
+        }
+        packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
+    }
     iosArm64()
     iosSimulatorArm64()
-    iosX64()
     js {
         browser()
         binaries.executable()
@@ -46,11 +58,9 @@ kotlin {
     // linuxArm64()
     // linuxX64()
     macosArm64()
-    macosX64()
     // mingwX64()
     // tvosArm64()
     // tvosSimulatorArm64()
-    // tvosX64()
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         browser()
@@ -60,7 +70,6 @@ kotlin {
     // watchosArm64()
     // watchosDeviceArm64()
     // watchosSimulatorArm64()
-    // watchosX64()
 
     applyDefaultHierarchyTemplate()
     sourceSets {
@@ -77,16 +86,15 @@ kotlin {
                 // TODO: Migrate away from deprecated dependency aliases once they have a BOM for
                 //  compatible versions.
                 implementation(compose.components.resources)
-                implementation(compose.components.uiToolingPreview)
                 implementation(compose.material3)
                 implementation(compose.materialIconsExtended)
+                implementation(compose.preview)
             }
         }
         commonTest { dependencies { implementation(libs.kotlin.test) } }
         androidMain {
             dependencies {
                 implementation(libs.androidx.activity.compose)
-                implementation(libs.androidx.compose.ui.toolingPreview)
                 implementation(libs.kotlinx.coroutines.android)
             }
         }
@@ -99,43 +107,9 @@ kotlin {
     }
 }
 
-android {
-    namespace = "me.zhanghai.compose.preference.sample"
-    buildToolsVersion = libs.versions.android.buildTools.get()
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-    defaultConfig {
-        applicationId = "me.zhanghai.compose.preference.sample"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = providers.gradleProperty("VERSION_CODE").get().toInt()
-        versionName = providers.gradleProperty("VERSION_NAME").get()
-    }
-    buildFeatures { compose = true }
-    packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
-    signingConfigs {
-        create("release") {
-            storeFile = System.getenv("STORE_FILE")?.let { rootProject.file(it) }
-            storePassword = System.getenv("STORE_PASSWORD")
-            keyAlias = System.getenv("KEY_ALIAS")
-            keyPassword = System.getenv("KEY_PASSWORD")
-        }
-    }
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
-            signingConfig = signingConfigs.getByName("release")
-        }
-    }
-}
-
 dependencies {
-    debugImplementation(libs.androidx.compose.ui.testManifest)
-    debugImplementation(libs.androidx.compose.ui.tooling)
+    androidRuntimeClasspath(libs.androidx.compose.ui.testManifest)
+    androidRuntimeClasspath(compose.uiTooling)
 }
 
 compose.desktop {
