@@ -107,14 +107,14 @@ android {
         applicationId = "me.zhanghai.compose.preference.sample"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = (extra["VERSION_CODE"] as String).toInt()
-        versionName = extra["VERSION_NAME"] as String
+        versionCode = providers.gradleProperty("VERSION_CODE").get().toInt()
+        versionName = providers.gradleProperty("VERSION_NAME").get()
     }
     buildFeatures { compose = true }
     packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
     signingConfigs {
         create("release") {
-            storeFile = File(System.getenv("STORE_FILE") ?: "/dev/null")
+            storeFile = System.getenv("STORE_FILE")?.let { rootProject.file(it) }
             storePassword = System.getenv("STORE_PASSWORD")
             keyAlias = System.getenv("KEY_ALIAS")
             keyPassword = System.getenv("KEY_PASSWORD")
@@ -143,7 +143,7 @@ compose.desktop {
         mainClass = "me.zhanghai.compose.preference.sample.MainKt"
         nativeDistributions {
             packageName = "me.zhanghai.compose.preference.sample"
-            packageVersion = project.extra["VERSION_NAME"] as String
+            packageVersion = providers.gradleProperty("VERSION_NAME").get()
             targetFormats(TargetFormat.Deb, TargetFormat.Dmg, TargetFormat.Msi)
         }
     }
