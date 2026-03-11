@@ -34,7 +34,7 @@ kotlin {
     // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:buildSrc/private/src/main/kotlin/androidx/build/AndroidXMultiplatformExtension.kt
     // @see
     // https://github.com/JetBrains/compose-multiplatform/blob/master/components/resources/library/build.gradle.kts
-    androidLibrary {
+    android {
         namespace = "me.zhanghai.compose.preference.sample"
         buildToolsVersion = libs.versions.android.buildTools.get()
         compileSdk = libs.versions.android.compileSdk.get().toInt()
