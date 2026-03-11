@@ -17,6 +17,7 @@
 package me.zhanghai.compose.preference
 
 import androidx.compose.runtime.Composable
+import kotlin.concurrent.Volatile
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.toKString
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -30,6 +31,8 @@ import platform.Foundation.NSBundle
 import platform.Foundation.NSNumber
 import platform.Foundation.NSString
 import platform.Foundation.NSUserDefaults
+
+@Volatile public var isDefaultPreferenceFlowAppleLongOnlySupportEnabled: Boolean = false
 
 @Composable
 public actual fun createDefaultPreferenceFlow(): MutableStateFlow<Preferences> =
@@ -50,24 +53,39 @@ private var NSUserDefaults.preferences: Preferences
             persistentDomainForName(NSBundle.mainBundle.bundleIdentifier!!) as Map<String, Any>
         val map =
             dictionary.mapValues { (_, value) ->
+                @Suppress("CAST_NEVER_SUCCEEDS")
                 when (value) {
                     is NSNumber ->
                         // @see
                         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
+                        // @see
+                        // https://github.com/opensource-apple/CF/blob/3cc41a76b1491f50813e28a4ec09954ffa359e6f/CFBinaryPList.c#L1061
                         @OptIn(ExperimentalForeignApi::class)
                         when (val objCType = value.objCType?.toKString()) {
+                            // CFBinaryList reads back boolean as kCFBooleanTrue and
+                            // kCFBooleanFalse, whose objCType is "c", while "B" is for C99 _Bool.
                             "c",
                             "C",
-                            "B" -> value as Boolean
+                            "B" -> value.boolValue
+                            // CFBinaryPList reads back integer as kCFNumberSInt64Type, whose
+                            // objCType is "q".
                             "i",
-                            "s",
-                            "l",
-                            "q",
                             "I",
+                            "s",
                             "S",
-                            "Q" -> value as Int
+                            "l",
+                            "L",
+                            "q",
+                            "Q" ->
+                                if (isDefaultPreferenceFlowAppleLongOnlySupportEnabled) {
+                                    value.longLongValue
+                                } else {
+                                    value.intValue
+                                }
+                            // CFBinaryPList does read back float and double separately, but we
+                            // always use float for consistency of our multi-platform API.
                             "f",
-                            "d" -> value as Float
+                            "d" -> value.floatValue
                             else ->
                                 throw IllegalArgumentException(
                                     "Unsupported objCType \"$objCType\" for value $value"
@@ -75,7 +93,7 @@ private var NSUserDefaults.preferences: Preferences
                         }
                     is NSString -> value as String
                     is NSArray ->
-                        @Suppress("CAST_NEVER_SUCCEEDS", "UNCHECKED_CAST")
+                        @Suppress("UNCHECKED_CAST")
                         (value as List<NSString>).mapTo(mutableSetOf()) { it as String }
                     else -> throw IllegalArgumentException("Unsupported type for value $value")
                 }
@@ -85,13 +103,27 @@ private var NSUserDefaults.preferences: Preferences
     set(value) {
         val dictionary: Map<Any?, *> =
             value.asMap().mapValues { (_, mapValue) ->
+                @Suppress("CAST_NEVER_SUCCEEDS")
                 when (mapValue) {
                     is Boolean -> mapValue as NSNumber
-                    is Int -> mapValue as NSNumber
+                    is Int -> {
+                        require(!isDefaultPreferenceFlowAppleLongOnlySupportEnabled) {
+                            "Int is unsupported when" +
+                                " isDefaultPreferenceFlowAppleLongOnlySupportEnabled is set to true"
+                        }
+                        mapValue as NSNumber
+                    }
+                    is Long -> {
+                        require(isDefaultPreferenceFlowAppleLongOnlySupportEnabled) {
+                            "Long is unsupported unless" +
+                                " isDefaultPreferenceFlowAppleLongOnlySupportEnabled is set to true"
+                        }
+                        mapValue as NSNumber
+                    }
                     is Float -> mapValue as NSNumber
                     is String -> mapValue as NSString
                     is Set<*> ->
-                        @Suppress("CAST_NEVER_SUCCEEDS", "UNCHECKED_CAST")
+                        @Suppress("UNCHECKED_CAST")
                         (mapValue as Set<String>).map { it as NSString } as NSArray
                     else -> throw IllegalArgumentException("Unsupported type for value $mapValue")
                 }
