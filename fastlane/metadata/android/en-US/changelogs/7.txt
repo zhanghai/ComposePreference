@@ -1,0 +1,3 @@
+- Fixed default preference flow on Apple and added isDefaultPreferenceFlowAppleLongOnlySupportEnabled.
+- Renamed isDefaultPreferenceFlowLongSupportEnabled to isDefaultPreferenceFlowAndroidLongSupportEnabled.
+- Changed valueToText parameter for (MultiSelect)ListPreference to be @Composable.
