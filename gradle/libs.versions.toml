@@ -1,14 +1,14 @@
 [versions]
 android-buildTools = "36.1.0"
 android-compileSdk = "36"
-android-gradlePlugin = "9.0.1"
+android-gradlePlugin = "9.1.0"
 android-minSdk = "23"
 android-targetSdk = "36"
 androidx-activity = "1.12.4"
-compose = "1.10.1"
+compose = "1.10.2"
 dokka = "2.1.0"
 # https://kotlinlang.org/docs/multiplatform/whats-new-compose-110.html#dependencies
-jetbrains-androidx-lifecycle = "2.10.0-alpha08"
+jetbrains-androidx-lifecycle = "2.10.0-beta01"
 kotlin = "2.3.10"
 kotlinx-binaryCompatibilityValidator = "0.18.1"
 kotlinx-coroutines = "1.10.2"
