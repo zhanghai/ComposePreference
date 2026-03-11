@@ -69,7 +69,7 @@ public inline fun <T> LazyListScope.listPreference(
     noinline icon: @Composable ((T) -> Unit)? = null,
     noinline summary: @Composable ((T) -> Unit)? = null,
     type: ListPreferenceType = ListPreferenceType.ALERT_DIALOG,
-    noinline valueToText: (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
+    noinline valueToText: @Composable (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
     noinline item: @Composable (value: T, currentValue: T, onClick: () -> Unit) -> Unit =
         ListPreferenceDefaults.item(type, valueToText),
 ) {
@@ -101,7 +101,7 @@ public fun <T> ListPreference(
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
     type: ListPreferenceType = ListPreferenceType.ALERT_DIALOG,
-    valueToText: (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
+    valueToText: @Composable (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
     item: @Composable (value: T, currentValue: T, onClick: () -> Unit) -> Unit =
         ListPreferenceDefaults.item(type, valueToText),
 ) {
@@ -132,7 +132,7 @@ public fun <T> ListPreference(
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
     type: ListPreferenceType = ListPreferenceType.ALERT_DIALOG,
-    valueToText: (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
+    valueToText: @Composable (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
     item: @Composable (value: T, currentValue: T, onClick: () -> Unit) -> Unit =
         ListPreferenceDefaults.item(type, valueToText),
 ) {
@@ -199,7 +199,7 @@ public fun <T> ListPreference(
 internal object ListPreferenceDefaults {
     fun <T> item(
         type: ListPreferenceType,
-        valueToText: (T) -> AnnotatedString,
+        valueToText: @Composable (T) -> AnnotatedString,
     ): @Composable (value: T, currentValue: T, onClick: () -> Unit) -> Unit =
         when (type) {
             ListPreferenceType.ALERT_DIALOG -> {
@@ -218,7 +218,7 @@ internal object ListPreferenceDefaults {
     private fun <T> DialogItem(
         value: T,
         currentValue: T,
-        valueToText: (T) -> AnnotatedString,
+        valueToText: @Composable (T) -> AnnotatedString,
         onClick: () -> Unit,
     ) {
         val selected = value == currentValue
@@ -244,7 +244,7 @@ internal object ListPreferenceDefaults {
     private fun <T> DropdownMenuItem(
         value: T,
         currentValue: T,
-        valueToText: (T) -> AnnotatedString,
+        valueToText: @Composable (T) -> AnnotatedString,
         onClick: () -> Unit,
     ) {
         DropdownMenuItem(

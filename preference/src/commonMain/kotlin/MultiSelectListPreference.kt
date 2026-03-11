@@ -59,7 +59,7 @@ public inline fun <T> LazyListScope.multiSelectListPreference(
     crossinline enabled: (Set<T>) -> Boolean = { true },
     noinline icon: @Composable ((Set<T>) -> Unit)? = null,
     noinline summary: @Composable ((Set<T>) -> Unit)? = null,
-    noinline valueToText: (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
+    noinline valueToText: @Composable (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
     noinline item:
         @Composable
         (value: T, currentValues: Set<T>, onToggle: (Boolean) -> Unit) -> Unit =
@@ -91,7 +91,7 @@ public fun <T> MultiSelectListPreference(
     enabled: Boolean = true,
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
-    valueToText: (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
+    valueToText: @Composable (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
     item: @Composable (value: T, currentValues: Set<T>, onToggle: (Boolean) -> Unit) -> Unit =
         MultiSelectListPreferenceDefaults.item(valueToText),
 ) {
@@ -120,7 +120,7 @@ public fun <T> MultiSelectListPreference(
     enabled: Boolean = true,
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,
-    valueToText: (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
+    valueToText: @Composable (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
     item: @Composable (value: T, currentValues: Set<T>, onToggle: (Boolean) -> Unit) -> Unit =
         MultiSelectListPreferenceDefaults.item(valueToText),
 ) {
@@ -171,7 +171,7 @@ public fun <T> MultiSelectListPreference(
 @PublishedApi
 internal object MultiSelectListPreferenceDefaults {
     fun <T> item(
-        valueToText: (T) -> AnnotatedString
+        valueToText: @Composable (T) -> AnnotatedString
     ): @Composable (value: T, currentValues: Set<T>, onToggle: (Boolean) -> Unit) -> Unit =
         { value, currentValues, onToggle ->
             Item(value, currentValues, valueToText, onToggle)
@@ -181,7 +181,7 @@ internal object MultiSelectListPreferenceDefaults {
     private fun <T> Item(
         value: T,
         currentValues: Set<T>,
-        valueToText: (T) -> AnnotatedString,
+        valueToText: @Composable (T) -> AnnotatedString,
         onToggle: (Boolean) -> Unit,
     ) {
         val checked = value in currentValues
