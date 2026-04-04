@@ -1,9 +1,9 @@
 [versions]
-android-buildTools = "36.1.0"
-android-compileSdk = "36"
+android-buildTools = "37.0.0"
+android-compileSdk = "37"
 android-gradlePlugin = "9.1.0"
 android-minSdk = "23"
-android-targetSdk = "36"
+android-targetSdk = "37"
 androidx-activity = "1.13.0"
 compose = "1.10.3"
 dokka = "2.2.0"
