@@ -78,6 +78,39 @@ public inline fun <T> LazyListScope.textFieldPreference(
     }
 }
 
+@Suppress("NOTHING_TO_INLINE")
+public inline fun <T> LazyListScope.textFieldPreference(
+    key: String,
+    value: T,
+    noinline onValueChange: (T) -> Unit,
+    noinline title: @Composable () -> Unit,
+    noinline textToValue: (String) -> T?,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    noinline icon: @Composable (() -> Unit)? = null,
+    noinline summary: @Composable (() -> Unit)? = null,
+    noinline valueToText: (T) -> String = { it.toString() },
+    noinline textField:
+        @Composable
+        (value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit, onOk: () -> Unit) -> Unit =
+        TextFieldPreferenceDefaults.TextField,
+) {
+    item(key = key, contentType = "TextFieldPreference") {
+        TextFieldPreference(
+            value = value,
+            onValueChange = onValueChange,
+            title = title,
+            textToValue = textToValue,
+            modifier = modifier,
+            enabled = enabled,
+            icon = icon,
+            summary = summary,
+            valueToText = valueToText,
+            textField = textField,
+        )
+    }
+}
+
 @Composable
 public fun <T> TextFieldPreference(
     state: MutableState<T>,

@@ -54,6 +54,30 @@ public inline fun LazyListScope.checkboxPreference(
     }
 }
 
+@Suppress("NOTHING_TO_INLINE")
+public inline fun LazyListScope.checkboxPreference(
+    key: String,
+    value: Boolean,
+    noinline onValueChange: (Boolean) -> Unit,
+    noinline title: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    noinline icon: @Composable (() -> Unit)? = null,
+    noinline summary: @Composable (() -> Unit)? = null,
+) {
+    item(key = key, contentType = "CheckboxPreference") {
+        CheckboxPreference(
+            value = value,
+            onValueChange = onValueChange,
+            title = title,
+            modifier = modifier,
+            enabled = enabled,
+            icon = icon,
+            summary = summary,
+        )
+    }
+}
+
 @Composable
 public fun CheckboxPreference(
     state: MutableState<Boolean>,

@@ -70,11 +70,12 @@ Built-in types of preferences include:
 - [`TwoTargetIconButtonPreference`](preference/src/commonMain/kotlin/TwoTargetIconButtonPreference.kt)
 - [`TwoTargetSwitchPreference`](preference/src/commonMain/kotlin/TwoTargetSwitchPreference.kt)
 
-Each type of built-in preference includes 3 kinds of APIs:
+Each type of built-in preference includes 4 kinds of APIs:
 
 1. A `LazyListScope.*Preference` extension function, which is the easiest way to use preferences in this library, and helps developers to avoid boilerplates like having to specify the key twice for the `LazyColumn` and the `Preference`.
-2. A `*Preference` composable that takes a `MutableState`, which allows developers to bring in any kind of state they currently have.
-3. A `*Preference` composable that takes `value` and `onValueChange`, which allows developers to use the preference without a state and even in non-preference scenarios.
+2. A `LazyListScope.*Preference` extension function, overloads the first one for `value` and `onValueChange` params.
+3. A `*Preference` composable that takes a `MutableState`, which allows developers to bring in any kind of state they currently have.
+4. A `*Preference` composable that takes `value` and `onValueChange`, which allows developers to use the preference without a state and even in non-preference scenarios.
 
 ### Theming
 
