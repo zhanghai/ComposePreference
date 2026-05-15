@@ -82,19 +82,18 @@ public inline fun <T> LazyListScope.multiSelectListPreference(
     }
 }
 
-@Suppress("NOTHING_TO_INLINE")
-public inline fun <T> LazyListScope.multiSelectListPreference(
+public fun <T> LazyListScope.multiSelectListPreference(
     key: String,
     value: Set<T>,
-    noinline onValueChange: (Set<T>) -> Unit,
+    onValueChange: (Set<T>) -> Unit,
     values: List<T>,
-    noinline title: @Composable () -> Unit,
+    title: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    noinline icon: @Composable (() -> Unit)? = null,
-    noinline summary: @Composable (() -> Unit)? = null,
-    noinline valueToText: @Composable (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
-    noinline item: @Composable (value: T, currentValues: Set<T>, onToggle: (Boolean) -> Unit) -> Unit =
+    icon: @Composable (() -> Unit)? = null,
+    summary: @Composable (() -> Unit)? = null,
+    valueToText: @Composable (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
+    item: @Composable (value: T, currentValues: Set<T>, onToggle: (Boolean) -> Unit) -> Unit =
         MultiSelectListPreferenceDefaults.item(valueToText),
 ) {
     item(key = key, contentType = "MultiSelectListPreference") {

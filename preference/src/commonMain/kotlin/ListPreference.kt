@@ -91,20 +91,19 @@ public inline fun <T> LazyListScope.listPreference(
     }
 }
 
-@Suppress("NOTHING_TO_INLINE")
-public inline fun <T> LazyListScope.listPreference(
+public fun <T> LazyListScope.listPreference(
     key: String,
     value: T,
-    noinline onValueChange: (T) -> Unit,
+    onValueChange: (T) -> Unit,
     values: List<T>,
-    noinline title: @Composable () -> Unit,
+    title: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    noinline icon: @Composable (() -> Unit)? = null,
-    noinline summary: @Composable (() -> Unit)? = null,
+    icon: @Composable (() -> Unit)? = null,
+    summary: @Composable (() -> Unit)? = null,
     type: ListPreferenceType = ListPreferenceType.ALERT_DIALOG,
-    noinline valueToText: @Composable (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
-    noinline item: @Composable (value: T, currentValue: T, onClick: () -> Unit) -> Unit =
+    valueToText: @Composable (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
+    item: @Composable (value: T, currentValue: T, onClick: () -> Unit) -> Unit =
         ListPreferenceDefaults.item(type, valueToText),
 ) {
     item(key = key, contentType = "ListPreference") {

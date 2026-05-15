@@ -57,18 +57,17 @@ public inline fun LazyListScope.twoTargetSwitchPreference(
     }
 }
 
-@Suppress("NOTHING_TO_INLINE")
-public inline fun LazyListScope.twoTargetSwitchPreference(
+public fun LazyListScope.twoTargetSwitchPreference(
     key: String,
     value: Boolean,
-    noinline onValueChange: (Boolean) -> Unit,
-    noinline title: @Composable () -> Unit,
+    onValueChange: (Boolean) -> Unit,
+    title: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    noinline icon: @Composable (() -> Unit)? = null,
-    noinline summary: @Composable (() -> Unit)? = null,
+    icon: @Composable (() -> Unit)? = null,
+    summary: @Composable (() -> Unit)? = null,
     switchEnabled: Boolean = enabled,
-    noinline onClick: (() -> Unit)? = null,
+    onClick: (() -> Unit)? = null,
 ) {
     item(key = key, contentType = "TwoTargetSwitchPreference") {
         TwoTargetSwitchPreference(
