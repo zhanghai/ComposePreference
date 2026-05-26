@@ -24,6 +24,7 @@ plugins {
     alias(libs.plugins.android.kotlinMultiplatformLibrary).apply(false)
     alias(libs.plugins.compose).apply(false)
     alias(libs.plugins.dokka).apply(false)
+    alias(libs.plugins.kotlin.jvm).apply(false)
     alias(libs.plugins.kotlin.multiplatform).apply(false)
     alias(libs.plugins.kotlin.plugin.compose).apply(false)
     alias(libs.plugins.kotlinx.binaryCompatibilityValidator).apply(false)

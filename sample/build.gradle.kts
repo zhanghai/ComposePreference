@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
@@ -110,15 +109,4 @@ kotlin {
 dependencies {
     androidRuntimeClasspath(libs.androidx.compose.ui.testManifest)
     androidRuntimeClasspath(compose.uiTooling)
-}
-
-compose.desktop {
-    application {
-        mainClass = "me.zhanghai.compose.preference.sample.MainKt"
-        nativeDistributions {
-            packageName = "me.zhanghai.compose.preference.sample"
-            packageVersion = providers.gradleProperty("VERSION_NAME").get()
-            targetFormats(TargetFormat.Deb, TargetFormat.Dmg, TargetFormat.Msi)
-        }
-    }
 }

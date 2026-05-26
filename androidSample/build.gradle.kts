@@ -54,5 +54,5 @@ android {
 }
 
 dependencies {
-    implementation(project(":composeSample"))
+    implementation(project(":sample"))
 }
