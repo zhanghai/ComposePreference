@@ -97,7 +97,7 @@ public fun <T> LazyListScope.listPreference(
     onValueChange: (T) -> Unit,
     values: List<T>,
     title: @Composable () -> Unit,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.fillMaxWidth(),
     enabled: Boolean = true,
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,

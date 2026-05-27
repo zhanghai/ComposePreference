@@ -62,7 +62,7 @@ public fun LazyListScope.twoTargetSwitchPreference(
     value: Boolean,
     onValueChange: (Boolean) -> Unit,
     title: @Composable () -> Unit,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.fillMaxWidth(),
     enabled: Boolean = true,
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,

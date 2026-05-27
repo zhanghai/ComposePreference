@@ -84,7 +84,7 @@ public fun <T> LazyListScope.textFieldPreference(
     onValueChange: (T) -> Unit,
     title: @Composable () -> Unit,
     textToValue: (String) -> T?,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.fillMaxWidth(),
     enabled: Boolean = true,
     icon: @Composable (() -> Unit)? = null,
     summary: @Composable (() -> Unit)? = null,

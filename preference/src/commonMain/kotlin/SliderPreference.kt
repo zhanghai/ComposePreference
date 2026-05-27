@@ -79,7 +79,7 @@ public fun LazyListScope.sliderPreference(
     sliderValue: Float,
     onSliderValueChange: (Float) -> Unit,
     title: @Composable () -> Unit,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.fillMaxWidth(),
     valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
     valueSteps: Int = 0,
     enabled: Boolean = true,
