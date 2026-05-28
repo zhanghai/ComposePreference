@@ -82,6 +82,36 @@ public inline fun <T> LazyListScope.multiSelectListPreference(
     }
 }
 
+public fun <T> LazyListScope.multiSelectListPreference(
+    key: String,
+    value: Set<T>,
+    onValueChange: (Set<T>) -> Unit,
+    values: List<T>,
+    title: @Composable () -> Unit,
+    modifier: Modifier = Modifier.fillMaxWidth(),
+    enabled: Boolean = true,
+    icon: @Composable (() -> Unit)? = null,
+    summary: @Composable (() -> Unit)? = null,
+    valueToText: @Composable (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
+    item: @Composable (value: T, currentValues: Set<T>, onToggle: (Boolean) -> Unit) -> Unit =
+        MultiSelectListPreferenceDefaults.item(valueToText),
+) {
+    item(key = key, contentType = "MultiSelectListPreference") {
+        MultiSelectListPreference(
+            value = value,
+            onValueChange = onValueChange,
+            values = values,
+            title = title,
+            modifier = modifier,
+            enabled = enabled,
+            icon = icon,
+            summary = summary,
+            valueToText = valueToText,
+            item = item,
+        )
+    }
+}
+
 @Composable
 public fun <T> MultiSelectListPreference(
     state: MutableState<Set<T>>,

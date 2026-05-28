@@ -72,6 +72,39 @@ public inline fun LazyListScope.sliderPreference(
     }
 }
 
+public fun LazyListScope.sliderPreference(
+    key: String,
+    value: Float,
+    onValueChange: (Float) -> Unit,
+    sliderValue: Float,
+    onSliderValueChange: (Float) -> Unit,
+    title: @Composable () -> Unit,
+    modifier: Modifier = Modifier.fillMaxWidth(),
+    valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
+    valueSteps: Int = 0,
+    enabled: Boolean = true,
+    icon: @Composable (() -> Unit)? = null,
+    summary: @Composable (() -> Unit)? = null,
+    valueText: @Composable (() -> Unit)? = null,
+) {
+    item(key = key, contentType = "SliderPreference") {
+        SliderPreference(
+            value = value,
+            onValueChange = onValueChange,
+            sliderValue = sliderValue,
+            onSliderValueChange = onSliderValueChange,
+            title = title,
+            modifier = modifier,
+            valueRange = valueRange,
+            valueSteps = valueSteps,
+            enabled = enabled,
+            icon = icon,
+            summary = summary,
+            valueText = valueText,
+        )
+    }
+}
+
 @Composable
 public fun SliderPreference(
     state: MutableState<Float>,

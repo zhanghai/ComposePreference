@@ -54,6 +54,29 @@ public inline fun LazyListScope.switchPreference(
     }
 }
 
+public fun LazyListScope.switchPreference(
+    key: String,
+    value: Boolean,
+    onValueChange: (Boolean) -> Unit,
+    title: @Composable () -> Unit,
+    modifier: Modifier = Modifier.fillMaxWidth(),
+    enabled: Boolean = true,
+    icon: @Composable (() -> Unit)? = null,
+    summary: @Composable (() -> Unit)? = null,
+) {
+    item(key = key, contentType = "SwitchPreference") {
+        SwitchPreference(
+            value = value,
+            onValueChange = onValueChange,
+            title = title,
+            modifier = modifier,
+            enabled = enabled,
+            icon = icon,
+            summary = summary,
+        )
+    }
+}
+
 @Composable
 public fun SwitchPreference(
     state: MutableState<Boolean>,

@@ -57,6 +57,33 @@ public inline fun LazyListScope.twoTargetSwitchPreference(
     }
 }
 
+public fun LazyListScope.twoTargetSwitchPreference(
+    key: String,
+    value: Boolean,
+    onValueChange: (Boolean) -> Unit,
+    title: @Composable () -> Unit,
+    modifier: Modifier = Modifier.fillMaxWidth(),
+    enabled: Boolean = true,
+    icon: @Composable (() -> Unit)? = null,
+    summary: @Composable (() -> Unit)? = null,
+    switchEnabled: Boolean = enabled,
+    onClick: (() -> Unit)? = null,
+) {
+    item(key = key, contentType = "TwoTargetSwitchPreference") {
+        TwoTargetSwitchPreference(
+            value = value,
+            onValueChange = onValueChange,
+            title = title,
+            modifier = modifier,
+            enabled = enabled,
+            icon = icon,
+            summary = summary,
+            switchEnabled = switchEnabled,
+            onClick = onClick,
+        )
+    }
+}
+
 @Composable
 public fun TwoTargetSwitchPreference(
     state: MutableState<Boolean>,

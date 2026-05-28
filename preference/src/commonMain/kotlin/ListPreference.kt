@@ -91,6 +91,38 @@ public inline fun <T> LazyListScope.listPreference(
     }
 }
 
+public fun <T> LazyListScope.listPreference(
+    key: String,
+    value: T,
+    onValueChange: (T) -> Unit,
+    values: List<T>,
+    title: @Composable () -> Unit,
+    modifier: Modifier = Modifier.fillMaxWidth(),
+    enabled: Boolean = true,
+    icon: @Composable (() -> Unit)? = null,
+    summary: @Composable (() -> Unit)? = null,
+    type: ListPreferenceType = ListPreferenceType.ALERT_DIALOG,
+    valueToText: @Composable (T) -> AnnotatedString = { AnnotatedString(it.toString()) },
+    item: @Composable (value: T, currentValue: T, onClick: () -> Unit) -> Unit =
+        ListPreferenceDefaults.item(type, valueToText),
+) {
+    item(key = key, contentType = "ListPreference") {
+        ListPreference(
+            value = value,
+            onValueChange = onValueChange,
+            values = values,
+            title = title,
+            modifier = modifier,
+            enabled = enabled,
+            icon = icon,
+            summary = summary,
+            type = type,
+            valueToText = valueToText,
+            item = item,
+        )
+    }
+}
+
 @Composable
 public fun <T> ListPreference(
     state: MutableState<T>,
