@@ -15,6 +15,7 @@
  */
 
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
 
 plugins {
     alias(libs.plugins.android.kotlinMultiplatformLibrary)
@@ -22,12 +23,16 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.plugin.compose)
-    alias(libs.plugins.kotlinx.binaryCompatibilityValidator)
     alias(libs.plugins.mavenPublish)
 }
 
 kotlin {
     explicitApi()
+
+    @OptIn(ExperimentalAbiValidation::class)
+    abiValidation {
+        enabled = true
+    }
 
     // From AndroidX and Compose Multiplatform
     // @see
