@@ -1,6 +1,10 @@
 name: Android CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   build:
@@ -18,4 +22,4 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
     - name: Build with Gradle
-      run: ./gradlew assembleDebug lintVitalRelease
+      run: ./gradlew assembleDebug lintVitalRelease apiCheck
