@@ -17,8 +17,8 @@
 package me.zhanghai.compose.preference.sample
 
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.window.CanvasBasedWindow
+import androidx.compose.ui.window.ComposeViewport
 
 fun main() {
-    @OptIn(ExperimentalComposeUiApi::class) CanvasBasedWindow(SampleTitle) { SampleApp() }
+    @OptIn(ExperimentalComposeUiApi::class) ComposeViewport { SampleApp() }
 }

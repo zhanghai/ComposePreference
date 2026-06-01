@@ -17,10 +17,9 @@
 package me.zhanghai.compose.preference.sample
 
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.window.CanvasBasedWindow
+import androidx.compose.ui.window.ComposeViewport
 import org.jetbrains.skiko.wasm.onWasmReady
 
 fun main() {
-    @OptIn(ExperimentalComposeUiApi::class)
-    onWasmReady { CanvasBasedWindow(SampleTitle) { SampleApp() } }
+    @OptIn(ExperimentalComposeUiApi::class) onWasmReady { ComposeViewport { SampleApp() } }
 }
