@@ -16,37 +16,37 @@ public final class me/zhanghai/compose/preference/CheckboxPreferenceKt {
 public final class me/zhanghai/compose/preference/ComposableSingletons$BasicPreferenceKt {
 	public static final field INSTANCE Lme/zhanghai/compose/preference/ComposableSingletons$BasicPreferenceKt;
 	public fun <init> ()V
-	public final fun getLambda$-1070936785$preference ()Lkotlin/jvm/functions/Function2;
-	public final fun getLambda$-1694088339$preference ()Lkotlin/jvm/functions/Function2;
-	public final fun getLambda$1430893402$preference ()Lkotlin/jvm/functions/Function2;
-	public final fun getLambda$1998655096$preference ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-1070936785$ComposePreference_preference ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-1694088339$ComposePreference_preference ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$1430893402$ComposePreference_preference ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$1998655096$ComposePreference_preference ()Lkotlin/jvm/functions/Function2;
 }
 
 public final class me/zhanghai/compose/preference/ComposableSingletons$FooterPreferenceKt {
 	public static final field INSTANCE Lme/zhanghai/compose/preference/ComposableSingletons$FooterPreferenceKt;
 	public fun <init> ()V
-	public final fun getLambda$-491883186$preference ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-491883186$ComposePreference_preference ()Lkotlin/jvm/functions/Function2;
 }
 
 public final class me/zhanghai/compose/preference/ComposableSingletons$ListPreferenceKt {
 	public static final field INSTANCE Lme/zhanghai/compose/preference/ComposableSingletons$ListPreferenceKt;
 	public fun <init> ()V
-	public final fun getLambda$1275149359$preference ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$1275149359$ComposePreference_preference ()Lkotlin/jvm/functions/Function3;
 }
 
 public final class me/zhanghai/compose/preference/ComposableSingletons$MultiSelectListPreferenceKt {
 	public static final field INSTANCE Lme/zhanghai/compose/preference/ComposableSingletons$MultiSelectListPreferenceKt;
 	public fun <init> ()V
-	public final fun getLambda$-769147719$preference ()Lkotlin/jvm/functions/Function3;
-	public final fun getLambda$830545936$preference ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$-769147719$ComposePreference_preference ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$830545936$ComposePreference_preference ()Lkotlin/jvm/functions/Function3;
 }
 
 public final class me/zhanghai/compose/preference/ComposableSingletons$TextFieldPreferenceKt {
 	public static final field INSTANCE Lme/zhanghai/compose/preference/ComposableSingletons$TextFieldPreferenceKt;
 	public fun <init> ()V
-	public final fun getLambda$1675242031$preference ()Lkotlin/jvm/functions/Function5;
-	public final fun getLambda$291328041$preference ()Lkotlin/jvm/functions/Function3;
-	public final fun getLambda$343848498$preference ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$1675242031$ComposePreference_preference ()Lkotlin/jvm/functions/Function5;
+	public final fun getLambda$291328041$ComposePreference_preference ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$343848498$ComposePreference_preference ()Lkotlin/jvm/functions/Function3;
 }
 
 public final class me/zhanghai/compose/preference/FooterPreferenceKt {
