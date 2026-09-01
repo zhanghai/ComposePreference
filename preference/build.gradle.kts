@@ -54,7 +54,11 @@ kotlin {
     }
     iosArm64()
     iosSimulatorArm64()
-    js { browser() }
+    js {
+        // https://youtrack.jetbrains.com/issue/CMP-4906
+        binaries.executable()
+        browser()
+    }
     jvm()
     // linuxArm64()
     // linuxX64()
@@ -62,7 +66,11 @@ kotlin {
     // mingwX64()
     // tvosArm64()
     // tvosSimulatorArm64()
-    @OptIn(ExperimentalWasmDsl::class) wasmJs { browser() }
+    @OptIn(ExperimentalWasmDsl::class) wasmJs {
+        // https://youtrack.jetbrains.com/issue/CMP-4906
+        binaries.executable()
+        browser()
+    }
     // watchosArm32()
     // watchosArm64()
     // watchosDeviceArm64()
