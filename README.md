@@ -25,7 +25,6 @@ implementation("me.zhanghai.compose.preference:preference:2.2.0")
 There is no official and complete Material 3 UX specification for preference yet, so the UX design of this library mainly comes from the following sources:
 
 - [Material Design 3](https://m3.material.io/)
-- [Material Design 2 Android Settings](https://m2.material.io/design/platform-guidance/android-settings.html)
 - [Android settings design guidelines](https://source.android.com/docs/core/settings/settings-guidelines)
 - [AndroidX Preference](https://developer.android.com/jetpack/androidx/releases/preference)
 - [AOSP Settings](https://android.googlesource.com/platform/packages/apps/Settings/+/refs/heads/main/)
