@@ -43,6 +43,7 @@ import me.zhanghai.compose.preference.footerPreference
 import me.zhanghai.compose.preference.listPreference
 import me.zhanghai.compose.preference.multiSelectListPreference
 import me.zhanghai.compose.preference.preference
+import me.zhanghai.compose.preference.preferenceCategory
 import me.zhanghai.compose.preference.radioButtonPreference
 import me.zhanghai.compose.preference.sliderPreference
 import me.zhanghai.compose.preference.switchPreference
@@ -76,15 +77,34 @@ fun SampleScreen() {
         contentWindowInsets = windowInsets,
     ) { contentPadding ->
         LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = contentPadding) {
+            preferenceCategory(
+                key = "basic_category",
+                title = { Text(text = "Basic") },
+            )
             preference(
                 key = "preference",
                 title = { Text(text = "Preference") },
+                icon = {
+                    Icon(imageVector = Icons.Outlined.Settings, contentDescription = null)
+                },
+                summary = { Text(text = "Summary") },
+            ) {}
+            preference(
+                key = "preference_without_icon",
+                title = { Text(text = "Preference without icon") },
                 summary = { Text(text = "Summary") },
             ) {}
             checkboxPreference(
                 key = "checkbox_preference",
                 defaultValue = false,
                 title = { Text(text = "Checkbox preference") },
+                summary = { Text(text = if (it) "On" else "Off") },
+            )
+            checkboxPreference(
+                key = "disabled_checkbox_preference",
+                defaultValue = true,
+                title = { Text(text = "Disabled checkbox preference") },
+                enabled = { false },
                 summary = { Text(text = if (it) "On" else "Off") },
             )
             switchPreference(
@@ -108,6 +128,10 @@ fun SampleScreen() {
                     Icon(imageVector = Icons.Outlined.Settings, contentDescription = "Settings")
                 },
             ) {}
+            preferenceCategory(
+                key = "advanced_category",
+                title = { Text(text = "Advanced") },
+            )
             sliderPreference(
                 key = "slider_preference",
                 defaultValue = 0f,
