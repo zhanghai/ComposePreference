@@ -82,12 +82,10 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(project(":preference"))
-                // TODO: Migrate away from deprecated dependency aliases once they have a BOM for
-                //  compatible versions.
-                implementation(compose.components.resources)
-                implementation(compose.material3)
-                implementation(compose.materialIconsExtended)
-                implementation(compose.preview)
+                implementation(libs.compose.components.resources)
+                implementation(libs.compose.material.iconsExtended)
+                implementation(libs.compose.material3)
+                implementation(libs.compose.ui.toolingPreview)
             }
         }
         commonTest { dependencies { implementation(libs.kotlin.test) } }
