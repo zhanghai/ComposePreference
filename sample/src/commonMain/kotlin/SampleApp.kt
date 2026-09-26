@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -138,6 +139,34 @@ fun SampleScreen() {
                 values = listOf("Alpha", "Beta", "Canary"),
                 title = { Text(text = "Multi-select list preference") },
                 summary = { Text(text = it.sorted().joinToString(", ")) },
+            )
+            multiSelectListPreference(
+                key = "searchable_multi_select_list_preference",
+                defaultValue = setOf("Beta", "Eta"),
+                values =
+                    listOf(
+                        "Alpha",
+                        "Beta",
+                        "Gamma",
+                        "Delta",
+                        "Epsilon",
+                        "Zeta",
+                        "Eta",
+                        "Theta",
+                        "Iota",
+                        "Kappa",
+                        "Lambda",
+                        "Mu",
+                    ),
+                title = { Text(text = "Searchable multi-select list preference") },
+                summary = { Text(text = it.sorted().joinToString(", ")) },
+                searchable = true,
+                searchPlaceholder = { Text(text = "Search") },
+                searchLeadingIcon = {
+                    Icon(imageVector = Icons.Outlined.Search, contentDescription = null)
+                },
+                searchEmptyResult = { Text(text = "No results") },
+                pinSelectedValues = true,
             )
             textFieldPreference(
                 key = "text_field_preference",
