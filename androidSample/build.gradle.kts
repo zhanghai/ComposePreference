@@ -32,6 +32,9 @@ android {
         versionName = providers.gradleProperty("VERSION_NAME").get()
     }
 
+    androidResources {
+        generateLocaleConfig = true
+    }
     signingConfigs {
         create("release") {
             storeFile = System.getenv("STORE_FILE")?.let { rootProject.file(it) }
